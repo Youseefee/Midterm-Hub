@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>التجارة الإلكترونية (E-Commerce) - ملخص الميدتيرم الشامل</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@page {
+    size: A4;
+    margin: 14mm 16mm 16mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 10px;
+        color: #94a3b8;
+        font-family: sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    direction: rtl;
+    text-align: right;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #047857 0%, #10b981 100%);
+    color: #ffffff;
+    padding: 35px 35px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.hero-banner .subtitle {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.section-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #065f46;
+    border-bottom: 2.5px solid #065f4622;
+    padding-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sec-pill {
+    background: #065f46;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+ul, ol {
+    margin: 0 0 12px 0;
+    padding-right: 22px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.callout {
+    background: #f8fafc;
+    border-right: 4px solid #065f46;
+    border-left: none;
+    padding: 12px 18px;
+    border-radius: 10px 0 0 10px;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.callout.tip {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.callout.trap {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.callout-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.callout.tip .callout-title { color: #065f46; }
+.callout.warning .callout-title { color: #92400e; }
+.callout.trap .callout-title { color: #991b1b; }
+.callout:not(.tip):not(.warning):not(.trap) .callout-title { color: #065f46; }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 9px 12px;
+    text-align: right;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+.code-box {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    margin: 12px 0;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+
+.page-break {
+    page-break-after: always;
+}
+</style>
+</head>
+<body class="ar">
+
+<div class="hero-banner">
+    <h1>التجارة الإلكترونية (E-Commerce: Business, Technology, Society)</h1>
+    <div class="subtitle">الملخص الدراسي الشامل والموسوعة المرجعية التنفيذية لامتحان الميدتيرم</div>
+    <div class="hero-badges">
+        <span class="hero-badge">المادة: التجارة الإلكترونية</span><span class="hero-badge">النطاق: محاضرة 1، فصول 2، 4، 5</span><span class="hero-badge">نماذج الأعمال</span><span class="hero-badge">الأمان والتشفير</span><span class="hero-badge">أنظمة المدفوعات</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="sec-pill">01</span> مقدمة في التجارة الإلكترونية والمفاهيم الأساسية (المحاضرة 1)</h2>
+    <p>تُعرف التجارة الإلكترونية بأنها المعاملات التجارية المدعومة رقمياً بين المنظمات والأفراد عبر شبكات الحاسوب والإنترنت. تمثل تحولاً جذرياً في أداء الأعمال واستبدال الخطوات الورقية بالمعلومات الرقمية.</p>
+
+    <h3>1.1 منظورات التجارة الإلكترونية المتعددة</h3>
+    <table>
+        <tr>
+            <th>المنظور</th>
+            <th>التعريف والنطاق الأكاديمي</th>
+        </tr>
+        <tr>
+            <td><strong>المنظور التجاري (Trading)</strong></td>
+            <td>إتاحة القدرة على بيع وشراء وتبادل المنتجات والخدمات والمعلومات عبر شبكات الاتصال والإنترنت.</td>
+        </tr>
+        <tr>
+            <td><strong>منظور إجراءات العمل (Business Process)</strong></td>
+            <td>ممارسة الأعمال إلكترونياً وأتمتة مسارات العمل وتدفق البيانات كبديل للمسارات والوثائق الورقية المادية.</td>
+        </tr>
+        <tr>
+            <td><strong>منظور الخدمة (Service)</strong></td>
+            <td>أداة استراتيجية لخفض تكاليف تقديم الخدمات مع تحسين جودة المنتجات وسرعة التوصيل للعملاء.</td>
+        </tr>
+        <tr>
+            <td><strong>المنظور التعاوني والتعليمي</strong></td>
+            <td>تمكين التعاون الرقمي بين المؤسسات والتعلم المشترك وتنسيق فرق العمل العالمية.</td>
+        </tr>
+    </table>
+
+    <h3>1.2 تصنيفات التجارة الإلكترونية حسب أطراف السوق</h3>
+    <ul>
+        <li><strong>B2C (بين الشركات والمستهلك):</strong> بيع التجزئة المباشر من الشركات إلى الأفراد (مثل أمازون و وول مارت). وهو الأكثر شهرة وظهوراً للمستهلكين.</li>
+        <li><strong>B2B (بين الشركات والشركات):</strong> بيع وتوريد الشركات لشركات أخرى. <strong>يمثل الحجم الأكبر على الإطلاق من حيث القيمة المالية والأثر الاقتصادي</strong>.</li>
+        <li><strong>C2C (بين المستهلكين):</strong> بيع المستهلكين لبعضهم البعض عبر منصات وسيطة (مثل مزادات eBay والإعلانات المبوبة).</li>
+        <li><strong>C2B (من المستهلك للشركات):</strong> قيام المستهلكين بتحديد السعر أو المواصفات، وتتنافس الشركات لتلبية طلباتهم (مثل نظام Priceline "حدد سعرك بنفسك").</li>
+        <li><strong>Intra-business EC (التجارة الداخلية B2E):</strong> الأنشطة الإلكترونية داخل المؤسسة الواحدة عبر شبكة الإنترانت (تدريب الموظفين، إدارة المزايا، والخدمات الذاتية).</li>
+        <li><strong>Non-business EC:</strong> استخدام المؤسسات غير الربحية والدينية والجامعات للإنترنت لجمع التبرعات وخفض التكاليف.</li>
+        <li><strong>B2G و G2C:</strong> التعاملات الحكومية كالمناقصات والتوريدات الحكومية (B2G) وخدمات المواطنين الإلكترونية كدفع الضرائب واستخراج الرخص (G2C).</li>
+    </ul>
+
+    <h3>1.3 التجارة البحتة مقابل التجارة الجزئية (الأبعاد الثلاثة)</h3>
+    <p>تُصنف التجارة الإلكترونية وفقاً لـ 3 أبعاد رئيسية: <strong>(1) المنتج/الخدمة</strong>، <strong>(2) عملية التداول</strong>، و <strong>(3) وكيل التوصيل/الوسيط</strong>.</p>
+    <ul>
+        <li><strong>التجارة التقليدية المادية:</strong> الأبعاد الثلاثة مادية بالكامل (متجر مادي، نقود ورقية، منتج ملموس).</li>
+        <li><strong>التجارة الجزئية (Partial EC):</strong> بعد واحد على الأقل رقمي والأبعاد الأخرى مادية (مثال: طلب كتاب ورقي من أمازون وتوصيله عبر شركة شحن مادية).</li>
+        <li><strong>التجارة البحتة (Pure EC):</strong> كافة الأبعاد الثلاثة رقمية 100% (مثال: شراء وتحميل كتاب إلكتروني، برمجيات، أو الاستماع للموسيقى عبر الإنترنت).</li>
+    </ul>
+
+    <h3>1.4 فوائد وعوائق التجارة الإلكترونية</h3>
+    <table>
+        <tr>
+            <th>الطرف المستفيد</th>
+            <th>الفوائد والمكاسب</th>
+            <th>العوائق والمحددات</th>
+        </tr>
+        <tr>
+            <td><strong>المؤسسات والشركات</strong></td>
+            <td>الوصول للأسواق العالمية، خفض النفقات التشغيلية، العمل على مدار الساعة 24/7، وسرعة النزول بالمنتجات للسوق والتخصيص الشامل (Mass Customization).</td>
+            <td><strong>عوائق تقنية:</strong> قيود سرعة الشبكات، صعوبة التكامل مع الأنظمة القديمة (Legacy Systems)، وسرعة تغير المعايير الأمنية.</td>
+        </tr>
+        <tr>
+            <td><strong>المستهلكون</strong></td>
+            <td>الراحة وسهولة الشراء من المنزل، خيارات لا حصر لها، المقارنة السريعة للأسعار، وقراءة تقييمات المشترين الآخرين.</td>
+            <td><strong>عوائق غير تقنية:</strong> ضعف الثقة بالمتاجر المجهولة، الخوف على الخصوصية والبيانات المالية، والمقاومة الثقافية للتسوق عن بعد.</td>
+        </tr>
+        <tr>
+            <td><strong>المجتمع</strong></td>
+            <td>العمل عن بُعد وتقليل الزحام المروري والتلوث، وإيصال خدمات التعليم والصحة للمناطق الريفية النائية.</td>
+            <td>الفجوة الرقمية (Digital Divide) وفقدان بعض وظائف التجزئة التقليدية.</td>
+        </tr>
+    </table>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">02</span> نماذج أعمال التجارة الإلكترونية وعناصرها الرئيسية (الفصل 2)</h2>
+    <div class="callout tip">
+        <div class="callout-title">تعريف نموذج الأعمال (Business Model)</div>
+        هو مجموعة الأنشطة والخطط الهادفة لتحقيق الأرباح والمكاسب المالية داخل السوق المستهدف عبر استغلال قدرات الإنترنت الرقمية.
+    </div>
+
+    <h3>2.1 العناصر الثمانية الرئيسية لأي نموذج عمل ناجح</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>العنصر الاستراتيجي</th>
+            <th>السؤال الجوهري الذي يجيب عليه</th>
+            <th>المعنى والتطبيقات</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><strong>عرض القيمة (Value Proposition)</strong></td>
+            <td>لماذا يجب على العميل الشراء منك أنت تحديداً؟</td>
+            <td>كيف يلبي المنتج حاجة العميل بتميز (راحة، سعر أقل، تخصيص فريد).</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>نموذج الإيرادات (Revenue Model)</strong></td>
+            <td>كيف ستكسب الشركة الأموال والأرباح؟</td>
+            <td>الإعلانات، الاشتراكات، رسوم المعاملات، المبيعات المباشرة، والتسويق بالعمولة.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>فرصة السوق (Market Opportunity)</strong></td>
+            <td>ما هو السوق المستهدف وما حجمه المالي الواقعي؟</td>
+            <td>حجم السوق الرقمي المتاح للشركة للمنافسة فيه.</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>البيئة التنافسية (Competitive Environment)</strong></td>
+            <td>من ينافسك في نفس السوق المستهدف؟</td>
+            <td>المنافسون المباشرون (نفس المنتج) وغير المباشرين (منتجات بديلة).</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>الميزة التنافسية (Competitive Advantage)</strong></td>
+            <td>ما الميزات الفريدة التي تمتلكها ولا يمتلكها غيرك؟</td>
+            <td>ميزة السبق الأول (First-Mover)، انخفاض التكاليف، براءات الاختراع، وشهرة العلامة.</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><strong>استراتيجية السوق (Market Strategy)</strong></td>
+            <td>كيف ستروج لمنتجاتك لجذب الجمهور والعملاء؟</td>
+            <td>خطة المزيج التسويقي، حملات التواصل، تحسين محركات البحث، والانتشار.</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><strong>التطوير التنظيمي (Organizational Development)</strong></td>
+            <td>كيف ستنظم الشركة العمل والإدارات لتنفيذ الخطة؟</td>
+            <td>الهيكل الوظيفي، فرق العمل، خطوط الإدارة، ومسارات تدفق المهام.</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><strong>فريق الإدارة (Management Team)</strong></td>
+            <td>ما هي خبرات وكفاءات قادة الشركة ومديريها؟</td>
+            <td>العنصر الأكثر طلباً من المستثمرين؛ يثبت القدرة التنفيذية والخبرة السوقية.</td>
+        </tr>
+    </table>
+
+    <h3>2.2 أبرز نماذج B2C</h3>
+    <ul>
+        <li><strong>البوابات (Portals):</strong> تقدم محركات بحث ومحتوى مجمع. تنقسم إلى <em>بوابات أفقية</em> عامة (Yahoo, MSN) و <em>بوابات رأسية متخصصة (Vortals)</em> تركز على قطاع محدد (مثل Sailnet أو WebMD).</li>
+        <li><strong>تجار التجزئة الإلكترونيون (E-tailers):</strong> متاجر رقمية بحتة (Virtual Merchants مثل أمازون)، أو متاجر مدمجة مع فروع مادية (Clicks-and-Mortar مثل وول مارت)، أو متاجر مصنعين مباشرة (Dell).</li>
+        <li><strong>مزودو المحتوى (Content Providers):</strong> توزيع المحتوى الرقمي (أخبار، موسيقى، فيديو) والربح عبر الاشتراكات، الدفع عند المشاهدة، أو الإعلانات (Netflix, WSJ).</li>
+        <li><strong>وسطاء المعاملات (Transaction Brokers):</strong> تسهيل الصفقات وحجز السفر والتداول بأسلوب سريع وموفر للمال (Expedia, E*Trade).</li>
+        <li><strong>صانعو الأسواق (Market Creators):</strong> بناء منصة تجمع البائعين والمشترين وتتقاضى نسبة على كل معاملة دون امتلاك السلع (eBay, Uber, Airbnb).</li>
+    </ul>
+
+    <h3>2.3 أبرز نماذج B2B</h3>
+    <ul>
+        <li><strong>الموزع الإلكتروني (E-distributor):</strong> تقديم كتالوج موحد لبيع منتجات الصيانة والإصلاح (MRO) لآلاف الشركات المشترية (مثل Grainger).</li>
+        <li><strong>المشتريات الإلكترونية (E-procurement):</strong> بيع اشتراكات الوصول لمنصات أتمتة سلاسل التوريد الرقمية (مثل Ariba).</li>
+        <li><strong>البورصات المستقلة (Exchanges):</strong> أسواق عامة تجمع آلاف الموردين والمشترين للشراء الفوري.</li>
+        <li><strong>اتحادات الصناعة (Industry Consortia):</strong> أسواق قطاعية رأسية مملوكة لمجموعة من الشركات العملاقة في مجالها للتحكم في مشترياتها.</li>
+        <li><strong>شبكات الصناعة الخاصة (Private Industrial Networks):</strong> شبكات رقمية مغلقة تربط شركة عملاقة (مثل Walmart) بمورديها الاستراتيجيين لتنسيق المخزون وتصميم المنتجات.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">03</span> بناء الحضور الإلكتروني: المواقع وتطبيقات الموبايل (الفصل 4)</h2>
+
+    <h3>3.1 دورة حياة تطوير الأنظمة (SDLC) - المراحل الخمس</h3>
+    <table>
+        <tr>
+            <th>المرحلة</th>
+            <th>الاسم والهدف</th>
+            <th>المخرجات والأنشطة الأساسية</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><strong>تخطيط وتحليل النظام</strong></td>
+            <td>تحديد أهداف العمل (Business Objectives)، وظائف النظام البرمجية (System Functionalities)، ومتطلبات المعلومات (Information Requirements).</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>تصميم النظام</strong></td>
+            <td><strong>التصميم المنطقي:</strong> مخططات تدفق البيانات والعلاقات.<br><strong>التصميم المادي:</strong> مواصفات الخوادم، نظم التشغيل، وقواعد البيانات.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>بناء النظام والاستضافة</strong></td>
+            <td>اتخاذ قرار البرمجة الداخلية أم الاستعانة بشركات خارجية (In-house vs. Outsource)؛ واختيار الاستضافة (ذاتية، مشتركة، Co-location، أو سحابية).</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>الاختبار والتحقق</strong></td>
+            <td><strong>اختبار الوحدات (Unit Testing):</strong> فحص كل كود برمجي منفصلاً.<br><strong>اختبار النظام:</strong> فحص النظام المجمع تحت الضغط.<br><strong>اختبار القبول (Acceptance Testing):</strong> اختبار رضا أصحاب الأعمال والعملاء.</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>التشغيل والصيانة المستمرة</strong></td>
+            <td>المراقبة 24/7، التحديثات الأمنية، وتطوير الميزات باستمرار. <em>تستحوذ الصيانة على الحصة الأكبر من تكاليف دورة حياة الموقع</em>.</td>
+        </tr>
+    </table>
+
+    <h3>3.2 المعمارية متعددة الطبقات وتحسين الأداء</h3>
+    <ul>
+        <li><strong>المعمارية متعددة الطبقات (Multi-Tier):</strong>
+            <ul>
+                <li><strong>طبقة العميل (Client Tier):</strong> المتصفح أو تطبيق الموبايل لعرض الواجهات للمستخدم.</li>
+                <li><strong>طبقة خادم الويب (Web Server):</strong> استقبال طلبات HTTP/HTTPS، تشفير SSL، وتقديم الملفات الثابتة.</li>
+                <li><strong>طبقة خادم التطبيقات (Application Server):</strong> معالجة منطق العمل، عربة التسوق، حساب الضرائب، وإدارة المخزون.</li>
+                <li><strong>طبقة خادم قواعد البيانات (Database Server):</strong> حفظ البيانات الدائمة وإجراء المعاملات المالية الموثوقة.</li>
+            </ul>
+        </li>
+        <li><strong>استراتيجيات السرعة والتحسين:</strong> التخزين المؤقت في الذاكرة (Caching)، شبكات توزيع المحتوى (CDN)، وتجميع اتصالات قواعد البيانات (Connection Pooling).</li>
+    </ul>
+
+    <h3>3.3 استراتيجيات التواجد عبر الموبايل</h3>
+    <table>
+        <tr>
+            <th>الاستراتيجية</th>
+            <th>التقنية المعمارية</th>
+            <th>المزايا والعيوب</th>
+        </tr>
+        <tr>
+            <td><strong>التصميم المستجيب (Responsive Web Design - RWD)</strong></td>
+            <td>تنسيقات CSS متغيرة وأطر مرنة تضبط مقاس الصفحة تلقائياً حسب الشاشة.</td>
+            <td><strong>المزايا:</strong> تكلفة تطوير موحدة، رابط واحد للموقع، وتحديث فوري.<br><strong>العيوب:</strong> وصول محدود لحساسات الهاتف، وتعتمد على الاتصال الدائم بالإنترنت.</td>
+        </tr>
+        <tr>
+            <td><strong>تطبيقات الموبايل الأصلية (Native Mobile Apps)</strong></td>
+            <td>أكواد مخصصة لكل منصة (Swift للآيفون، Kotlin للأندرويد).</td>
+            <td><strong>المزايا:</strong> سرعة فائقة، استغلال كامل لعتاد الهاتف (الكاميرا، GPS، الإشعارات، البصمة)، والعمل أوفلاين.<br><strong>العيوب:</strong> تكلفة عالية جداً، وموافقة متاجر التطبيقات.</td>
+        </tr>
+    </table>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">04</span> أمان التجارة الإلكترونية وأنظمة المدفوعات (الفصل 5)</h2>
+
+    <h3>4.1 الأبعاد الستة لأمان التجارة الإلكترونية</h3>
+    <table>
+        <tr>
+            <th>البعد الأمني</th>
+            <th>منظور العميل</th>
+            <th>منظور التاجر</th>
+        </tr>
+        <tr>
+            <td><strong>التكامل وسلامة البيانات (Integrity)</strong></td>
+            <td>هل تم تعديل بيانات طلبي أو الدفع أثناء الإرسال؟</td>
+            <td>هل تم التلاعب بالبيانات أو الأسعار في موقعي وقاعدتي؟</td>
+        </tr>
+        <tr>
+            <td><strong>عدم الإنكار (Non-repudiation)</strong></td>
+            <td>هل يمكن للتاجر إنكار استلام الدفعة المالية؟</td>
+            <td>هل يمكن للعميل إنكار قيامه بالطلب بعد إتمامه؟</td>
+        </tr>
+        <tr>
+            <td><strong>الأصالة والتحقق (Authenticity)</strong></td>
+            <td>هل الموقع الذي أتعامل معه هو المتجر الحقيقي وليس مزيفاً؟</td>
+            <td>ما هي الهوية الحقيقية للمشتري الذي يقوم بالدفع الآن؟</td>
+        </tr>
+        <tr>
+            <td><strong>السرية (Confidentiality)</strong></td>
+            <td>هل يمكن لطرف ثالث مجهول قراءة رقم بطاقتي الائتمانية؟</td>
+            <td>هل أسرار الشركة وبيانات العملاء محصنة ضد التجسس؟</td>
+        </tr>
+        <tr>
+            <td><strong>الخصوصية (Privacy)</strong></td>
+            <td>هل أمتلك السيطرة على بياناتي الشخصية واستخداماتها؟</td>
+            <td>هل يتم جمع البيانات واستخدامها بمسؤولية وفقاً للقوانين؟</td>
+        </tr>
+        <tr>
+            <td><strong>الإتاحة والتوافر (Availability)</strong></td>
+            <td>هل الموقع يعمل ومتاح كلما رغبت بالتسوق؟</td>
+            <td>هل بنيتي التحتية تصمد أمام الانهيارات وهجمات الحرمان من الخدمة؟</td>
+        </tr>
+    </table>
+
+    <h3>4.2 التهديدات الأمنية الشائعة</h3>
+    <ul>
+        <li><strong>البرمجيات الخبيثة (Malware):</strong> الفيروسات (تحتاج ملفاً مضيفاً)، الديدان (برامج مستقلة تتكاثر ذاتياً عبر الشبكة)، أحصنة طروادة (برامج خبيثة متنكرة بزي برامج مفيدة)، وبرمجيات الفدية (تشفير البيانات وطلب فدية لفكها).</li>
+        <li><strong>هجمات حجب الخدمة الموزعة (DDoS):</strong> استغلال شبكات أجهزة مخترقة (Botnets) لإغراق الخادم بطلبات وهمية وشل قدرته على خدمة العملاء الحقيقيين.</li>
+        <li><strong>التصيد الاحتيالي (Phishing) وانتحال الشخصية:</strong> رسائل ومواقع مقلدة لخداع الضحايا لسرقة كلمات المرور والبطاقات.</li>
+        <li><strong>القرصنة (Hacking):</strong> القبعات البيضاء (باحثون أمنيون أخلاقيون)، القبعات السوداء (مجرمون ومخربون)، والقبعات الرمادية (وسط بينهما).</li>
+    </ul>
+
+    <h3>4.3 الحلول التكنولوجية: التشفير والبنية التحتية للمفاتيح العامة (PKI)</h3>
+    <table>
+        <tr>
+            <th>التقنية</th>
+            <th>الآلية التقنية</th>
+            <th>الوظيفة والتطبيق الرئيسي</th>
+        </tr>
+        <tr>
+            <td><strong>التشفير المتماثل (Symmetric)</strong></td>
+            <td>استخدام نفس المفتاح السري الوحيد للتشفير وفك التشفير (AES, DES). سريع جداً.</td>
+            <td>تشفير البيانات الضخمة. <em>المشكلة الكبرى هي كيفية نقل المفتاح بأمان</em>.</td>
+        </tr>
+        <tr>
+            <td><strong>التشفير غير المتماثل (Asymmetric)</strong></td>
+            <td>مفتاحان رياضيان: مفتاح عام (Public Key) معلن للجميع للتشفير، ومفتاح خاص (Private Key) سري للمستلم فقط للفك.</td>
+            <td>تبادل المفاتيح والتوقيع الرقمي (RSA). حل مشكلة توزيع المفاتيح نهائياً.</td>
+        </tr>
+        <tr>
+            <td><strong>التوقيع الرقمي (Digital Signature)</strong></td>
+            <td>تشفير بصمة الرسالة المجتزأة (Hash) بالمفتاح الخاص للراسل.</td>
+            <td>يضمن <strong>سلامة البيانات (Integrity)</strong> و <strong>عدم الإنكار (Non-repudiation)</strong>.</td>
+        </tr>
+        <tr>
+            <td><strong>الشهادات الرقمية (Certificates)</strong></td>
+            <td>وثيقة رقمية تصدرها جهات توثيق معتمدة (CAs) لربط المفتاح العام بهوية صاحبه الحقيقية.</td>
+            <td>تضمن <strong>الأصالة (Authenticity)</strong> وتفعيل بروتوكولات الأمان المشفرة HTTPS.</td>
+        </tr>
+        <tr>
+            <td><strong>بروتوكول SSL/TLS</strong></td>
+            <td>دمج التشفير غير المتماثل في المصافحة الأولية، ثم التشفير المتماثل لنقل البيانات المشفرة.</td>
+            <td>حماية قنوات الاتصال بين المتصفح والخادم وتحويل الرابط إلى HTTPS.</td>
+        </tr>
+    </table>
+
+    <h3>4.4 أنظمة المدفوعات الإلكترونية</h3>
+    <ul>
+        <li><strong>دورة دفع البطاقات:</strong> المشتري -> بوابة الدفع (Payment Gateway) -> بنك التاجر المحصل (Acquiring Bank) -> شبكة البطاقة (Visa/Mastercard) -> بنك العميل المصدر (Issuing Bank).</li>
+        <li><strong>المحافظ الرقمية والترميز (Tokenization):</strong> استبدال رقم البطاقة الحقيقي برمز تشفيري مؤقت لا قيمة له في حال اختراق قاعدة بيانات التاجر.</li>
+        <li><strong>بروتوكول 3D Secure:</strong> التحقق بخطوتين (OTP/بصمة) أثناء الشراء ونقل مسؤولية الاحتيال من التاجر إلى البنك المصدر.</li>
+        <li><strong>معيار PCI-DSS:</strong> المعيار الأمني الدولي الإلزامي لحماية وتخزين بيانات حاملي البطاقات الائتمانية.</li>
+    </ul>
+</div>
+
+</body>
+</html>

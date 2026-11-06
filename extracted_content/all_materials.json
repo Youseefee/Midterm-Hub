@@ -1,0 +1,1811 @@
+{
+  "DB": [
+    {
+      "filename": "DBA-Lec1.ppt",
+      "slides": [
+        {
+          "slide": 1,
+          "content": "Database Administration:\u000bThe Complete Guide to Practices and Procedures\nChapter 1\nIntroduction: What is a DBA?"
+        },
+        {
+          "slide": 2,
+          "content": "Agenda\nIntroduction\nWhy Learn Database Administration?\nThe Management Discipline of Database Administration\nDatabase, Data, and System Administration\nDBA Tasks\nTypes of DBAs\nEnvironments: Production, Test, QA, etc.\nThe Impact of Newer Technology\nDBA Certification\nQuestions"
+        },
+        {
+          "slide": 3,
+          "content": "What is a DBA?\nA day in the life of a DBA...\nhttp://www.craigsmullins.com/dbta_013.htm"
+        },
+        {
+          "slide": 4,
+          "content": "The Curmudgeon in the Corner\nIn many companies the DBA is views as a curmudgeon with vast technical knowledge, but limited people skills\nThis comes with the job but should be avoided\nDBAs often must sit down and work things through on their own\nDBAs work long hours and are “on call”\nThe DBA must have good communication skills to succeed\nhttp://www.craigsmullins.com/dbta_024.htm"
+        },
+        {
+          "slide": 5,
+          "content": "Avoid This\nDon’t become the prima donna DBA!"
+        },
+        {
+          "slide": 6,
+          "content": "What is a DBA\nA DBA is the information technician responsible for ensuring the ongoing operational functionality and efficiency of an organization’s databases and the applications that access those databases."
+        },
+        {
+          "slide": 7,
+          "content": "Why Learn Database Administration?\nThe DBA is responsible for designing and maintaining an enterprise’s databases.\nThis places the DBA at the center of the business.\nThe DBA has the opportunity to learn about many facets of business and how business uses data.\nFrom a technology standpoint the DBA has many opportunities to learn about new and interesting technologies as they are adopted by the organization."
+        },
+        {
+          "slide": 8,
+          "content": "What Makes a Good DBA?\nProblem solver\nEnjoys challenges\nLikes technology\nConstantly learning\nCan work alone or as part of a group\nExperience as a programmer"
+        },
+        {
+          "slide": 9,
+          "content": "The Need for DBAs is Growing\nGood DBAs are hard to find & costly to acquire\nIt takes more than three months to hire a DBA and training a new DBA in his new environment takes months beyond that\nAccording to the U.S. Bureau of Labor Statistics (BLS), about 144,900 database administrators and architects were employed in the United States in 2024.\nEmployment of database administrators and architects is projected to grow 4% from 2024 to 2030, approximately as fast as the average for all occupations.\nhttp://www.bls.gov/"
+        },
+        {
+          "slide": 10,
+          "content": "A DBA Danger"
+        },
+        {
+          "slide": 11,
+          "content": "DBA as a Management Discipline\nThe term discipline implies planning and then implementing according to that plan.\nCreating the Database Environment\nDatabase Design\nApplication Design\nDesign Reviews\nDatabase Change Management\nData Availability\nPerformance Management\nSystem Performance\nDatabase Performance\nApplication Performance\nData Integrity\nDatabase Security\nRegulatory Compliance\nBackup and Recovery\nDisaster Planning\nStorage Management\nDistributed Database Management\nData Warehouse Administration\nDatabase Utility Management\nDatabase Connectivity\nProcedural DBA\nSoft Skills"
+        },
+        {
+          "slide": 12,
+          "content": "The DBA is a “Jack of all Trades”\nDB2\ndatabase schema\nDNS\nSQL\napplication code\nJava\noperating system\nnetwork software\nISP\nbridge/router/hub\nHTTP\nnetwork cabling\nhardware\nCGI\nconnection\nZPARMs\n3GL\nASP\nXML\nHTML\ngateway\nJava\napplet\nDB2\nConnect\nOracle\nInformix\nSQL Server\nUnix\nWindows\nOS/390\nSQL*Net\nTCP/IP\nV$ Tables\nCOBOL\nVB\nC++\nJCL\nCICS\nMQ\nLinux\nVTAM"
+        },
+        {
+          "slide": 13,
+          "content": "Database 101\nA database is an organized store of data wherein the data is accessible by named data elements(for example, fields, records, and files)\nA DBMS is software that enables end users or application programmers to share data. It provides a systematic method of creating, updating, retrieving and storing information in a database.\nDBMSs also are generally responsible for data integrity, data security, data access control and optimization, automated rollback, restart and recovery.\nIn layman’s terms, you can think of a database as a file folder. You can think of the filing cabinet \u000bholding the files along with the file labels \u000bas the DBMS.\nAppendix 1, “Database Concepts and Fundamentals.”"
+        },
+        {
+          "slide": 14,
+          "content": "DBMS vs. Database\nhttp://thedatabasesite.com/page100.html"
+        },
+        {
+          "slide": 15,
+          "content": "Database, Data, \u000band System Administration\nOrganization\n│\n┌───────┴────────┐\n│                │\nData Administration     │\n│                │\nData policies & quality │\n↓                │\nDatabase Administration │\n│                │\nDBMS + Database         │\n↓                │\nSystem Administration ──┘\n│\nServer / OS / Storage"
+        },
+        {
+          "slide": 16,
+          "content": "Data Administrator\nThe DA is responsible for issues such as:\nIdentifying and cataloging the data required by business users\nProduction of conceptual and logical data models to accurately depict the relationship among data elements for business processes\nProduction of an enterprise data model that incorporates all of the data used by all of the organization’s business processes\nSetting data policies for the organization\nIdentifying data owners and stewards\nSetting standards for control and usage of data"
+        },
+        {
+          "slide": 17,
+          "content": "Data\nAdministrator\nDatabase\nAdministrator\nConceptual\nData\nModel\nLogical\nData\nModel\nPhysical\nDatabase\nData\nMetadata\nMetadata vs. Data\nhttp://www.craigsmullins.com/dbta_083.htm"
+        },
+        {
+          "slide": 18,
+          "content": "Data Administrator =\u000bChief Data Officer\nNot about technology, about data and its meaning in the organization\nResponsible for rallying the organization to treat data as the corporate asset it truly is\nDeal with metadata as well as data\nOrganizations truly concerned about data quality, integrity, and reuse will invariably implement and staff the DA function.\nChapter 22 “Metadata Management”"
+        },
+        {
+          "slide": 19,
+          "content": "System Administrator\nInstallation and setup of computing resources\nPure technologist\nNo responsibility for database design and support\nInfrastructure support\nSometimes called a systems programmer"
+        },
+        {
+          "slide": 20,
+          "content": "Database Administrator\nWorks with DA and SA\nAccepts logical models from DA to implement as physical databases\nWorks with SA to schedule and implement system software (e.g. DBMS) and to tune the environment appropriately\nOf course, the remainder of the course will explain exactly what the role of the DBA is…"
+        },
+        {
+          "slide": 21,
+          "content": "Data & Metadata Policy\nAnalysis\nDesign\nDevelopment\nTesting\nImplementation (Databases, applications)\nData\nAdministrator\nIT Infrastructure\nDBA\n(if no SA)\nSystem\nAdministrator\nMaintenance and Tuning\nDatabase\nAdministrator\nDatabase\nAdministrator\n(if no DA)"
+        },
+        {
+          "slide": 22,
+          "content": "DBA Tasks\nRemember our earlier discussion on the Management Discipline of Database Administration?\nThese are the required DBA tasks to ensure optimal database environment for applications and users"
+        },
+        {
+          "slide": 23,
+          "content": "Types of DBAs\nSystem DBA\nDatabase Architect\nDatabase Analyst\nData Modeler\nApplication DBA\nTask-Oriented DBA\nPerformance Analyst\nData Warehouse Administrator\nhttp://www.craigsmullins.com/dbta_065.htm"
+        },
+        {
+          "slide": 24,
+          "content": "System DBA\nInstalling new DBMS versions and applying maintenance fixes supplied by the DBMS vendor\nSetting and tuning system parameters\nTuning the operating system, network and transaction processors to work with the DBMS\nEnsuring appropriate storage for the DBMS\nEnabling the DBMS to work with storage devices and storage management software\nInterfacing with any other technologies required by database applications\nInstalling DBA tools and utilities"
+        },
+        {
+          "slide": 25,
+          "content": "Database Architect\nTypical tasks performed by the database architect include:\nCreation of a logical data model (if no DA or data modeler position exists)\nTranslation of logical data models into physical database designs\nImplementing efficient databases including physical characteristics, index design, and mapping database objects to physical storage devices\nAnalysis of data access and modification requirements to ensure efficient SQL and to ensure that the database design is optimal\nCreation of backup and recovery strategies for new databases"
+        },
+        {
+          "slide": 26,
+          "content": "Database Analyst\nThere is really no standard definition for the Database Analyst job\nCould be:\nJunior DBA\nDatabase Architect\nData Administrator or Data Analyst\nOr could just be another term used for DBA"
+        },
+        {
+          "slide": 27,
+          "content": "Data Modeler\nWhen the DA role is not defined or staffed there may be a data modeler role defined. A data modeler is usually responsible for a subset of the DA’s responsibilities.\nData modeling tasks include:\nthe collection of data requirements for development projects\nanalysis of the data requirements\ndesign of project-based conceptual and logical data models\ncreation of a corporate data model and keeping the corporate data model up-to-date\nworking with the DBAs to ensure they have a sound understanding of the data models"
+        },
+        {
+          "slide": 28,
+          "content": "Single Specific\nApplication(s)\nSingle Specific\nApplication(s)\nSingle Specific\nApplication(s)\nSystem-Wide Issues\nDBMS Installation &\nImplementation\nApplication DBA\nApplication DBA\nApplication DBA\nTraditional DBA\nInter-Application\nIssues\nData Policies\n& Practices\nStandards\nTechnology\nEvaluation\nApplication DBA"
+        },
+        {
+          "slide": 29,
+          "content": "Application DBA: Pros and Cons\nPros\nApplication DBAs can better focus on an individual application which can result in better service to the developers of that application.\nThe Application DBA is more often viewed as an integral component of the development team and therefore is better informed about new developments plans and changes to plans.\nBecause the application DBA consistently works on a specific set of applications he can acquire a better overall understanding of how each application works enabling him to better support application developers.\nWith a more comprehensive understanding of the application, an application DBA will have a better understanding of how the application impacts the overall business. This knowledge will likely result in the execution of DBA tasks to better support the organization.\nCons\nApplication DBAs can lose sight of the overall data needs of the organization because of their narrow focus on a single application.\nThe application DBA can become isolated. Lack of communication with a centralized DBA group (if one exists) can result in diminished sharing of skills.\nWhen application DBAs implement useful procedures it takes more effort to share these procedures among the other DBAs.\nDue to the application-centric nature of an application DBA he can lose sight of new features and functionality being delivered by the DBMS group."
+        },
+        {
+          "slide": 30,
+          "content": "Task-Oriented DBAs\nDBAs who focus on a narrow subset of database administration tasks\nFor example:\nBackup & Recovery DBAs\nDatabase Designer\nPerformance Analysts"
+        },
+        {
+          "slide": 31,
+          "content": "Data Warehouse Administrator\nCommon data warehouse administration tasks and requirements include:\nExperience with business intelligence, data analytics, query, and reporting tools\nDatabase design for read only access\nData warehousing design issues such as star schema\nData warehousing technologies such as OLAP (including ROLAP, MOLAP, and HOLAP)\nData transformation and conversion skills\nAn understanding of data quality issues\nExperience with data formats for loading and unloading of data\nMiddleware implementation and administration"
+        },
+        {
+          "slide": 32,
+          "content": "Staffing Considerations\nHow many DBAs?\nDBA Reporting Structures"
+        },
+        {
+          "slide": 33,
+          "content": "How Many DBAs Do You Need?\nDetermining how many DBAs is optimal is not a precise science. It depends on many factors, including:\nNumber of databases – the more databases that need to be supported the more complex the job of database administration becomes.\nNumber of users – as additional users are brought online as clients of the applications that access databases, it becomes more difficult to ensure optimal database performance. Additionally, more users means more problems and calls, further complicating the DBA’s job.\nNumber of applications – as more applications are brought online, additional pressure is exerted on the database in terms of performance, availability, and resources required.\nService Level Agreements (SLAs) – the more restrictive the SLA the more difficult it becomes for the DBA to deliver the service.\nAvailability requirements – when databases have an allowable period of scheduled downtime database administration becomes easier because some DBA tasks either require an outage, or are easier when an outage can be taken.\nImpact of downtime – the greater the financial impact of a database being unavailable, the more difficult DBA becomes because pressure will be applied to assure greater database availability.\nPerformance requirements – as the requirements for database access become more performance-oriented and faster and more frequent access is dictated, DBA become more complicated.\nType of Applications – the DBMS and database needs of a mission critical application differ from a non-mission critical application. Mission-critical applications are more likely to require constant monitoring and more vigilance to ensure availability. Likewise, OLTP application will have different characteristics and administration requirements than OLAP applications.\nVolatility – a static database environment requiring few changes will not require the same level of DBA effort as a volatile, frequently changing database environment.\nDBA staff experience – the skill of the existing DBA staff will impact whether or not additional DBAs are required.\nProgramming staff experience –  as the experience of the programming staff increases, the complexity of DBA decreases.\nEnd user experience – when end users access databases directly with ad hoc SQL, their skill level has a direct impact on the complexity of DBA.\nDBA tools – the more tools that are available and the degree to which they are integrated can make DBA tasks less complex."
+        },
+        {
+          "slide": 34,
+          "content": "DBA Reporting Structure\nPlacement of the DBA group within the IT infrastructure is important\nThere is no one correct answer as to where the DBA group should reside but…\nThere are several common reporting \u000bhierarchies for DBA\nhttp://www.craigsmullins.com/dbta_032.htm"
+        },
+        {
+          "slide": 35,
+          "content": "CIO\nApplication\nDevelopment\nTechnical\nSupport\nOperations\nData Resource\nManagement\nDatabase\nAdministration\nData\nAdministration"
+        },
+        {
+          "slide": 36,
+          "content": "CIO\nApplication\nDevelopment\nTechnical\nSupport\nOperations\nDBA\nApplication\nTeam #1\nDBA\nApplication\nTeam #2\nDBA\nApplication\nTeam #3\n. . ."
+        },
+        {
+          "slide": 37,
+          "content": "CIO\nOperations\nTechnical\nSupport\nApplication\nDevelopment\nData Resource\nManagement\nDatabase\nAdministration\nData\nAdministration\nDBA\nApplication\nTeam #1\n. . ."
+        },
+        {
+          "slide": 38,
+          "content": "System Design\nDatabase Design\nApplication \u000b  Development\nUnit Testing\nIntegration\u000b  Testing\nApplication \u000b  Shakeout\nTesting With\u000b   Related Systems\nVolume Testing\nOperational\u000b  Status\nProduction\nQuality\nAssurance\nTest\n.\n.\n.\nEnvironments"
+        },
+        {
+          "slide": 39,
+          "content": "The Impact of Newer Technology\u000bon the DBA\nDBAs need to keep abreast of new technologies\nMost new technology impacts data as it is adopted by application developers\nExamples:\nTriggers, stored procedures, etc.: Procedural DBA\nInternet: eDBA\nCloud Computing"
+        },
+        {
+          "slide": 40,
+          "content": "Procedural DBA Duties\nD\u000bE\u000bV\u000bE\u000bL\u000bO\u000bP\nD\u000bE\u000bB\u000bU\u000bG\nStored\u000bProcedures\nTriggers\nFunctions\nDB2\nExternal\u000bLibraries\nPerformance\u000bMonitors\nAdmin.\u000bProcess\nDesign\u000bReview"
+        },
+        {
+          "slide": 41,
+          "content": "Role of the Procedural DBA\nDBCO Administration\n(trigger firing order, proc set)\nDesign\nReviews\nEXPLAIN\nAnalysis\nDebugging\nSQL\nCoding\nComplex\nQueries\nTuning SQL\nOn Call\nfor DBCO\nAbends\nDBCO Implementation\n(COMMIT in proc, write or guide)\nEnsuring\nReuse\nSchema\nResolution\nDBCO = Database Code Object (that is, trigger, UDF, stored procedure)"
+        },
+        {
+          "slide": 42,
+          "content": "The DBA in the Cloud?\nDBAs may be called upon to administer the databases used by cloud computing\nSimilar duties, availability becomes more of an issue"
+        },
+        {
+          "slide": 43,
+          "content": "Questions"
+        }
+      ]
+    },
+    {
+      "filename": "DBA-Lec2&3.pptx",
+      "slides": [
+        {
+          "slide": 1,
+          "content": "Database Administration:\u000bThe Complete Guide to Practices and Procedures\nChapter 4\nDatabase Design"
+        },
+        {
+          "slide": 2,
+          "content": "Agenda\nFrom Logical Model to Physical Database\nDatabase Performance Design\nDenormalization\nViews\nData Definition Language\nTemporal Data Support\nQuestions"
+        },
+        {
+          "slide": 3,
+          "content": "Terminology Summary\nOccurrence\nObject-\nOriented\nTerm\nType,\nADT,\nClass\nInstance,\nObject\nProperty\nObject\nIdentifier\nCommon\nTerm\nGraphic\nTerm\nDP\nTerm\nDesign\nTerm\nRela-\ntional\nTerm\nFile\nCabinet\nTable\nFile\nEntity\nRelation,\nTable\nFile\nFolder\nor Record\nRow\nRecord\nTuple,\nRow\nFact\nColumn\nField\nData Item\nData\nElement\nAttribute\nColumn\n(Domain)\nIndex\nIdentifier\nRecord\nKey\nPrimary\nKey\nPrimary\nKey"
+        },
+        {
+          "slide": 4,
+          "content": "Physical Database Design Requirements\nIn-depth knowledge of the database objects supported by the DBMS and the physical structures and files required to support those objects\nDetails regarding the manner in which the DBMS supports indexing, referential integrity, constraints, data types, and other features that augment the functionality of database objects\nDetailed knowledge of new and obsolete features for particular versions or releases of the DBMS\nKnowledge of the DBMS configuration parameters that are in place\nData definition language (DDL) skills to translate the physical design into actual database objects"
+        },
+        {
+          "slide": 5,
+          "content": "Basic Physical ROTs\nAvoid using default settings\nThey are rarely the best setting\nIt is better to know and explicitly state the actual setting you desire in each case\nSynchronize the logical and physical models\nAlways map changes in one to the other\nPerformance before aesthetics\nMeaning: prefer fully normalized but deviate when necessary to achieve performance goals\nAlmost never say always  or  never"
+        },
+        {
+          "slide": 6,
+          "content": "Translation of Logical Model to Physical Database\nCreate DDL\nEntities to Tables, Attributes to Columns, Relationships and Keys to DB2 RI and Indexes, etc.\n…but differences CAN and WILL occur\nCreate Storage Structures for Database\nFiles for data and indexes\nPartitioning\nClustering\nPlacement\nOrder of columns\nTransforming Logical to Physical\nhttp://datatechnologytoday.wordpress.com/2011/11/19/an-introduction-to-database-design-from-logical-to-physical/"
+        },
+        {
+          "slide": 7,
+          "content": "Transform Entities to Tables\nFirst general step:\nMap each entity in the logical data model to a table in the database\nThings may, or may not, be that easy\nDenormalization?\nPAYMENT\nPayment Transaction Num\nType\nAmount\nPaymentDate\nStatus"
+        },
+        {
+          "slide": 8,
+          "content": "Transform Attributes to Columns\nAttributes become columns\nTransform Domains to Data Types\nCommercial DBMSes do not support domains\nDate Type and Length\nVariable or Fixed Length\nChoose wisely; impacts data quality\nConstraints\nNull\nhttp://craigsmullins.com/dbta_072.htm"
+        },
+        {
+          "slide": 9,
+          "content": "These data types allow database systems to store different kinds of information efficiently,"
+        },
+        {
+          "slide": 10,
+          "content": "Nulls\nhttp://craigsmullins.com/dbta_043.htm"
+        },
+        {
+          "slide": 11,
+          "content": "Default"
+        },
+        {
+          "slide": 12,
+          "content": "Column Ordering\nSequence columns based on logging. For example:\nInfrequently updated non-variable columns first\nStatic (infrequently updated) variable columns\nFrequently updated columns last\nFrequently modified together, place next to each other\nFIRST\nNAME\nADDRESS\nFrequently updated at\nthe same time (marriage)\n…but infrequently updated.\nCUST\nID\nLAST\nNAME\nACCT\nBAL\nFrequently\nupdated\nStatic,\ninfrequently\nupdated"
+        },
+        {
+          "slide": 13,
+          "content": "Determine Row Size"
+        },
+        {
+          "slide": 14,
+          "content": "Relationships and Keys\nUse the primary key as assigned in the logical modeling phase for the physical PK\nOther considerations:\nLength of the key\nSurrogate key\nROWID / SEQUENCE / Identity\nBuild referential constraints for all relationships\nForeign keys"
+        },
+        {
+          "slide": 15,
+          "content": "Build Physical Structures"
+        },
+        {
+          "slide": 16,
+          "content": "Storage Planning\nStart by determining how many rows are required\nCalculate the row size (discussed earlier)\nFigure out the number of rows per block/page\nCalculate pages required\n5. Calculate object size\nThis gives you the size of the object\nExcept for free space…`"
+        },
+        {
+          "slide": 17,
+          "content": "Example\nFor example, we have a STUDENT table, and we expect it to contain 10,000 students.\nNumber of Rows=10000\nCalculate the row size     Row size=60\nFigure out the number of rows per block/page\nPage size = 8,192 bytes.\nSize of a single row = 60 bytes."
+        },
+        {
+          "slide": 18,
+          "content": "Free Space\nIn summary, PCTFREE and FREEPAGE are critical tools that a DBA can use to optimize database performance by managing how free space is allocated within data pages. PCTFREE focuses on reserving space for updates,\nwhile FREEPAGE is used to manage space for frequent inserts. A careful balance of these two settings can help avoid performance bottlenecks related to page splits, row migrations, and excessive reorganizations."
+        },
+        {
+          "slide": 19,
+          "content": "Type of Files\nData / Index\nBoth require storage\nRaw Files\nCan be used to bypass the O/S\nSolid State Devices\nFor performance-critical objects\nStoring databases having extreme performance requirements on solid state devices instead of disk can improve the performance of many database operations"
+        },
+        {
+          "slide": 20,
+          "content": "Database Performance Design\nDesigning Indexes\nPartitioning\nClustering\nHashing\nInterleaving Data"
+        },
+        {
+          "slide": 21,
+          "content": "Designing Indexes\nIndex Advantages\nOptimize data access:\nDBMS decides whether or not to use an index\nDBMS maintains all indexes (modifications incur cost)\nTable scans can be avoided through index usage\nRecommended on foreign key columns to speed RI access\nIndexes can minimize sorting\nThere can be multiple indexes per table to suit the way data is processed\nCreate indexes based on workload (not tables)\nIf all columns are in the index you can get index-only access (IXO)\nGuarantee uniqueness:\nCan be used to ensure uniqueness of column values\nRequired on primary key column as part of referential integrity implementation\nImplement clustering:\nIndexes can be used for clustering; that is, maintaining the  rows physically on disk in the sequence of the column values in the index"
+        },
+        {
+          "slide": 22,
+          "content": "Leaf Page\nLeaf Page\nLeaf Page\nLeaf Page\n…to the data in the table.\nNonleaf\nPage\nNonleaf\nPage\nNonleaf\nPage\nNonleaf\nPage\nNonleaf\nPage\nRoot Page\nLevel 1\nLevel 2\nLevel 3\nLevel 4\n98 : 302\n53 : 98\n108 : 302\n11 : 53\n59 : 98\n… 11/Ptr\n… 53/Ptr\n… 59/Ptr\n… 98/Ptr\n…\nB-Tree Index"
+        },
+        {
+          "slide": 23,
+          "content": "B-Tree Index Example (Conceptual):\nImagine you have a table called Employees with the following rows:\nSuppose you create an index on the Employee_ID column. The B-tree index for this column might look something like this:\n[103]\n/       \\\n[101, 102]   [104, 105]"
+        },
+        {
+          "slide": 24,
+          "content": "In this B-tree:\nThe root node contains 103, splitting the table into two parts.  The left subtree contains Employee IDs less than 103 (i.e., 101, 102).\nThe right subtree contains Employee IDs greater than 103 (i.e., 104, 105).\nWhen you search for 104, the search starts at the root (103):\nSince 104 is greater than 103, the search moves to the right subtree.\nIn the right subtree, it finds the correct node (104), completing the search efficiently.\nThe B-tree ensures that the search for 104 is done in logarithmic time, reducing the number of comparisons needed as the tree grows."
+        },
+        {
+          "slide": 25,
+          "content": "Structure of a Bitmap Index\nConsider a simple table called Employees with a Gender column:\nFor the Gender column, a bitmap index might look like this:\nBitmap for 'Female':\n1 0 1 0 1 (where 1 indicates that the corresponding row contains 'Female')\nBitmap for 'Male':\n0 1 0 1 0 (where 1 indicates that the corresponding row contains 'Male')\nCREATE BITMAP INDEX idx_gender ON Employees (Gender);\nSELECT * FROM Employees WHERE Gender = 'Female';\nBitmap Index"
+        },
+        {
+          "slide": 26,
+          "content": "A bitmap index is created on the Sex column of an EMPLOYEE table that contains ten rows. The bitmap index will contain three strings as indicated above, each with ten bits. The string is positional. Whatever position has a bit turned on (“1”) the Sex column in that row will contain the value for which that particular string was built. Examine the following three bitmaps:\n'Male' 1000011101\n'Female' 0110000010\nThese strings indicate that rows 1, 6, 7, 8, and 10 are males; rows 2, 3, and 9 are females."
+        },
+        {
+          "slide": 27,
+          "content": "Other Types of Indexes\nReverse Key Index\nis a type of B-tree index where the order of bytes of each indexed column is reversed. This approach is particularly useful for reducing contention on frequently accessed keys.\nPartitioned Index\na b-tree index specifying how to break up the index (and perhaps the underlying table) into separate chunks, or partitions; to enhance performance and availability\nOrdered Index"
+        },
+        {
+          "slide": 28,
+          "content": "Partitioning"
+        },
+        {
+          "slide": 29,
+          "content": "Hash\nAlgorithm\nJACKSON\nJOHNSON\nMULLINS\nBLAKE\nKeys\n(e.g. LAST_NAME)\nJOHNSON\nJACKSON\nMULLINS\nBLAKE\nStorage Locations\nNEELD\nNEELD\nOverflow\nHashing"
+        },
+        {
+          "slide": 30,
+          "content": "def hash_function(user_id, table_size):\nreturn user_id % table_size\n# Initialize the hash table\ntable_size = 5\nhash_table = [[] for _ in range(table_size)]  # Each slot starts as an empty list for chaining\n# Sample user data\nusers = [\n{\"User_ID\": 1, \"Username\": \"Alice\"},\n{\"User_ID\": 2, \"Username\": \"Bob\"},\n{\"User_ID\": 3, \"Username\": \"Carol\"},\n{\"User_ID\": 6, \"Username\": \"David\"},  # This will cause a collision with User_ID 1\n{\"User_ID\": 7, \"Username\": \"Eve\"}     # This will cause a collision with User_ID 2\n]\n# Insert users into the hash table\nfor user in users:\nuser_id = user[\"User_ID\"]\nindex = hash_function(user_id, table_size)\nhash_table[index].append(user)  # Using chaining to handle collisions"
+        },
+        {
+          "slide": 31,
+          "content": "# Function to retrieve a user\ndef get_user(user_id):\nindex = hash_function(user_id, table_size)\nfor user in hash_table[index]:\nif user[\"User_ID\"] == user_id:\nreturn user\nreturn None  # Return None if the user is not found\n# Example of retrieving a user\nretrieved_user = get_user(6)  # Should retrieve David\nprint(retrieved_user)  # Output: {'User_ID': 6, 'Username': 'David'}\nCurrent State of the Hash Table\nAfter inserting the users, the hash table will look like this:\nIndex 1 contains Alice.\nIndex 2 contains Bob.\nIndex 3 contains Carol.\nIndex 4 contains both David and Eve due to collisions (as both hash to the same index)."
+        },
+        {
+          "slide": 32,
+          "content": "Clustering"
+        },
+        {
+          "slide": 33,
+          "content": "Creating a Clustered Index:Now, we’ll create a clustered index on the Sale_Date column. This will organize the rows of the Sales table physically based on the sale date.\nCREATE CLUSTERED INDEX idx_sale_date ON Sales (Sale_Date);\nCREATE TABLE Sales (\nSale_ID INT PRIMARY KEY,\nSale_Date DATE,\nAmount DECIMAL(10, 2),\nCustomer_ID INT\n);\nINSERT INTO Sales (Sale_ID, Sale_Date, Amount, Customer_ID)\nVALUES\n(1, '2024-10-01', 100.00, 101),\n(2, '2024-10-03', 150.00, 102),\n(3, '2024-10-02', 200.00, 101);\nAfter executing the above, the data is stored in the following order:\nSELECT * FROM Sales WHERE Sale_Date BETWEEN '2024-10-01' AND '2024-10-02';"
+        },
+        {
+          "slide": 34,
+          "content": "Disk Drive\nDatabase File\nTable 2\nTable 1\nLegend\nInterleaving Data\nTechniques:\nInterleaving can involve several methods, such as:\nRow-Column Interleaving: Data is distributed across rows and columns, which can improve access patterns for specific queries.\nBlock Interleaving: Blocks of data are distributed in a way that balances load across storage devices or nodes."
+        },
+        {
+          "slide": 35,
+          "content": "-- Create a partitioned table using HASH partitioning\nCREATE TABLE Customers (\nCustomerID INT PRIMARY KEY,\nName VARCHAR(100),\nCity VARCHAR(100),\nBalance DECIMAL(10,2)\n)\nPARTITION BY HASH (CustomerID)\nPARTITIONS 4;"
+        },
+        {
+          "slide": 36,
+          "content": "denormalization types"
+        },
+        {
+          "slide": 37,
+          "content": "When to Denormalize\nThe only reason to denormalize, ever:\nTo achieve optimal performance!\nIf the database design achieve satisfactory performance fully normalized, then there is no need to denormalize.\nYou should always consider the following issues before denormalizing.\nCan the system achieve acceptable performance without denormalizing?\nWill the performance of the system after denormalizing still be unacceptable?\nWill the system be less reliable due to denormalization?"
+        },
+        {
+          "slide": 38,
+          "content": "Denormalization Administration\nThe decision to denormalize should never be made lightly, because it can cause integrity problems and involve a lot of administration.\nAdditional administration tasks include:\nDocumenting every denormalization decision\nEnsuring that all data remains valid and accurate\nScheduling data migration and propagation jobs\nKeeping end users informed about the state of the tables\nAnalyzing the database periodically to decide whether denormalization is still required"
+        },
+        {
+          "slide": 39,
+          "content": "Normalized vs. Denormalized"
+        },
+        {
+          "slide": 40,
+          "content": "Views in Physical Database Design\nAlthough views are part of logical database design, they also play an important role in physical database design because they help support performance, security, and application data needs.\nA view is a virtual table created from a SELECT statement. It does not store data physically.\nIt provides a customized way to look at data stored in one or more base tables. Because it behaves like a table, users can query a view using SELECT just like a real table."
+        },
+        {
+          "slide": 41,
+          "content": "Views\nTABLE 1\nTABLE 2\nVIEW 3\nVIEW"
+        },
+        {
+          "slide": 42,
+          "content": "Views"
+        },
+        {
+          "slide": 43,
+          "content": "Views"
+        },
+        {
+          "slide": 44,
+          "content": "View Usage Rules\nSecurity - row and column level\nAccess - efficient access paths\nData Derivation - put the calculations in the view\nMask Complexity - hide complex SQL from users\nRename a Table\nColumn Renaming - table with better column names (easier to use than AS)\nSynchronize all views with base tables...\nDO NOT USE ONE VIEW PER BASE TABLE!\nhttp://craigsmullins.com/dbta_115.htm"
+        },
+        {
+          "slide": 45,
+          "content": "Types of SQL\nControl\nDefinition\nManipulation"
+        },
+        {
+          "slide": 46,
+          "content": "Data Control Language (DCL) – Security & Access Control\nUsed to control user access and security within the database\nGRANT SELECT, INSERT ON Employees TO User1;\nREVOKE INSERT ON Employees FROM User1;"
+        },
+        {
+          "slide": 47,
+          "content": "Data Definition Language (DDL) – Structure Definition\nUsed to define, modify, and delete database objects like tables, indexes, and schemas. Operates at the physical database structure level.\nCREATE TABLE Employees (EmpID INT, Name VARCHAR(100));\nALTER TABLE Employees ADD Salary DECIMAL(10,2);\nDROP TABLE Employees;"
+        },
+        {
+          "slide": 48,
+          "content": "Data Manipulation Language (DML) – Work with Data\nUsed to retrieve and modify data stored inside tables.\nINSERT INTO Employees VALUES (1, 'Ali');\nSELECT * FROM Employees;\nUPDATE Employees SET Name = 'Ali Ahmed' WHERE EmpID = 1;\nDELETE FROM Employees WHERE EmpID = 1;"
+        },
+        {
+          "slide": 49,
+          "content": "Many types of data change over time, and different users and applications have requirements to access the data at different points in time.\nInstead of creating separate history tables, using triggers, and/or implementing snapshot tables, a DBMS with temporal features can manage the time aspect of data.\nThere are two types of temporal data supported:\nBusiness Time\nSystem Time\nTemporal Data Support"
+        },
+        {
+          "slide": 50,
+          "content": "Temporal data refers to data that changes over time and whose history must be stored and retrieved. Instead of keeping only the most current value, temporal databases maintain time-dependent information.\nExamples:\nEmployee salary history\nCustomer address changes\nProduct prices over time\nTo manage this, temporal data uses time dimensions — specifically Business Time and System Time.\nTemporal Data"
+        },
+        {
+          "slide": 51,
+          "content": "Business Time (aka application time or valid time)\nSpecifies when the facts stored in the database \u000bare true with respect to the real world.\nThese are the dates of interest to the business \u000buser interacting with the data.\nBusiness time is useful for only certain types of data \u000bthat change over time and the validity of the data is \u000brelevant to the application and users.\nSystem Time (aka transaction time)\nDenotes the time when the fact became current in the database.\nSystem time can be used to track the insertion and modification history of the data.\nUnlike business time, transaction time may be associated with any database entity.\nTemporal Data: \u000bBusiness Time vs. System Time"
+        },
+        {
+          "slide": 52,
+          "content": "Business Time"
+        },
+        {
+          "slide": 53,
+          "content": "Business Time (Valid Time):\nBusiness Time represents the period during which a fact or record is valid or true in the real world.\nIt allows users to specify the timeframe when the data is relevant for business operations, such as the validity of contracts, employee roles, or product prices.\nThe business time is defined by the application, and it often includes fields like valid_from and valid_to or effective_date and expiration_date.\nCREATE TABLE employee_history (\nemployee_id INT,\nrole VARCHAR(100),\nvalid_from DATE,\nvalid_to DATE,\nPRIMARY KEY (employee_id, valid_from)\n);\nIn this table, the columns valid from and valid to define the period during which the role is valid in business time. Queries can then be constructed to view an employee's role at any given point in time.\nSELECT role\nFROM employee_history\nWHERE employee_id = 1 AND ‘2023-01-01' BETWEEN valid_from AND valid_to;\nINSERT INTO employee_history (employee_id, role, valid_from, valid_to)\nVALUES (1, 'Junior Developer', '2022-01-01', '2022-12-31’);\nINSERT INTO employee_history (1, 'Software Engineer', '2023-01-01', '2023-12-31');"
+        },
+        {
+          "slide": 54,
+          "content": "INSERT INTO ProductPrice VALUES (101, 100.00, '2024-01-01', '2024-03-31');\nINSERT INTO ProductPrice VALUES (101, 120.00, '2024-04-01', '2024-06-30');"
+        },
+        {
+          "slide": 55,
+          "content": "2. System Time (Transaction Time):\nSystem Time refers to the period during which a record is stored in the database, tracking when the data was added, updated, or deleted from the system. It captures the history of changes to the data from the system's perspective.\nSystem time is automatically managed by the database and is useful for auditing and tracking changes over time.\nSystem time includes metadata like transaction_start and transaction_end, or system_time_from and system_time_to\nIn this case, the PERIOD FOR SYSTEM_TIME defines columns that will automatically track when each row was valid in the database. The WITH SYSTEM VERSIONING clause ensures that the DBMS will automatically keep track of all changes.\nCREATE TABLE EmployeeSalary\n(\nEmpID INT NOT NULL,\nSalary DECIMAL(10,2) NOT NULL,\n-- System Time columns (automatically tracked)\nSysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL,\nSysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL,\nPERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)\n)\nWITH (SYSTEM_VERSIONING = ON);"
+        },
+        {
+          "slide": 56,
+          "content": "UPDATE EmployeeSalary\nSET Salary = 5500.00\nWHERE EmpID = 1;\nINSERT INTO EmployeeSalary (EmpID, Salary)\nVALUES (1, 5000.00);\n✅ The previous salary (5000) is moved to history and timestamped.\nSELECT * FROM EmployeeSalary\nFOR SYSTEM_TIME ALL\nWHERE EmpID = 1;\nThis shows:\nCurrent row\nAll old versions of the row with valid system time"
+        },
+        {
+          "slide": 57,
+          "content": ""
+        },
+        {
+          "slide": 58,
+          "content": "Both are implemented via a time period specification\nBusiness Time is tracked in a single table.\nBeginning and Ending time periods indicate which rows \u000bapply to which time period\nSystem Time is tracked using two tables.\nOne table contains the current data.\nAnother, history table, contains the non-current data.\nStill requires Beginning and Ending times to indicate \u000bwhich rows apply to which time period\nA single “logical” table can be setup \u000bfor both business and system time\nA DBMS Can Support Both Business Time and System Time"
+        },
+        {
+          "slide": 59,
+          "content": "Why would you need temporal data management?\nConsider an INSURANCE company example\nThe terms of any specific insurance policy are valid over a period of time.\nAfter that period of time, customers can choose to decline further coverage, continue with the existing coverage, or modify the terms of their coverage.\nSo at any specific point in time, the terms of the customers’ policy can differ.\nOver time, customers make claims against their policies. This claim information needs to be stored, managed, and analyzed.\nAccident histories for customers are also important pieces of data with a temporal element.\nConsider the complexity of trying to develop not only a database design that accommodates changing policies, claims, and historical details, but also enables queries such that a user might access a customer’s coverage at a given point in time.\nExample: what policies were in effect for that customer as of, say, April 15, 2012? Or any other date during which the customer had coverage?\nA Temporal Example"
+        },
+        {
+          "slide": 60,
+          "content": "Questions"
+        }
+      ]
+    },
+    {
+      "filename": "DBA-Lec4&5.pptx",
+      "slides": [
+        {
+          "slide": 1,
+          "content": "Database Administration:\u000bThe Complete Guide to Practices and Procedures\nChapter 5\nApplication Design"
+        },
+        {
+          "slide": 2,
+          "content": "Agenda\nDatabase Application Development & SQL\nDefining Transactions\nLocking\nBatch Processing\nQuestions"
+        },
+        {
+          "slide": 3,
+          "content": "Database Application Development and SQL\nTo properly design an application that relies on databases for persistent data storage, the system designer at a minimum will need to understand the following issues:\nHow data is stored in a relational database\nHow to code SQL statements to access and modify data in the database\nHow SQL differs from traditional programming languages\nHow to embed SQL statements into a host programming language\nHow to optimize database access by changing SQL and indexes\nProgramming methods to avoid potential database processing problems"
+        },
+        {
+          "slide": 4,
+          "content": "SQL\nSQL is the de facto standard for accessing relational databases\nSQL is a high-level language that provides a greater degree of abstraction than do traditional procedural languages\nSQL focuses on what data you want specify what data is needed, not how to get it. It's a declarative language, meaning you specify the result you want, and the database engine decides how to execute the query.\nIt does not—indeed it cannot—specify how to retrieve it"
+        },
+        {
+          "slide": 5,
+          "content": "SQL: English-like\nSQL can be used to retrieve data easily with an English-like syntax.\nIt is easier to understand this:\nThan it is to understand C, Java, or most typical programming languages."
+        },
+        {
+          "slide": 6,
+          "content": "Set-a-Time Processing\nIn set-a-time processing, operations such as inserting, updating, deleting, or retrieving data are applied to multiple rows or an entire set of rows at once.\nMultiple rows can be retrieved, modified, or removed in one fell swoop by using a single SQL statement\nEvery operation performed on a relational database operates on a table (or set of tables) and results in another table\nThis is called relational closure\n-- Update all employees in the 'Sales' department to increase salary by 10%\nUPDATE employees\nSET salary = salary * 1.10\nWHERE department = 'Sales';"
+        },
+        {
+          "slide": 7,
+          "content": "SQL\nStatement\nDatabase Tables\nResult Set (table)\nRelational Closure"
+        },
+        {
+          "slide": 8,
+          "content": "Embedding SQL in a Program\nHost language to use SQL to communicate with the database\nC/C++, Java, PHP, Visual Basic, etc.\nAPI: allow applications to interface with databases.\nODBC, JDBC\nIntegrated Development Environment (IDE): is a complete software environment that supports all phases of development.\nEclipse (for Java, C++, Python, etc.)Visual Studio (for C#, VB.NET, C++, etc.) PyCharm (for Python)\nA code generator is a tool that automates the generation of code based on certain inputs, such as templates or models.(Angular CLI, Django Admin and Entity Framework Scaffolding(c#.net))"
+        },
+        {
+          "slide": 9,
+          "content": "SQL Middleware and APIs\nApplication programs require an interface for issuing SQL to access or modify data. The interface is used to embed SQL statements in a host programming language, such as COBOL, Java, C, or Visual Basic.\nStandard interfaces enable application programs to access databases using SQL. There are several popular standard interfaces or APIs (Application Programming Interfaces) for database programming, including ODBC, JDBC, SQLJ, and OLE DB.\nODBC\nODBC is a call level interface, or CLI\nInstead of directly embedding SQL in the program, ODBC uses callable routines.\nto allocate and deallocate resources\ncontrol connections to the database\nexecute SQL statements\nobtain diagnostic information\ncontrol transaction termination\nobtain information about the implementation"
+        },
+        {
+          "slide": 10,
+          "content": "#include <windows.h>\n#include <sql.h>\n#include <sqlext.h>\n#include <iostream>\nint main() {\nSQLHENV hEnv;\nSQLHDBC hDbc;\nSQLHSTMT hStmt;\nSQLRETURN ret;\n// Allocate environment handle\nSQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &hEnv);\n// Set the ODBC version environment attribute\nSQLSetEnvAttr(hEnv, SQL_ATTR_ODBC_VERSION, (void*)SQL_OV_ODBC3, 0);\n// Allocate connection handle\nSQLAllocHandle(SQL_HANDLE_DBC, hEnv, &hDbc);\n// Connect to database (replace DSN, user, password accordingly)\nSQLConnect(hDbc, (SQLCHAR*)\"DSN=mydsn\", SQL_NTS, (SQLCHAR*)\"username\", SQL_NTS, (SQLCHAR*)\"password\", SQL_NTS);\n// Allocate statement handle\nSQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt);\n// Execute an SQL query\nSQLExecDirect(hStmt, (SQLCHAR*)\"SELECT * FROM my_table\", SQL_NTS);\n// Fetch and display the data\nSQLCHAR columnData[256];\nwhile (SQLFetch(hStmt) == SQL_SUCCESS) {\nSQLGetData(hStmt, 1, SQL_C_CHAR, columnData, sizeof(columnData), NULL);\nstd::cout << \"Column Data: \" << columnData << std::endl;\n} // Clean up\nSQLFreeHandle(SQL_HANDLE_STMT, hStmt);\nSQLDisconnect(hDbc);\nSQLFreeHandle(SQL_HANDLE_DBC, hDbc);\nSQLFreeHandle(SQL_HANDLE_ENV, hEnv);\nreturn 0; }"
+        },
+        {
+          "slide": 11,
+          "content": "SQL Middleware and APIs\nJDBC\nJDBC enables Java to access relational databases.\nSimilar to ODBC, JDBC consists of a set of classes and interfaces that can be used to access relational data.\nThere are several types of JDBC middleware, including the JDBC-to-ODBC bridge, as well as direct JDBC connectivity to the relational database.\nAnyone familiar with application programming and ODBC (or any call-level interface) can get up and running with JDBC quickly"
+        },
+        {
+          "slide": 12,
+          "content": "Drivers\nODBC and JDBC rely on drivers\nA driver provides an optimized interface for a particular DBMS implementation\nPrograms can make use of the drivers to communicate with any JDBC- or ODBC-compliant database.\nThe drivers enable a standard set of SQL statements in any Windows application to be translated into commands recognized by a remote SQL-compliant database.\nThere are multiple types of JDBC drivers"
+        },
+        {
+          "slide": 13,
+          "content": "Drivers Components\nDriver Manager: It manages the communication between the application and the ODBC drivers. It loads the appropriate driver for the specific database being accessed.\nODBC Driver: The driver translates the SQL queries sent by the application into the format understood by the database.\nData Source Name (DSN): A DSN provides the necessary information to connect to a database, such as the database type, name, and how to access it."
+        },
+        {
+          "slide": 14,
+          "content": "SQL Middleware and APIs\nSQLJ\nSQLJ (SQL for Java) is an extension of the Java programming language that allows developers to embed SQL statements directly within Java code\nA precompiler translates the embedded SQL into Java code.\nThe Java program is then compiled into bytecodes, and a database bind operation creates packaged access routines for the SQL.\nThis bytecode is platform-independent, meaning it can run on any machine with a Java Virtual Machine (JVM). The JVM interprets or compiles the bytecode into native machine code for execution."
+        },
+        {
+          "slide": 15,
+          "content": "SQL Middleware and APIs\nOLE DB (Object Linking and Embedding Database)\nOLE DB presents an object-oriented interface for generic data access.\nCOM Architecture: OLE DB is built on the Component Object Model (COM), which allows for language independence and supports the creation of reusable software components. This enables OLE DB to work across different programming languages.\nOLE DB provides greater flexibility than ODBC because it can be used to access both relational and nonrelational data.\nOLE DB is conceptually divided into consumers and providers.\nconsumers are the applications that need access to the data (c++or c#)\nproviders are the software components that implement the interface and thereby provide the data to the consumer (ex: SQL Server )"
+        },
+        {
+          "slide": 16,
+          "content": "Application Infrastructure\nApplication infrastructure is the combined hardware and software environment that supports and enables the application.\nThe application infrastructure will vary from organization to organization, and even from application to application within an organization.\nFrom a hardware perspective, the application infrastructure includes the servers, clients, and networking components.\nFrom a software perspective, things are a bit more difficult to nail down. Software components of an application infrastructure can include database servers, application servers, web servers, transaction managers, and development frameworks."
+        },
+        {
+          "slide": 17,
+          "content": "Application Infrastructure\nMainframe\nIBM z Series hardware\nRunning z/OS, DB2, CICS, with application programs written in COBOL.\nTypically, applications consist of both batch and online workload.\nA modern mainframe infrastructure adds interfaces to non-mainframe clients, as well as WebSphere Application Server and Java programs.\nMost new mainframe development uses IDEs to code modern applications instead of relying upon COBOL programmers.\nDistributed\nMost modern, distributed, non-mainframe application development projects typically rely upon application development frameworks.\nThe two most commonly-used frameworks are Microsoft .NET and J2EE."
+        },
+        {
+          "slide": 18,
+          "content": "Microsoft .NET\n... is a set of Microsoft technologies for connecting people, systems, and devices\n... allows Internet Servers to expose functions to any client named as .NET web services\n… enables software to be delivered as a service over the web\n… is designed to let many different services and systems interact\nWeb Services"
+        },
+        {
+          "slide": 19,
+          "content": "The .NET Framework is a complete platform from Microsoft used for developing, deploying, and managing applications of all types (desktop, web, mobile, and enterprise systems). It provides:\nCLR – Common Language Runtime\u000bThis is the execution engine that runs .NET programs and manages memory, security, and error handling.\nClass Library\u000bA large collection of reusable classes and functions that developers can use to build applications efficiently.\nBenefits to developers include:\nSupport for standard programming practices\nExtensibility (easy to add new features)\nIntegrated tools (such as Visual Studio IDE)\nMicrosoft .NET"
+        },
+        {
+          "slide": 20,
+          "content": "Microsoft .NET Framework\nThe .NET framework consists of multiple major components in addition to the CLR and class library. From a data perspective, the most important component is ADO.NET which provides access to data sources, such as a database management system.\nADO.NET is comprised of a series of technologies that enables .NET developers to interact with data in standard, structured, and predominantly disconnected ways. Applications that use ADO.NET depend on .NET class libraries provided in DLL files. ADO.NET manages both internal data (created in memory and used by the program) and external data (in the database). ADO.NET provides interoperability and maintainability through its use and support of XML, simplified programmability with a programming model that uses strongly-typed data, and enhanced performance and scalability."
+        },
+        {
+          "slide": 21,
+          "content": "Visual C#\nVisual Basic\nVisual J#\nVisual C++\nJScript\nThird Party\nMicrosoft .NET Framework\nADO.NET\nASP.NET\nUser Interfaces\n.NET Framework Class Library\nCLR (Common Language Runtime)\nMicrosoft .NET Framework"
+        },
+        {
+          "slide": 22,
+          "content": "Java Alphabet Soup\nJ2EE - Java 2 Enterprise Edition\nStandard services and specifications for making Java highly available, secure, reliable, and scalable for enterprise adoption\nEJB - Enterprise Java Beans\nComponents that contain the business logic for a J2EE application\nWeb Services"
+        },
+        {
+          "slide": 23,
+          "content": "Java Alphabet Soup\nThe Java 2 Platform, Enterprise Edition (J2EE) is a set of coordinated specifications and practices that together enable solutions for developing, deploying, and managing multitier enterprise applications. The J2EE platform simplifies enterprise applications by basing them on standardized, modular components. J2EE provides a complete set of services to those components and handles many details of application construction without requiring complex programming.\nSo J2EE is not exactly a software framework, but a set of specifications, each of which dictates how various J2EE functions must operate. Software conforming to the J2EE platform offers advantages such as \"Write Once, Run Anywhere\" portability, JDBC API for database access, CORBA technology for interaction with existing enterprise resources, and a security model for data protection. Building on this base, the Java 2 Platform, Enterprise Edition adds full support for Enterprise JavaBeans components, Java Servlets API, JavaServer Pages and XML technology.\nNote that there is much more to Java than is covered in this section."
+        },
+        {
+          "slide": 24,
+          "content": "EIS Tier\nClient Tier\nJava \u000bStandalone\u000bRuntime\nWeb Tier\nJSP \u000bPages\nBrowser\nBusiness Tier\nServlets\nEnterprise \u000bJavaBeans\nBusiness \u000bComponents\u000bfor Java\nJava\u000bApplication\nPure HTML\nApplet\nJ2EE and Java"
+        },
+        {
+          "slide": 25,
+          "content": "Impact of Java on DBA\nApplication tuning\nMust understand Java\nTo provide guidance during design reviews\nIs the problem in the SQL or the application\nHow can you tune the application if you do not understand the language (Java)?\nOptimizing SQL is not enough since it may be embedded in poor application code\nMust understand the SQL techniques used\nJDBC and SQLJ"
+        },
+        {
+          "slide": 26,
+          "content": "Java versus .Net\n...designed to enable applications to be deployed on any platform as long as they are written in Java\n…designed to enable development in multiple languages as long as the application is deployed on Windows"
+        },
+        {
+          "slide": 27,
+          "content": "Other Application Choices\nThere are other choices, including\nRuby on Rails\nAjax\nPHP\nC/C++\nAnd so on…\nThis is not an exhaustive list…"
+        },
+        {
+          "slide": 28,
+          "content": "Object Orientation\nOO programming advantages:\nfaster program development time\nreduced maintenance costs\nresulting in a better ROI\nPiecing together reusable objects and defining new objects based on similar object classes can dramatically reduce development time and costs."
+        },
+        {
+          "slide": 29,
+          "content": "OO, SQL and Databases\nOO and relational databases are not inherently compatible\nThe set-based nature of SQL is anathema to the OO techniques practiced by Java and C++ developers.\nAll too often insufficient consideration has been given to the manner in which data is accessed, resulting in poor design and faulty performance"
+        },
+        {
+          "slide": 30,
+          "content": "Impedance Mismatch\nWhen OO programming language is used to access a relational database, you must map objects to relations.\nOO programs deal with objects\nRDBMSs deal with relations, (that is, tables)\nApplications will not be object-oriented in the “true” sense of the word because the data will not be encapsulated within the method (that is, the program)."
+        },
+        {
+          "slide": 31,
+          "content": "Making OO Programs Work with Relational Databases\nSerialization\nSaving data using a flat file representation of the object. This approach can be slow and difficult to use across applications.\nXML\ncan be stored natively in many relational database systems. But XML adds a layer of complexity and requires an additional programming skillset.\nObject-Relational Mapping (ORM)\nMost common approach"
+        },
+        {
+          "slide": 32,
+          "content": "Object Relational Mapping\nWith ORM an object’s attributes are stored in one or more columns of a relational table. Hibernate is a popular ORM library for Java; NHibernate is an adaptation of Hibernate for the .NET framework.\nBoth Hibernate and NHibernate provide capabilities for mapping objects to a relational database by replacing direct persistence-related database accesses with high-level object handling functions.\nAnother option is Microsoft LINQ, which stands for Language Integrated Query. LINQ provides a set of .NET framework and language extensions for object-relational mapping."
+        },
+        {
+          "slide": 33,
+          "content": "Types of SQL\nSQL can be planned or unplanned.\nA planned SQL request is typically embedded into an application program, but it might also exist in a query or reporting tool. At any rate, a planned SQL request is designed and tested for accuracy and efficiency before it is run in a production system. Contrast this with the characteristics of an unplanned SQL request. Unplanned SQL, also called ad hoc SQL, is created “on the fly” by end users during the course of business. Most ad hoc queries are created to examine data for patterns and trends that impact business. Unplanned, ad hoc SQL requests can be a significant source of inefficiency and are difficult to tune. How do you tune requests that are constantly written, rewritten, and changed?\nSQL can either be embedded in a program or issued stand-alone.\nEmbedded SQL is contained within an application program, whereas stand-alone SQL is run by itself or within a query, reporting, or OLAP tool.\nSQL can be dynamic or static.\nA dynamic SQL statement is optimized at run time. Depending on the DBMS, a dynamic SQL statement may also be changed at run time. Static SQL, on the other hand, is optimized prior to execution and cannot change without reprogramming. Favor static SQL to minimize the possibility of SQL injection attacks."
+        },
+        {
+          "slide": 34,
+          "content": "SQL Usage Considerations"
+        },
+        {
+          "slide": 35,
+          "content": "SQL Coding for Performance\nIt is important to learn how to code SQL for performance\nGenerally, a good idea to rely on the DBMS to optimize the code\nLet SQL do the work instead of coding it in host language program\nThe less data brought from the DBMS to the program the better performance will be\nMore performance guidelines come later in the course!"
+        },
+        {
+          "slide": 36,
+          "content": "What is XML?\nXML stands for eXtensible Markup Language.\nLike HTML, XML is based on SGML\nHTML uses tags to describe the appearance of data on a page, whereas XML uses tags to describe the data itself, instead of its appearance.\nAllows documents to be self-describing, through the specification of tag sets and the structural relationships between the tags.\nXML is actually a meta language (a language used to define other languages).\nThese languages are collected in dictionaries called DTDs Document Type Definitions.\nThe DTD stores definitions of tags for specific industries or fields of knowledge.\nThe DTD for an XML document can be either part of the document or stored in an external file."
+        },
+        {
+          "slide": 37,
+          "content": "XML Data\nXML uses tags to describe the data itself\n<CUSTOMER>\n<first_name>Craig</first_name>\n<middle_initial>S.</middle_initial>\n<last_name>Mullins</last_name>\n<company_name>Mullins Consulting, Inc.</company_name>\n<street_address>15 Coventry Ct.</street_address>\n<city>Sugar Land</city>\n<state>TX</state>\n<zip_code>77479</zip_code>\n<country>USA</country>\n</CUSTOMER>\nhttp://www.xml.org"
+        },
+        {
+          "slide": 38,
+          "content": "Querying XML\nXQUERY: is a query and programming language designed to query collections of XML data. XQuery uses XPath expression syntax to address specific parts of an XML document\nFLWOR: for performing joins.\nA FLWOR expression is constructed from the five clauses after which it is named: FOR, LET, WHERE, ORDER BY, and RETURN.\nNot just for querying, it also allows for new XML documents to be constructed\nthere are no features in XQuery for updating XML documents or databases.\ndoes not provide full text search capability"
+        },
+        {
+          "slide": 39,
+          "content": "Querying XML\nSQL/XML\ntype mappings to support accessing and manipulating XML in SQL databases. SQL/XML specification are the functions that allow users to access, modify, and construct XML elements or attributes.\nXMLDOCUMENT (which returns an XML value with a single document node and zero or more nodes as its children)\nXMLCONCAT (which returns a forest of XML elements generated from a concatenation of two or more elements), XMLELEMENT (which returns an XML element given an element name, an optional collection of attributes, and zero or more arguments that make up the contents of the element), XMLAGG (which returns an XML sequence that contains an item for each non-null value in a set of XML values), among many others.\nSQL/XML also defines functions which allow the user to embed XQuery expressions in SQL statements, and to convert complex data types. These functions include XMLQUERY and XMLTABLE."
+        },
+        {
+          "slide": 40,
+          "content": "Select the customer's first name:\nxpath\n/CUSTOMER/first_name\nSelect the customer's full name (first, middle initial, last):\nconcat(/CUSTOMER/first_name, ' ', /CUSTOMER/middle_initial, ' ',/CUSTOMER/last_name)\nRetrieve the full name of the customer using xquery:\nfor $detail in /CUSTOMER/*\nreturn\nconcat(name($detail), ': ', $detail/text())\nExtract address information:\nfor $address in (/CUSTOMER/street_address, /CUSTOMER/city, /CUSTOMER/state, /CUSTOMER/zip_code, /CUSTOMER/country)\nreturn $address/text()"
+        },
+        {
+          "slide": 41,
+          "content": "Defining Transactions\nA transaction is an atomic unit of work in a database system — meaning all its operations are treated as a single, indivisible action.\nIf all steps succeed, the database is updated permanently.\nIf any step fails, all changes are undone to maintain consistency.\nCOMMIT Command: When all the steps of a transaction are successfully completed, the system issues a COMMIT.\nEffect:\nMakes all changes permanent in the database.\nThe transaction cannot be undone after this point.\nROLLBACK Command: If an error or failure occurs before COMMIT, a ROLLBACK is used.\nEffect:\nUndoes all changes made by the transaction.\nReturns the database to its previous consistent state (before the transaction started)."
+        },
+        {
+          "slide": 42,
+          "content": "Defining Transactions\nTransaction Log\nThe DBMS maintains a transaction log that records all operations of transactions.\nThe log helps with:\nRecovery: Restoring the database after a crash.\nUndo operations: Rolling back incomplete transactions.\nRedo operations: Reapplying committed transactions after recovery."
+        },
+        {
+          "slide": 43,
+          "content": "Example\nScenario A customer wants to transfer $500 from Account A to Account B. We must ensure that both steps — debit and credit — happen together or not at all.\nStep 1: Begin the Transaction\nBEGIN TRANSACTION; This tells the DBMS that a new transaction has started. Any changes from now on are temporary until a COMMIT is issued.\nStep 2: Perform the Operations\n-- Subtract $500 from Account A\nUPDATE Accounts\nSET Balance = Balance - 500\nWHERE AccountNumber = 'A100';\n-- Add $500 to Account B\nUPDATE Accounts\nSET Balance = Balance + 500\nWHERE AccountNumber = 'B200';"
+        },
+        {
+          "slide": 44,
+          "content": "Example\nStep 3: Check for Errors: If both updates succeed, we can finalize the transaction:\nCOMMIT;\nResult:\nBoth accounts are updated permanently.\nThe transfer is successfully completed.\nStep 4: Handling an Error\nIf something goes wrong (e.g., Account B doesn’t exist, insufficient balance, or system error), we undo the changes:\nROLLBACK;\nResult:\nAll changes made since BEGIN TRANSACTION are canceled.\nThe database returns to the state before the transfer began.\nStep 5: Transaction Log Role\nBehind the scenes, the DBMS transaction log records each step:\nThe original values (for rollback).\nThe new values (for recovery if the system crashes).\u000bThis ensures data integrity, even in case of a power failure or crash."
+        },
+        {
+          "slide": 45,
+          "content": "ACID Properties of Transactions\nDefining Transactions\nAtomicity: Means that a transaction is executed completely or not at all.\nConsistency: Ensures that after any transaction, the database remains in a valid and correct state, following all defined rules and constraints.\nIsolation: Means that each transaction runs as if it were the only one interacting with the database at that moment,even if multiple transactions are running concurrently.\nDurability: Ensures that once a transaction is successfully committed, its changes are permanent — even if the system crashes or loses power afterward.\nUnit of Work\nEnsure proper definition and coding"
+        },
+        {
+          "slide": 46,
+          "content": "Unit of Work\nA UOW is a series of instructions and messages that guarantees data integrity.\nUOW is not necessarily a complete business process—it can be a subset of the business process, and a group of units of work can constitute a single transaction.\nA transaction can consist of several Units of Work\nExample: bank transaction\nWithdrawal of $20\nThe transaction must involve both the subtraction of $20 from your account and the delivery of $20 to you\nOnly doing one or the other is not a complete unit of work"
+        },
+        {
+          "slide": 47,
+          "content": "TP System Versus DBMS (Stored Procs)\nRelational\nDBMS\nStored\nProcedures\nPresentation\n(Client)\nDisk\nRelational\nDBMS (1)\nTransaction\nServer\nWorkflow\nController\nPresentation\n(Client)\nDisk\nRelational\nDBMS (2)\nDisk"
+        },
+        {
+          "slide": 48,
+          "content": "Application Servers\nAn application server combines the features of a transaction server with additional functionality to assist in building, managing, and distributing database applications.\nExamples:\nWebSphere (IBM)\nZend Server\nBase4 Application Server (open source)"
+        },
+        {
+          "slide": 49,
+          "content": "Transactions and Locking\nThe DBMS uses a locking mechanism to enable multiple, concurrent users to access and modify data in the database.\nBy using locks, the DBMS automatically guarantees the integrity of data. The DBMS locking strategies permit multiple users from multiple environments to access and modify data in the database at the same time.\nLocking Granularity\nRow\nPage (or Block)\nTable\nTable Space\nDatabase"
+        },
+        {
+          "slide": 50,
+          "content": "Types of Locks\nThe following types of locks can be taken on database pages or rows:\nShared Lock\nTaken when data is read with no intent to update it.\nIf a shared lock has been taken on a row, page, or table, other processes or users are permitted to read the same data.\neXclusive Lock (X Lock)\nTaken when data is modified.\nWhile an exclusive lock is held, no other user can read or modify that same data.\nEnsures that only one transaction is working with that data at a time.\nUpdate Lock ((U Lock))\nTaken when data must first be read before it is changed or deleted.\nThe update lock indicates that the data may be modified or deleted in the future.\nIf the data is actually modified or deleted, the DBMS will promote the update lock to an exclusive lock."
+        },
+        {
+          "slide": 51,
+          "content": ""
+        },
+        {
+          "slide": 52,
+          "content": "Intent Locks\nIntent locks are placed on higher-level database objects when a user or process takes locks on the data pages or rows.\nTable or Table Space\nAn intent lock stays in place for the life of the lower-level locks.\nTransaction A wants to read one specific row → takes an Intent Shared (IS) lock on the table and a Shared (S) lock on that row.\nTransaction B wants to update a row → takes an Intent Exclusive (IX) lock on the table and an Exclusive (X) lock on that row.\nIf Transaction C tries to lock the entire table for writing, it will see the IS/IX locks and know that some rows are in use — so it waits."
+        },
+        {
+          "slide": 53,
+          "content": "Lock Timeouts\nerror"
+        },
+        {
+          "slide": 54,
+          "content": "Table X\ndata…data…data...\nProcess A\nProcess B\n.\n.\n.\nRequest row 3\n.\n.\n.\n.\nRequest row 7\nlock\n.\n.\n.\nRequest row 7\n.\n.\n.\nRequest row 3\ndata…data…data...\nlock\nProcess A is waiting on Process B\nProcess B is waiting on Process A\nDeadlocks\nA deadlock happens when two or more transactions are waiting for each other to release locks, so none of them can continue — the system gets stuck.\nTransaction A locks Row 3, then tries to lock Row 7.\nTransaction B locks Row 7, then tries to lock Row 3.\u000bNow:\nA is waiting for B to release Row 2.\nB is waiting for A to release Row 1.\u000b⛔ Neither can continue → Deadlock!"
+        },
+        {
+          "slide": 55,
+          "content": "Lock Duration\nLock duration refers to the length of time that a lock is held by the DBMS.\nLock duration refers to how long a lock remains held by a transaction before it is released.\u000bIt determines when other users or processes can access the locked data.\nTwo parameters impact lock duration:\nIsolation level\nAcquire/Release"
+        },
+        {
+          "slide": 56,
+          "content": "Isolation Level\nRead uncommitted\naka dirty read\nRead committed\naka cursor stability\nRepeatable read\nSerializable"
+        },
+        {
+          "slide": 57,
+          "content": "Acquire/Release Specification\nControls when Intent locks are acquired and released\nIntent locks can be acquired either immediately when the transaction is requested or iteratively as needed while the transaction executes.\nIntent locks can be released when the transaction completes or when each intent lock is no longer required for a unit of work."
+        },
+        {
+          "slide": 58,
+          "content": "Lock Escalation\nLock escalation is the process of increasing the lock granularity for a process or program.\nTypically controlled by system parameters and DDL parameters in CREATE statements.\nFor example:\nIf a threshold is hit for the number of locks being held by a process (or by the entire DBMS), page locks (or row locks) can be escalated to table locks.\nCan cause concurrency issues\nIf the entire table is locked other processes cannot access the data"
+        },
+        {
+          "slide": 59,
+          "content": "Programming Techniques to Minimize Locking Problems\nAvoid deadlocks by coding updates in the same sequence regardless of program\nFor example, alphabetical order by table name\nIssue data modification SQL statements as close \u000bto the end of the UOW as possible\nThe later in the UOW the update occurs, the \u000bshorter the duration of the lock"
+        },
+        {
+          "slide": 60,
+          "content": "Batch Processing\nBatch Processing\nWhere programs are scheduled to run at predetermined times without any user input\nBatch programmers sometimes tend to treat tables like flat file… that is NOT a good idea.\nThink relationally instead of file processing\nPlan and implement a COMMIT strategy\u000bin all batch application programs\nInstead of holding locks until the end of the program\nOtherwise you will experience a lot of lock timeouts"
+        },
+        {
+          "slide": 61,
+          "content": "Questions"
+        }
+      ]
+    }
+  ],
+  "Ecom": [
+    {
+      "filename": "DOC-20250930-WA0021_pdf (1) (1).pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "E-COMMERCE\nLECTURE 1"
+        },
+        {
+          "page": 2,
+          "content": "WHAT IS E-COMMERCE?\nElectronic Commerce is exactly referring to a marketplace\non the Internet. Electronic Commerce consists primarily of\nthe distributing, buying, selling, marketing and servicing of\nproducts or services over electronic systems such as the\nInternet and other computer networks.\nPerspectives\nCommunication :-- From a communication perspective,\nEC is the delivery of goods, services, information or\npayments\nover\ncomputer\nnetworks\nor\nby\nany\nother\nelectronic means."
+        },
+        {
+          "page": 3,
+          "content": "Commercial (Trading) :-- From a commercial perspective , EC provides\nthe capability of buying and selling products, services and information on\nthe internet and via other online services.\nBusiness Process Perspective :-- In a business process perspective, EC is\ndoing business electronically by completing business process over electronic\nnetworks, there by substituting information for physical business processes.\nService Perspective:-- In a service perspective ,Ec is a tool that addresses\nthe desire of governments, firms, consumers and management to cut service\ncost while improving the quality of customer\nservice and increasing the\nspeed of service delivery.\nPERSPECTIVES"
+        },
+        {
+          "page": 4,
+          "content": "(2) B2C: Business-to-consumer electronic commerce (B2C) is a\nform of electronic commerce in which products or services are sold\nfrom a firm or company to a consumer..\nEx:- Dell selling me a laptop\n\nAdvantages of B2C e-commerce\n1.\nShopping can be faster and more convenient.\n2.\nOfferings and prices can change instantaneously.\n3.\nCall centers can be integrated with the website.\n4.\nBroadband\ntelecommunications\nwill\nenhance\nthe\nbuying\nexperience.\nClassification of EC by nature of transaction \n(B2C)"
+        },
+        {
+          "page": 5,
+          "content": "(1)\nB2B:\nBusiness-to-business\nelectronic\ncommerce\n(B2B) typically takes the form of automated processes\nbetween trading partners and is performed in much\nhigher\nvolumes\nthan\nbusiness-to-consumer\n(B2C)\napplications.\nB2B also is used to identify sales transactions between\nbusinesses. For example a Intel selling micro processors\nto\nDell\ncompany\nwould\nlikely\nbe\na\nB2B\nsales\norganization.\nClassification of EC by nature of transaction \n(B2B)"
+        },
+        {
+          "page": 6,
+          "content": "(3) C2C: Consumer-to-consumer (or C2C) electronic commerce\ninvolves\nthe\nelectronically-facilitated\ntransactions\nbetween\nconsumers through some third party.\ncommon example is the online auction, in which a consumer posts an\nitem for sale and other consumers bid to purchase it; the third party\ngenerally charges a fee or commission.\nThe sites are only intermediaries, just there to match consumers,\nthey have do not check quality of product being offered.\nEx:-؟؟؟؟\nClassification of EC by nature of transaction \n(C2C)"
+        },
+        {
+          "page": 7,
+          "content": "\nAdvantages of C2C\n1.\nBroader market\n2.\nEliminates intermediary\n3.\nConstantly changing, updating\n4.\nAlways there so that consumers can use it whenever \nthey want\n\nDisadvantages of C2C\n1.\nNo quality control\n2.\nNo payment guarantee\n3.\nHard to pay for using cheques, ATM cards, etc. but in \nthe future this is likely to change.\nClassification of EC by nature of transaction"
+        },
+        {
+          "page": 8,
+          "content": "(4) C2B: C2B (consumer to business) is a business\nmodel in which consumers (individuals) offer products\nand services to companies and the companies pay them.\nThis\nbusiness\nmodel\nis\na\ncomplete\nreversal\nof\ntraditional business model where companies offer goods\nand services to consumers.\nEx:- Ram selling his old school books to a second hand\nbook shop\nClassification of EC by nature of transaction \n(B2C)"
+        },
+        {
+          "page": 9,
+          "content": "(5) Intra Business E-Commerce: The intra business\nE-Commerce\ncategory\nincludes\nall\ninternal\norganizational activities that involve the exchange\nof goods, services or information among various units\nand individuals in that organization.\nIntra business E-commerce is usually performed on\nintranets or corporate portals.\nClassification of EC by nature of transaction \n(Intra Business E-Commerce)"
+        },
+        {
+          "page": 10,
+          "content": "(6) Non Business E-commerce : An increased\nnumber\nof\nnon\nbusiness\ninstitutions\nsuch\nas\nacademic institutions, not-for-profit organizations,\nreligious organizations, social organizations and\ngovernment agencies are using EC to reduce their\nexpenses or to improve their general operations and\ncustomer services.\nClassification of EC by nature of transaction \n(Non Business E-commerce)"
+        },
+        {
+          "page": 11,
+          "content": "(1) Electronic Market:-- A market is a network of\ninteractions and relationship where information,\nproducts, services and payments are changed.\n(2) When the marketplace is electronic, the business\ncenter is not physical building rather a network-\nbased location where business interactions occur.\nCLASSIFICATION OF E-COMMERCE\nAPPLICATIONS"
+        },
+        {
+          "page": 12,
+          "content": "(2) Inter organizational information Systems (IOS) An IOS is\na unified system encompassing several business partners.\nA typical IOS will include a company and its suppliers and/or\ncustomers.\nThrough IOS, buyers and sellers arrange routine business\ntransactions.\nInformation\nis\nexchanged\nover\ncommunication\nnetwork\nusing\nprearranged formats, so there is no need for telephone calls,\npaper documents, or business correspondence.\nCLASSIFICATION OF E-COMMERCE\nAPPLICATIONS"
+        },
+        {
+          "page": 13,
+          "content": "\nBenefits to Organizations :--\n1.\nGlobal Reach :-- EC expands the marketplace to national and\ninternational markets. With minimum capital outlay, a company can\neasily and quickly locate the best suppliers, and the most suitable\nbusiness partners worldwide.\n2.\nCost Reduction :-- EC decreases the cost of crating, processing,\ndistributing, storing and retrieving paper based information. High\nprinting and mailing costs are lowered or eliminated.\n3.\nExtended Hours:-- The business is always open on the web, with\nno over time or other extra costs.\nBENEFITS OF E-COMMERCE"
+        },
+        {
+          "page": 14,
+          "content": "BENEFITS OF E-COMMERCE\n4.\nSupply chain Improvements:-- supply chain inefficiencies\nsuch as excessive inventories and delivery delays can be\nminimized with EC. For ex. By building autos to order instead\nof for dealers showrooms, the automotive industry is expecting\nto\nsave\nbillions\nof\ndollars\nannually\njust\nfrom\ninventory\nreduction.\n5.\nCustomization:-- Pull type production (build to order) allows for\ninexpensive customization of products and services and provides\na competitive advantage for companies who implement this\nstrategy.\n6.\nNew\nbusiness\nmodels:--\nEC\nallows\nfor\nmany\ninnovative\nbusiness\nmodels\nthat\nprovide\nstrategic\nadvantages\nand/or\nincrease profits."
+        },
+        {
+          "page": 15,
+          "content": "7. Rapid time to market :-- EC reduces the time between the inception of an\nidea and its commercialization.\n8. Lower communication costs:-- EC lowers telecommunication costs- the\ninternet is much cheaper than VAN.\n9. Efficient Procurement :-- EC enables efficient e-procurement that can\nreduce administrative cost by 80 percent or more, reducing purchasing\nprices by 5 to 15 percent, and reducing cycle time by more than 50\npercent.\n10. Other benefits :-- other benefits include improved corporate image,\nimproved customer service, new business partners, simplified processes,\nincreased\nproductivity,\nreduced\npaper\nwork,\nincreased\naccess\nto\ninformation,\nreduced\ntransportation\ncosts\nand\nincreased\ntrading\nflexibility.\nBENEFITS OF E-COMMERCE"
+        },
+        {
+          "page": 16,
+          "content": "BENEFITS OF E-COMMERCE\n11. Improved Customer Relations:-- EC enables companies to\ninteract\nmore\nclosely\nwith\ncustomers,\neven\nif\nthrough\nintermediaries. This allows personalization of communication ,\nproducts,\nand\nservices\nwhich\npromotes\nbetter\ncustomer\nrelationship management and increased customer loyalty.\n12.Up to Date Company Material :-- Any material on the web,\nsuch as prices in catalog can be correct up to the minute. All\ncompany information can always be current.\n13. No city business permits and fees :-- online companies do not\nneed any licenses to operate nor do they pay license fees."
+        },
+        {
+          "page": 17,
+          "content": "1.\nMore products and services :-- EC provides consumers with\nmore choices, they can select from many vendors and from more\nproducts.\n2. Cheaper products and services :-- EC frequently provides\nconsumers\nwith\nless\nexpensive\nproducts\nand\nservices\nby\nallowing them to shop in many places and conduct quick\ncomparisons.\n3. Instant Delivery :--\nin the cases of digitized products, EC\nallows for quick delivery.\n4. Information Availability :-- Consumers can locate relevant\nand detailed product information in seconds rather than days or\nweeks. Also multimedia support is cheaper and better.\nBENEFITS TO CONSUMERS"
+        },
+        {
+          "page": 18,
+          "content": "BENEFITS TO CONSUMERS\nParticipations in auctions :-- EC makes it possible for\nconsumers to participate in virtual auctions.\nThese allows sellers to sell things quickly and buyers to\nlocate collectors items and bargains.\n6. Electronic communities :-- EC allows customers to\ninteract with other customers in electronic communities\nand exchange ideas as well as compare experiences.\n7. No sales tax :-- in many countries online business is\nexempt from sales tax."
+        },
+        {
+          "page": 19,
+          "content": "1.\nTelecommuting :-- More individual work at home and\ndo less traveling for work or shopping, resulting in less\ntraffic on the roads and reduced air pollution.\n2.\nAvailability of public services :-- public services such\nas health care, education and distribution of government\nsocial services can be done at a reduced cost and\nimproved quality. For Ex. EC provides rural doctors and\nnurses access to information and technologies with which\nthey can better treat their patients.\nBENEFITS TO SOCIETY"
+        },
+        {
+          "page": 20,
+          "content": "BENEFITS TO SOCIETY\n1.\nHigher Standard of Living :-- some merchandise can\nbe sold at lower prices, allowing less affluent people to\nbuy more and increase their standard of living.\n2.\nHope for the poor :-- people in third world countries\nand rural areas are now able to enjoy products and\nservices that were unavailable in the past.\nThese include opportunities to learn skilled professions or\nearn a college degree."
+        },
+        {
+          "page": 21,
+          "content": "Technological limitations :--\n(1) There is a lack of universally accepted standards for quality,\nsecurity, and reliability.\n(2) Software development tools are still evolving.\n(3) The telecommunication bandwidth is insufficient, especially for m-\ncommerce.\n(4) Special web servers are needed in addition to the network servers.\n(5) Internet accessibility is still expensive and inconvenient.\n(6) Order fulfillment of large scale B2C requires special automated\nwarehouses.\nLIMITATIONS OF E-COMMERCE"
+        },
+        {
+          "page": 22,
+          "content": "-> Non Technological Limitations :--\n(1) Lack of trust in EC and in unknown sellers hinders buying.\n(2) Many legal and public policy issues, including taxation, are as yet\nunresolved.\n(3) National and International government regulations sometimes get in the\nway.\n(4) it is difficult to measure some benefits of EC such as advertising. There is a\nlack of mature measurement methodology.\n(5) People do not yet sufficient trust paperless, faceless transactions.\n(6) In most cases there is an insufficient number of sellers and buyers which are\nneeded for profitable EC operations.\n(7) There is an increasing amount of fraud on the internet.\nLIMITATIONS OF E-COMMERCE"
+        },
+        {
+          "page": 23,
+          "content": "EC is much more than web site.\nThere are dozens of applications such as home,\nbanking, shopping in online store and malls, buying\nstocks, finding a job, conducting and collaborating\nelectronically on reached and development projects.\nTo execute these applications, it is necessary to\nhave supporting information and organizational\ninfrastructures and their implementation is depend\non Five major areas\nFRAMEWORK OF E-COMMERCE"
+        },
+        {
+          "page": 24,
+          "content": "(1) People :-- sellers, buyers, intermediaries, information systems\nspecialists, other employees and\nany\nother participants\ncomprise an important support area.\n(2)Public policy :-- Legal and other policy and regulating issues\nsuch as privacy protection and taxation, which are determined by\ngovernments.\nIncluded as part of public policy is the issue of technical standards,\nwhich are established by government mandated policy making\ngroups.\nE-COMMERCE TOOLS"
+        },
+        {
+          "page": 25,
+          "content": "E-COMMERCE TOOLS\n(3)Marketing and advertising :-- like any other business EC\nusually requires the support of marketing and advertising.\nThis is especially important in B2C online transactions where\nthe buyers and sellers usually not know each other.\n(4)Support services:-- Many services are needed to support\nEC. These range from content creation to payments to order\ndelivery.\n(5)Business partnerships :-- Joint ventures, exchanges, and \nbusiness partnerships of various sorts are common in EC. \nThese occur frequently throughout the supply chain."
+        },
+        {
+          "page": 26,
+          "content": "The future of E-commerce is based on the following trends and \nobservation:\n1.\nInternet\nUsage\n:--\nThe\nnumber\nof\ninternet\nusers\nincreasing\nexponentially. With the integration of computers and television,\ncheaper PCs, increased Publicity, there will be more and more Net\nsurfers, as young people grow, the usage will grow even further.\n2.\nBy 1999 the number of world wide internet users was estimated to be\nover 250 million and the number of e-mail addresses over 400 million\nsince many people have multiple addresses.\nFUTURE OF E-COMMERCE"
+        },
+        {
+          "page": 27,
+          "content": "FUTURE OF E-COMMERCE\n1.\nOpportunities for Buying:-- The number of products and services\navailable on the Net is increasing rapidly with improved trading\nmechanisms,\nintermediary\nservices,\npresentation\nin\nmultiple\nlanguages and sellers willingness to give it a try, it is logical to expect\nsignificantly more purchasing opportunities. Several web sites are\nreporting 15 percent to 25 percent monthly increase in sales.\n2.\nPurchasing Incentives :--The buyers advantages are likely to\nincrease.\n3.\nPrices will go down further, and the purchasing process will be\nstreamlined.\n4.\nMany\ninnovative\nopportunities\nwill\nbe\navailable,\nand\nelectronic\nshopping may even be social trend."
+        },
+        {
+          "page": 28,
+          "content": "4. Increased Security and Trust:-- one of the major factor of B2C\ngrowth is the perception about poor security and privacy, and lack of\ntrust.\nAs time passes we expect significant improvements in all these areas.\n5. Efficient Information handling :-- Much information will become\naccessible from any where in real time.\nUsing warehouses and intelligent agents, companies can constantly\nlearn\nabout\ntheir\ncustomers,\nsteering\nmarketing\nand\nservice\nactivities accordingly.\nThe notion of real time marketing might not be so far away. This will\nfacilitate the use of EC.\nFUTURE OF E-COMMERCE"
+        },
+        {
+          "page": 29,
+          "content": "6. Innovative Organizations:-- Organizations are being restructured\nand reengineered with the help of IT.\nUsing different types of empowered teams, some of which are virtual,\norganizations become innovative, flexible and responsive.\nThe trend for process reengineering is increasing and so is the\norganizational creativity. Innovative organizations will probably be\nmore inclined to use EC.\n7.\nVirtual\nCommunities:--\nVirtual\nCommunities\nall\nkinds\nare\nspreading\nrapidly\nwith\nsome\nalready\nreaching\nseveral\nmillion\nmembers.\nAs seen in the opening case, virtual communities can enhance\ncommercial activities online. Also some communities are organized\naround professional areas of interest and can facilitate B2B commerce.\nFUTURE OF E-COMMERCE"
+        },
+        {
+          "page": 30,
+          "content": "8. Payment Systems:-- The ability to use E-cash cards and make micro\npayments is getting close to reality, when implemented on a large scale,\nmany EC activities will flourish.\nAs international standards become the norm, electronic payment will\nextend globally, facilitating global EC.\n9. Business to Business:-- in some cases industry type extranets are almost\nforcing everyone to participate.\nBusiness to business will continue dominate the EC field for the\nintermediate future.\nThere will be more sellers, more buyers, more services. The rapid growth\nwill continue.\nThe success of B2B will depend upon the success of integrating EC\ntechnology with business processes and with conventional information\nsystems\nFUTURE OF E-COMMERCE"
+        },
+        {
+          "page": 31,
+          "content": "QUESTIONS ..?"
+        }
+      ]
+    },
+    {
+      "filename": "DOC-20250930-WA0022_pdf (1).pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "E-commerce    \nbusiness. technology. society. \n \nSixth Edition \nEE\n--\ncommerce Business Models and commerce Business Models and \nConceptsConcepts\n  \nSlide 2-1"
+        },
+        {
+          "page": 2,
+          "content": "E-commerce Business Models \nBusiness model \nSet of planned activities designed to result in a \nprofit in a marketplace \nBusiness plan \nDescribes a firm’s business model \nE-commerce business model \nUses/leverages unique qualities of Internet and \nWeb \n \nSlide 2-2"
+        },
+        {
+          "page": 3,
+          "content": "8 Key Elements of a Business Model \nSlide 2-3 \n1.\nValue proposition \n2.\nRevenue model \n3.\nMarket opportunity \n4.\nCompetitive environment \n5.\nCompetitive advantage \n6.\nMarket strategy \n7.\nOrganizational development \n8.\nManagement team"
+        },
+        {
+          "page": 4,
+          "content": "1. Value Proposition \nWhy should the customer buy from you? \nSuccessful e-commerce value \npropositions: \nPersonalization/customization \nReduction of product search, price discovery costs \nFacilitation of transactions by managing product delivery \nSlide 2-4"
+        },
+        {
+          "page": 5,
+          "content": "2. Revenue Model \nHow will the firm earn revenue, generate \nprofits, and produce a superior return on \ninvested capital? \nMajor types: \nAdvertising revenue model \nSubscription revenue model \nTransaction fee revenue model \nSales revenue model \nAffiliate revenue model \nSlide 2-5"
+        },
+        {
+          "page": 6,
+          "content": "3. Market Opportunity \nWhat marketspace do you intend to \nserve and what is its size? \nMarketspace: Area of actual or potential commercial value \nin which company intends to operate \nRealistic market opportunity: Defined by revenue \npotential in each of market niches in which company \nhopes to compete \nMarket opportunity typically divided into \nsmaller niches \nSlide 2-6"
+        },
+        {
+          "page": 7,
+          "content": "4. Competitive Environment \nWho else occupies your intended \nmarketspace? \nOther companies selling similar products in the same \nmarketspace \nIncludes both direct and indirect competitors \nInfluenced by: \nNumber and size of active competitors \nEach competitor’s market share \nCompetitors’ profitability \nCompetitors’ pricing \nSlide 2-7"
+        },
+        {
+          "page": 8,
+          "content": "5. Competitive Advantage \nWhat special advantages does your firm bring \nto the marketspace? \nAchieved when firm produces superior product  or \ncan bring product to market at lower price than \ncompetitors \nImportant concepts: \nAsymmetries (not same) \nFirst-mover advantage \nUnfair competitive advantage (Uniqueness) \nLeverage (Positive effect) \nSlide 2-8"
+        },
+        {
+          "page": 9,
+          "content": "6. Market Strategy \nHow do you plan to promote your \nproducts or services to attract your \ntarget audience? \nDetails how a company intends to enter market \nand attract customers \nBest business concepts will fail if not properly \nmarketed to potential customers \nSlide 2-9"
+        },
+        {
+          "page": 10,
+          "content": "7. Organizational Development \nWhat types of organizational structures \nwithin the firm are necessary to carry out \nthe business plan? \nDescribes how firm will organize work \nTypically divided into functional departments \nHiring moves from generalists to specialists as company \ngrows \nSlide 2-10"
+        },
+        {
+          "page": 11,
+          "content": "8. Management Team \nWhat kinds of experiences and \nbackground are important for the \ncompany’s leaders to have? \nEmployees are responsible for making the business model \nwork \nStrong management team gives instant credibility to \noutside investors \nStrong management team may not be able to saving a \nweak business model, but should be able to change the \nmodel and redefine the business as it becomes necessary \nSlide 2-11"
+        },
+        {
+          "page": 12,
+          "content": "Categorizing E-commerce \nBusiness Models \nNo one correct way \nWe categorize business models according to: \nE-commerce sector (B2C, B2B, C2C) \nType of e-commerce technology; i.e., m-commerce \nSimilar business models appear in more than \none sector \nSome companies use multiple business \nmodels; e.g., eBay \nSlide 2-12"
+        },
+        {
+          "page": 13,
+          "content": "B2C Business Models: Portal \nSearch plus an integrated package of content \nand services \nRevenue models:  \nAdvertising, subscription fees, transaction fees \nVariations:  \nHorizontal/General \nVertical/Specialized  \nPure Search \nSlide 2-13"
+        },
+        {
+          "page": 14,
+          "content": "B2C Models: E-tailer \nOnline version of traditional retailer \nRevenue model: Sales \nVariations: \nVirtual merchant \nBricks-and-clicks (Online and physical stores) \nCatalog merchant \nManufacturer-direct  \nLow barriers to entry \nSlide 2-14"
+        },
+        {
+          "page": 15,
+          "content": "B2C Models: Content Provider \nDigital content on the Web \nNews, music, video \nRevenue models:  \nSubscription; pay per download (micropayment); \nadvertising; affiliate referral fees \nVariations: \nContent owners \nWeb aggregators \nSlide 2-15"
+        },
+        {
+          "page": 16,
+          "content": "B2C Models: Transaction Broker \nProcess online transactions for consumers \nPrimary value proposition—saving time and money \nRevenue model:  \nTransaction fees \nIndustries using this model: \nFinancial services \nTravel services \nJob placement services \n \nSlide 2-16"
+        },
+        {
+          "page": 17,
+          "content": "B2C Models: Market Creator \nUses Internet technology to create \nmarkets that bring buyers and sellers \ntogether \nExamples:  \nPriceline \neBay \nRevenue model: Transaction fees \nSlide 2-17"
+        },
+        {
+          "page": 18,
+          "content": "B2C Models: Service Provider \nOnline services \ne.g., Google: Google Maps, Google Docs, and so on \nValue proposition  \nValuable, convenient, time-saving, low-cost alternatives to \ntraditional service providers \nRevenue models: \nSales of services, subscription fees, advertising, sales of \nmarketing data \n \nSlide 2-18"
+        },
+        {
+          "page": 19,
+          "content": "B2C  Models: Community Provider \nProvides online environment (social \nnetwork) where people with similar \ninterests can transact, share content, and \ncommunicate  \nE.g., Facebook, MySpace, LinkedIn \nRevenue models: \nAdvertising fees, subscription fees, sales \nrevenues, transaction fees, affiliate fees \nSlide 2-19"
+        },
+        {
+          "page": 20,
+          "content": "B2B Business Models \nNet marketplaces \nE-distributor \nE-procurement \nExchange \nIndustry consortium \nPrivate industrial network \nSingle firm \nIndustry-wide \nSlide 2-20"
+        },
+        {
+          "page": 21,
+          "content": "B2B Models: E-distributor \nSupplies products and services directly to \nindividual businesses \nOwned by one company seeking to serve \nmany customers \nRevenue model: Sales of goods \nExample: Grainger.com \nSlide 2-21"
+        },
+        {
+          "page": 22,
+          "content": "B2B Models: E-procurement \nCreates and sells access to digital \nelectronic markets \nIncludes B2B service providers, application service \nproviders (ASPs) \nRevenue model: \nTransaction fees, usage fees, annual licensing fees \nExample: Ariba \nSlide 2-22"
+        },
+        {
+          "page": 23,
+          "content": "B2B Models: Exchanges \nElectronic digital marketplace where suppliers \nand purchasers conduct  transactions \nUsually owned by independent firms whose business is \nmaking a market \nUsually serve a single vertical industry \nRevenue model: Transaction, commission fees \nCreate powerful competition between \nsuppliers \nNumber has dropped dramatically \nSlide 2-23"
+        },
+        {
+          "page": 24,
+          "content": "B2B  Models: Industry Consortia \nIndustry-owned vertical marketplaces that \nserve specific industries (e.g., automobile, \nchemical) \nMore successful than exchanges \nSponsored by powerful industry players \nStrengthen traditional purchasing behavior \nExample: Exostar \n \nSlide 2-24"
+        },
+        {
+          "page": 25,
+          "content": "Private Industrial Networks \nDesigned to coordinate flow of communication \namong firms engaged in business together \nElectronic data interchange (EDI) \nSingle firm networks  \nMost common form  \nExample: Wal-Mart’s network for suppliers \nIndustry-wide networks  \nOften evolve out of industry associations  \nExample: Agentrics \n \nSlide 2-25"
+        },
+        {
+          "page": 26,
+          "content": "Business Models in Emerging  \nE-commerce Areas \nConsumer-to-consumer (C2C) \nExamples: eBay, Half.com \nPeer-to-peer (P2P) \nExamples: The Pirate Bay, Cloudmark \nM-commerce:  \nE-commerce models using wireless technologies  \nTechnology platform continues to evolve \nIn the United States, demand still highest for digital \ncontent like ring tones \n \nSlide 2-26"
+        },
+        {
+          "page": 27,
+          "content": "E-commerce Enablers: The Gold \nRush Model  \nE-commerce infrastructure companies: \nHardware, software, networking, security \nE-commerce software systems, payment systems \nMedia solutions, performance enhancement \nCRM software \nDatabases \nHosting services, etc. \n \nSlide 2-27"
+        },
+        {
+          "page": 28,
+          "content": "How the Internet and the Web \nChange Business \nE-commerce changes industry structure by \nchanging: \nBasis of competition among rivals \nBarriers to entry \nThreat of new substitute products \nStrength of suppliers \nBargaining power of buyers \n \nSlide 2-28"
+        },
+        {
+          "page": 29,
+          "content": "Industry Value Chains \nSet of activities performed by suppliers, \nmanufacturers, transporters, distributors, and \nretailers that transform raw inputs into final \nproducts and services  \nInternet reduces cost of information and \nother transactional costs \nLeads to greater operational efficiencies, \nlowering cost, prices, adding value for \ncustomers \nSlide 2-29"
+        },
+        {
+          "page": 30,
+          "content": "E-commerce and Industry Value \nChains \nFigure 2.5, Page 103 \nSlide 2-30"
+        },
+        {
+          "page": 31,
+          "content": "Firm Value Chains \nActivities that a firm engages in to create \nfinal products from raw inputs \nEach step adds value \nEffect of Internet: \nIncreases operational efficiency \nEnables product differentiation \nEnables precise coordination of steps in chain \nSlide 2-31"
+        },
+        {
+          "page": 32,
+          "content": "E-commerce and Firm Value \nChains \nFigure 2.6, Page 104 \nSlide 2-32"
+        },
+        {
+          "page": 33,
+          "content": "Business Strategy \nPlan for achieving superior long-term \nreturns on the capital invested in a \nbusiness firm  \nFour generic strategies \n1. Differentiation \n2. Cost \n3. Scope \n4. Focus \nSlide 2-33"
+        }
+      ]
+    },
+    {
+      "filename": "ch05 (1).pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "E-commerce\nbusiness. technology. society.\nSixth Edition\nSlide 5-1"
+        },
+        {
+          "page": 2,
+          "content": "Copyright © 2009 Pearson Education, Inc.\nSlide 5-2\nChapter 5\nOnline Security and Payment \nSystems"
+        },
+        {
+          "page": 3,
+          "content": "The E-commerce Security Environment\nOverall size and losses of cybercrime unclear\nReporting issues\nsurvey: 49% respondent firms detected \nsecurity breach in last year\nOf those that shared numbers, average loss $288,000\nUnderground economy marketplace\nStolen information stored on underground economy \nservers\nSlide 5-3"
+        },
+        {
+          "page": 4,
+          "content": "Types of Attacks \nAgainst \nComputer\nSystems \n(Cybercrime)\nSlide 5-4\nFigure 5.1, Page 267\nSource: Based on data from Computer \nSecurity Institute, 2009."
+        },
+        {
+          "page": 5,
+          "content": "What Is Good E-commerce Security?\nTo achieve highest degree of security\nNew technologies\nOrganizational policies and procedures\nIndustry standards and government laws\nOther factors\nTime value of money\nCost of security vs. potential loss\nSecurity often breaks at weakest link\nSlide 5-5"
+        },
+        {
+          "page": 6,
+          "content": "The E-commerce Security Environment\nFigure 5.2, Page 270\nSlide 5-6"
+        },
+        {
+          "page": 7,
+          "content": "Table 5.2, Page 271\nSlide 5-7"
+        },
+        {
+          "page": 8,
+          "content": "The Tension Between Security and \nOther Values\nSecurity vs. ease of use\nThe more security measures added, the more \ndifficult a site is to use, and the slower it becomes\nSecurity vs. desire of individuals to act \nanonymously\nUse of technology by criminals to plan crimes or \nthreaten nation-state\nSlide 5-8"
+        },
+        {
+          "page": 9,
+          "content": "Security Threats in the E-commerce \nEnvironment\nThree key points of vulnerability:\n1.\nClient\n2.\nServer\n3.\nCommunications pipeline\nSlide 5-9"
+        },
+        {
+          "page": 10,
+          "content": "A Typical \nE-commerce \nTransaction\nFigure 5.3, Page 273\nSlide 5-10\nSOURCE: Boncella, 2000."
+        },
+        {
+          "page": 11,
+          "content": "Vulnerable Points in an \nE-commerce Environment\nFigure 5.4, Page 274\nSlide 5-11\nSOURCE: Boncella, 2000."
+        },
+        {
+          "page": 12,
+          "content": "Most Common Security Threats in the \nE-commerce Environment\nMalicious code (To Be)\nViruses\nWorms\nTrojan horses\nBots, botnets\nUnwanted programs (To Be)\nBrowser parasites\nAdware\nSpyware\nSlide 5-12"
+        },
+        {
+          "page": 13,
+          "content": "Most Common Security Threats\nPhishing\nDeceptive online attempt to obtain confidential information\nSocial engineering, e-mail scams, spoofing legitimate Web sites\nUse information to commit fraudulent acts (access checking \naccounts), steal identity\nHacking and cybervandalism\nHackers vs. crackers\nCybervandalism: intentionally disrupting, defacing, destroying Web \nsite\nTypes of hackers: white hats, black hats, grey hats (To Be)\nSlide 5-13"
+        },
+        {
+          "page": 14,
+          "content": "Most Common Security Threats\nCredit card fraud/theft\nFear of stolen credit card information decreases online purchases\nHackers target merchant servers; use data to establish credit under \nfalse identity\nOnline companies at higher risk than offline\nSpoofing: misrepresenting self by using fake e-mail address \nPharming: spoofing a Web site\nRedirecting a Web link to a new, fake Web site\nSpam/junk Web sites\nSplogs\nSlide 5-14"
+        },
+        {
+          "page": 15,
+          "content": "Most Common Security Threats\nDenial of service (DoS) attack\nHackers flood site with useless traffic to overwhelm network\nDistributed denial of service (DDoS) attack\nHackers use multiple computers to attack target network\nSniffing\nEavesdropping program that monitors information traveling over a \nnetwork\nInsider jobs\nSingle largest financial threat\nPoorly designed server and client software\nSlide 5-15"
+        },
+        {
+          "page": 16,
+          "content": "Technology Solutions\nProtecting Internet communications \n(encryption)\nSecuring channels of communication \n(SSL, S-HTTP, VPNs) (To be)\nProtecting networks (firewalls)\nProtecting servers and clients \nSlide 5-16"
+        },
+        {
+          "page": 17,
+          "content": "Tools \nAvailable to \nAchieve Site \nSecurity\nFigure 5.7, Page 287\nSlide 5-17"
+        },
+        {
+          "page": 18,
+          "content": "Encryption\nEncryption\nTransforms data into cipher text readable only by \nsender and receiver\nSecures stored information and information \ntransmission\nProvides 4 of 6 key dimensions of e-commerce \nsecurity: \n1.\nMessage integrity\n2.\nNonrepudiation\n3.\nAuthentication\n4.\nConfidentiality\nSlide 5-18"
+        },
+        {
+          "page": 19,
+          "content": "Symmetric Key Encryption\nSender and receiver use same digital key to \nencrypt and decrypt message\nRequires different set of keys for each transaction\nStrength of encryption \nLength of binary key used to encrypt data\nAdvanced Encryption Standard (AES)\nMost widely used symmetric key encryption\nUses 128-, 192-, and 256-bit encryption keys\nOther standards use keys with up to 2,048 bits\nSlide 5-19"
+        },
+        {
+          "page": 20,
+          "content": "Public Key Encryption\n\nUses two mathematically related digital keys \n1.\nPublic key (widely disseminated) \n2.\nPrivate key (kept secret by owner)\n\nBoth keys used to encrypt and decrypt message\n\nOnce key used to encrypt message, same key \ncannot be used to decrypt message\n\nSender uses recipient’s public key to encrypt \nmessage; recipient uses his/her private key to \ndecrypt it\nSlide 5-20"
+        },
+        {
+          "page": 21,
+          "content": "Public Key Cryptography—A Simple Case\nFigure 5.8, Page 290\nSlide 5-21"
+        },
+        {
+          "page": 22,
+          "content": "Public Key Encryption Using Digital \nSignatures and Hash Digests\nHash function:\nMathematical algorithm that produces fixed-length number called \nmessage or hash digest\nHash digest of message sent to recipient along with \nmessage to verify integrity\nHash digest and message encrypted with recipient’s \npublic key\nEntire cipher text then encrypted with recipient’s \nprivate key—creating digital signature—for \nauthenticity, nonrepudiation\nSlide 5-22"
+        },
+        {
+          "page": 23,
+          "content": "Public Key Cryptography with Digital Signatures\nFigure 5.9, Page 291\nSlide 5-23"
+        },
+        {
+          "page": 24,
+          "content": "Digital Envelopes\nAddresses weaknesses of:\nPublic key encryption\nComputationally slow, decreased transmission speed, increased \nprocessing time\nSymmetric key encryption\nInsecure transmission lines\nUses symmetric key encryption to encrypt document \nUses public key encryption to encrypt and send \nsymmetric key\nSlide 5-24"
+        },
+        {
+          "page": 25,
+          "content": "Creating a Digital Envelope\nFigure 5.10, Page 293\nSlide 5-25"
+        },
+        {
+          "page": 26,
+          "content": "Securing Channels of Communication\nSecure Sockets Layer (SSL): \nEstablishes a secure, negotiated client-server session \nin which URL of requested document, along with \ncontents, is encrypted\nS-HTTP: \nProvides a secure message-oriented communications \nprotocol designed for use in conjunction with HTTP\nVirtual Private Network (VPN): \nAllows remote users to securely access internal \nnetwork via the Internet, using Point-to-Point \nTunneling Protocol (PPTP)\nSlide 5-26"
+        },
+        {
+          "page": 27,
+          "content": "Protecting Networks\n\nFirewall\nHardware or software that filters packets\nPrevents some packets from entering the \nnetwork based on security policy\nTwo main methods:\n1.\nPacket filters\n2.\nApplication gateways\n\nProxy servers (proxies)\n\nSoftware servers that handle all communications \noriginating from or being sent to the Internet\nSlide 5-27"
+        },
+        {
+          "page": 28,
+          "content": "Firewalls and Proxy Servers\nFigure 5.13, Page 301\nSlide 5-28"
+        },
+        {
+          "page": 29,
+          "content": "Protecting Servers and Clients\nOperating system security enhancements\nUpgrades, patches\nAnti-virus software \nEasiest and least expensive way to prevent \nthreats to system integrity\nRequires daily updates\nSlide 5-29"
+        },
+        {
+          "page": 30,
+          "content": "Management Policies, Business \nProcedures, and Public Laws\nU.S. firms and organizations spend 12% of IT \nbudget on security hardware, software, \nservices.\nManaging risk includes\nTechnology\nEffective management policies\nPublic laws and active enforcement\nSlide 5-30"
+        },
+        {
+          "page": 31,
+          "content": "A Security Plan: Management Policies\nRisk assessment\nSecurity policy\nImplementation plan\nSecurity organization\nAccess controls\nAuthentication procedures, including biometrics\nAuthorization policies, authorization management systems\nSecurity audit\nSlide 5-31"
+        },
+        {
+          "page": 32,
+          "content": "Developing an E-commerce Security Plan\nFigure 5.14, Page 303\nSlide 5-32"
+        },
+        {
+          "page": 33,
+          "content": "Types of Payment Systems\nCash\nMost common form of payment in terms of number of \ntransactions\nInstantly convertible into other forms of value without \nintermediation\nChecking transfer\nSecond most common payment form in the United States \nin terms of number of transactions\nCredit card\nCredit card associations\nIssuing banks\nProcessing centers\nSlide 5-33"
+        },
+        {
+          "page": 34,
+          "content": "E-commerce Payment Systems\nCredit cards\n55% of online payments\nDebit cards\n28% of online payments\nLimitations of online credit card payment\nSecurity\nCost\nSocial equity\nSlide 5-34"
+        },
+        {
+          "page": 35,
+          "content": "E-commerce Payment Systems\nOnline stored value systems\nBased on value stored in a consumer’s bank, checking, or \ncredit card account\nPayPal, smart cards\nDigital accumulated balance payment\nUsers accumulate a debit balance for which they are billed \nat the end of the month\nDigital checking:\nExtends functionality of existing checking accounts for use \nonline\nSlide 5-35"
+        },
+        {
+          "page": 36,
+          "content": "Table 5.6, Page 312\nSource: Adapted from MacKie-Mason and White, 1996.\nSlide 5-36"
+        },
+        {
+          "page": 37,
+          "content": "How an Online Credit Transaction Works\nFigure 5.16, Page 315\nSlide 5-37"
+        },
+        {
+          "page": 38,
+          "content": "E-commerce Payment Systems\nDigital wallets\nEmulates functionality of wallet by authenticating consumer, storing \nand transferring value, and securing payment process from consumer \nto merchant\nEarly efforts to popularize failed\nNewest effort: Google Checkout\nDigital cash\nValue storage and exchange using tokens \nMost early examples have disappeared; protocols and practices too \ncomplex\nSlide 5-38"
+        },
+        {
+          "page": 39,
+          "content": "Wireless Payment Systems\nUse of mobile handsets as payment devices well-\nestablished in Europe, Japan, South Korea\nJapanese mobile payment systems\nE-money (stored value)\nMobile debit cards\nMobile credit cards\nNot as well established yet in the United States\nMajority of purchases are digital content for use on cell \nphone\nSlide 5-39"
+        }
+      ]
+    },
+    {
+      "filename": "lecture 4 (2) (1).pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "Slide 4-1\nE-commerce\nSixth Edition"
+        },
+        {
+          "page": 2,
+          "content": "Building an E-commerce Site: \nA Systematic Approach\nMost important management \nchallenges:\nDeveloping a clear understanding of \nbusiness objectives\nKnowing how to choose the right \ntechnology to achieve those objectives\nSlide 4-2"
+        },
+        {
+          "page": 3,
+          "content": "Pieces of the Site-Building Puzzle\nMain areas where you will need to make \ndecisions:\nHuman resources and organizational capabilities\nCreating team with skill set needed to build and \nmanage a successful site\nHardware\nSoftware\nTelecommunications\nSite design\nSlide 4-3"
+        },
+        {
+          "page": 4,
+          "content": "The Systems Development Life Cycle\nMethodology for understanding business \nobjectives of a system and designing an \nappropriate solution\nFive major steps:\n1. Systems analysis/planning\n2. Systems design\n3. Building the system\n4. Testing\n5. Maintenance and evolution\nSlide 4-4"
+        },
+        {
+          "page": 5,
+          "content": "Web Site Systems Development Life Cycle\nFigure 4.2, Page 208\nSlide 4-5"
+        },
+        {
+          "page": 6,
+          "content": "System Analysis/Planning\nBusiness objectives: \nList of capabilities you want your site to have\nSystem functionalities: \nList of information system capabilities needed to \nachieve business objectives\nInformation requirements: \nInformation elements that system must produce \nin order to achieve business objectives\nSlide 4-6"
+        },
+        {
+          "page": 7,
+          "content": "Table 4.1, Page 209\nSlide 4-7"
+        },
+        {
+          "page": 8,
+          "content": "Systems Design: \nHardware and Software Platforms\n\nSystem design specification: \nDescription of main components of a system \nand their relationship to one another \n\nTwo components of system design:\n1.\nLogical design\n\nData flow diagrams, processing functions, databases\n2.\nPhysical design\n\nSpecifies actual physical, software components, models, etc.\nSlide 4-8"
+        },
+        {
+          "page": 9,
+          "content": "Logical Design for a Simple Web Site\nFigure 4.3 (a), Page 211\nSlide 4-9"
+        },
+        {
+          "page": 10,
+          "content": "Physical Design for a Simple Web Site\nFigure 4.3 (b), Page 211\nSlide 4-10"
+        },
+        {
+          "page": 11,
+          "content": "Build/Host Your Own versus \nOutsourcing\nOutsourcing: hiring vendors to provide \nservices involved in building site \nBuild own vs. outsourcing:\nBuild your own requires team with diverse skill set; choice of software \ntools; both risks and possible benefits\nHost own vs. outsourcing\nHosting: hosting company responsible for ensuring site is accessible \n24/7, for monthly fee\nCo-location: firm purchases or leases Web server (with control over its \noperation), but server is located at vendor’s facility\nSlide 4-11"
+        },
+        {
+          "page": 12,
+          "content": "Choices in Building and Hosting\nFigure 4.4, Page 212\nSlide 4-12"
+        },
+        {
+          "page": 13,
+          "content": "Testing, Implementation, and \nMaintenance\nTesting\nUnit testing\nSystem testing\nAcceptance testing\nImplementation and maintenance: \nMaintenance is ongoing\nMaintenance costs: parallel to development costs \nBenchmarking: \nis the practice of comparing business processes and performance metrics \nto industry bests and best practices from other companies\nSlide 4-13"
+        },
+        {
+          "page": 14,
+          "content": "Factors in Web Site Optimization\nFigure 4.7, Page 219\nSlide 4-14"
+        },
+        {
+          "page": 15,
+          "content": "Web Site Budgets\nFrom $5,000 to millions of dollars/year\nComponents of budget:\nSystem maintenance\nSystem development\nContent design & development\nHardware\nTelecommunications\nSoftware\nSlide 4-15"
+        },
+        {
+          "page": 16,
+          "content": "Simple versus Multi-tiered Web Site \nArchitecture\nSystem architecture \nArrangement of software, machinery, and tasks in an \ninformation system needed to achieve a specific \nfunctionality\nTwo-tier\nWeb server and database server\nMulti-tier \nWeb application servers\nBackend, legacy databases\nSlide 4-16"
+        },
+        {
+          "page": 17,
+          "content": "Two-Tier E-commerce Architecture\nFigure 4.9(a), Page 221\nSlide 4-17"
+        },
+        {
+          "page": 18,
+          "content": "Multi-tier E-commerce Architecture\nFigure 4.9(b), Page 221\nSlide 4-18"
+        },
+        {
+          "page": 19,
+          "content": "Web Server Software\nApache\nLeading Web server software (47% of market)\nWorks only with UNIX, Linux OSs\nMicrosoft’s Internet Information Server (IIS)\nSecond major Web server software (25% of \nmarket)\nWindows-based\nSlide 4-19"
+        },
+        {
+          "page": 20,
+          "content": "Table 4.3, Page 223\nSlide 4-20"
+        },
+        {
+          "page": 21,
+          "content": "Site Management Tools\nBasic tools\nIncluded in all Web servers\nVerify that links on pages are still valid \nIdentify orphan files\nThird-party software and services for \nadvanced site management\nMonitor customer purchases, marketing campaign \neffectiveness, etc.\nE.g. WebTrends Analytics 9, Google Analytics\nSlide 4-21"
+        },
+        {
+          "page": 22,
+          "content": "Dynamic Page Generation Tools\nDynamic page generation: \nContents of Web page stored as objects in database and \nfetched when needed\nCommon tools: CGI, ASP, JSP\nAdvantages\nLowers menu costs\nPermits easy online market segmentation\nEnables cost-free price discrimination\nEnables Web content management system (WCMS)\nSlide 4-22"
+        },
+        {
+          "page": 23,
+          "content": "Application Servers\nWeb application servers: \nProvide specific business functionality required for \na Web site\nType of middleware\nIsolate business applications from Web servers and \ndatabases\nSingle-function applications increasingly being \nreplaced by integrated software tools that \ncombine all functionality needed for e-commerce \nsite\nSlide 4-23"
+        },
+        {
+          "page": 24,
+          "content": "Table 4.4, Page 227\nSlide 4-24"
+        },
+        {
+          "page": 25,
+          "content": "E-commerce Merchant Server Software\nProvides basic functionality for online sales\nOnline catalog\nList of products available on Web site\nShopping cart\nAllows shoppers to set aside, review, edit selections, \nand then make purchase\nCredit card processing\nTypically works in conjunction with shopping cart\nVerifies card and puts through credit to company’s \naccount at checkout\nSlide 4-25"
+        },
+        {
+          "page": 26,
+          "content": "Merchant Server Software Packages\nIntegrated environment with most or all of \nfunctionality needed\nKey factors in selecting a package\nFunctionality\nSupport for different business models\nBusiness process modeling tools\nVisual site management and reporting\nPerformance and scalability\nConnectivity to existing business systems\nCompliance with standards\nGlobal and multicultural capability\nLocal sales tax and shipping rules\nSlide 4-26"
+        },
+        {
+          "page": 27,
+          "content": "Building Your Own E-commerce Site\nOptions for small firms\nHosted e-commerce sites, e.g., Yahoo’s \nMerchant Solutions\nSite building tools\nE-commerce templates\nOpen-source merchant server software\nEnables you to build truly custom site\nRequires programmer with expertise, time\nSlide 4-27"
+        },
+        {
+          "page": 28,
+          "content": "Choosing the Hardware for an \nE-commerce Site\nHardware platform: \nUnderlying computing equipment that system uses to \nachieve e-commerce functionality\nObjective:\nEnough platform capacity to meet peak demand without \nwasting money\nImportant to understand the different factors that \naffect speed, capacity, and scalability of a site\nSlide 4-28"
+        },
+        {
+          "page": 29,
+          "content": "Right-Sizing Your Hardware \nPlatform: The Demand Side\nDemand is the most important factor affecting speed \nof site\nFactors in overall demand:\nNumber of simultaneous users in peak periods\nNature of customer requests (user profile)\nType of content (dynamic versus static Web pages)\nRequired security\nNumber of items in inventory\nNumber of page requests\nSpeed of legacy applications\nSlide 4-29"
+        },
+        {
+          "page": 30,
+          "content": "Table 4.7, Page 232\nSlide 4-30"
+        },
+        {
+          "page": 31,
+          "content": "Right-Sizing Your Hardware \nPlatform: The Supply Side\nScalability: \nAbility of site to increase in size as demand \nwarrants\nWays to scale hardware:\nVertically\nIncrease processing power of individual components\nHorizontally\nEmploy multiple computers to share workload\nImprove processing architecture\nSlide 4-31"
+        },
+        {
+          "page": 32,
+          "content": "Table 4.8, Page 236\nSlide 4-32"
+        },
+        {
+          "page": 33,
+          "content": "Vertically Scaling a System\nFigure 4.14, Page 237\nSlide 4-33"
+        },
+        {
+          "page": 34,
+          "content": "Horizontally Scaling a System\nFigure 4.15, Page 238\nSlide 4-34"
+        },
+        {
+          "page": 35,
+          "content": "Table 4.9, Page 239\nSlide 4-35"
+        },
+        {
+          "page": 36,
+          "content": "Other E-Commerce Site Tools\nWeb site design: Basic business considerations\nEnabling customers to find and buy what they \nneed\nTools for Web site optimization\nSearch engine placement\nKeywords, page titles\nIdentify market niches, localize site\nExpertise\nLinks\nSearch engine ads\nSlide 4-36"
+        },
+        {
+          "page": 37,
+          "content": "E-commerce \nWeb Site \nFeatures \nthat Annoy \nCustomers\nFigure 4.16, Page 240\nSlide 4-37\nSOURCE: Based on data from \nHostway Corporation’s survey, \nConsumers’ Pet Peeves about \nCommercial Web Sites, Hostway \nCorporation, 2007."
+        },
+        {
+          "page": 38,
+          "content": "Table 4.10, Page 241\nSlide 4-38"
+        },
+        {
+          "page": 39,
+          "content": "Tools for Interactivity and \nActive Content\nWeb 2.0 design elements: Widgets, Mashups\nCGI (Common Gateway Interface)\nASP (Active Server Pages)\nJava, JSP, and Javascript\nActiveX and VBScript\nColdfusion\nSlide 4-39"
+        },
+        {
+          "page": 40,
+          "content": "Insight on Technology\nPumping Up the Customer Experience \nUsing AJAX and Flash\nClass Discussion\nWhat is AJAX?  How does it work?\nHow does AJAX improve on client/server \ninteractivity?\nHow does Google Maps use AJAX?\nWhat are some alternative technologies \nto achieve the same results as AJAX?\nSlide 4-40"
+        },
+        {
+          "page": 41,
+          "content": "Personalization Tools\nPersonalization\nAbility to treat people based on personal qualities \nand prior history with site\nCustomization\nAbility to change the product to better fit the \nneeds of the customer\nTools to achieve: \nCookies\nSlide 4-41"
+        },
+        {
+          "page": 42,
+          "content": "The Information Policy Set\nPrivacy policy\nSet of public statements declaring how site will \ntreat customers’ personal information that is \ngathered by site\nAccessibility rules\nSet of design objectives that ensure disabled users \ncan affectively access site\nSlide 4-42\nSlide 4-42"
+        }
+      ]
+    }
+  ],
+  "IR": [
+    {
+      "filename": "IR-Lec1- Ch1-2027.pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "Introduction to\nInformation Retrieval"
+        },
+        {
+          "page": 2,
+          "content": "Course Outline\nCourse\nNo\nCourse \nTitle\nHrs / \nweek\nYear \nSemester \nExam \nHours\nLect\nLab\nIS418\nInformation\nStorage and \nRetrieval\n2\n2\n2026/ \n2027 –\n4th Year\nFirst \n2"
+        },
+        {
+          "page": 3,
+          "content": "Assessments Methods:\n• Assessment                                       weight \n• Midterm Exam                                     20%\n• Oral Examination & Lab \n10%\n• Practical Examination                         10%\n• Final-term Examination\n60%\n• Total\n100 %"
+        },
+        {
+          "page": 4,
+          "content": "Course Resources\n• Textbook :\n– Christopher D. Manning, Prabhakar Raghavan, and \nHinrich Schütze “An Introduction to Information \nRetrieval”, Cambridge University Press, Cambridge, \nEngland, 2009\n•\nAdditional Materials:\n– Lecture Slides."
+        },
+        {
+          "page": 5,
+          "content": "Course Content\n•\nChap. 1: Introducing Information Retrieval and Web Search\n•\nChap. 2: The term vocabulary and postings lists\n•\nChap. 3: Dictionaries and tolerant retrieval\n•\nChap. 6: Scoring, term weighting and the vector space mode\n•\nChap. 8: Evaluation in information retrieval\n5\nSec. 1.1"
+        },
+        {
+          "page": 6,
+          "content": "Introduction to\nInformation Retrieval\nIntroducing Information Retrieval \nand Web Search"
+        },
+        {
+          "page": 7,
+          "content": "7\nIntroduction \nGoogle\nWeb"
+        },
+        {
+          "page": 8,
+          "content": "Basic assumptions of Information Retrieval\n•\nCollection: A set of documents over which we perform retrieval \n– Sometimes referred to as a corpus\n– Assume it is a static collection for the moment\n•\nInformation Need is the topic about which the user desires to know \nmore and is differentiated from a query\n•\nQuery is what the user conveys to the computer in an attempt to\ncommunicate the information need.\n•\nRelevance :a document is relevant if it is one that the user perceives \nas containing information of value with respect to their personal \ninformation need.\n8\nSec. 1.1"
+        },
+        {
+          "page": 9,
+          "content": "9\nThe problem ???\n• Goal = find documents relevant to the user’s \ninformation need from a large document set\nDocumen\nt \ncollection\nInfo. \nneed\nQuery\nAnswer list\nIR system\nRetrieval"
+        },
+        {
+          "page": 10,
+          "content": "Information Retrieval\n•\nInformation Retrieval (IR) is finding material (usually documents) of an \nunstructured nature (usually text) that satisfies an information need from \nwithin large collections (usually stored on computers).\n– These days we frequently think first of web search, but there are many \nother cases:\n• E-mail search\n• Searching your laptop\n• Legal information retrieval\n10"
+        },
+        {
+          "page": 11,
+          "content": "Possible Approaches of Information \nRetrieval\n•\nGrep: the simplest form of document retrieval is for a computer to do this \nsort of linear scan through documents (is called grepping through text)\n- Grep is a Unix command which perform this process\n•\nString matching (linear search in documents)\n• Slow\n• Difficult to improve\n11\nSec. 1.1"
+        },
+        {
+          "page": 12,
+          "content": "12\nMain issues in IR\n•\nQuery evaluation (or retrieval process)\n–\nTo what extent does a document correspond to a query?\n•\nSystem evaluation\n–\nHow good is a system? \n–\nAre the retrieved documents relevant? (precision)\n–\nAre all the relevant documents retrieved? (recall)"
+        },
+        {
+          "page": 13,
+          "content": "How good are the retrieved docs?\n▪\nEffectiveness: to assess the effectiveness of an IR system (the \nquality of its search results)\n▪\nA user usually wants to know two key statistics about the \nsystem’s results for a query\n▪Precision : Fraction of retrieved docs that are relevant to the \nuser’s information need\n▪Recall : Fraction of relevant docs in collection that are retrieved\n▪\nMore precise definitions and measurements to follow later\n13\nSec. 1.1"
+        },
+        {
+          "page": 14,
+          "content": "Introduction to\nInformation Retrieval\nStructured vs. Unstructured Data"
+        },
+        {
+          "page": 15,
+          "content": "IR vs. databases:\nStructured vs unstructured data\n• Structured data tends to refer to information in “tables”\n15\nEmployee\nManager\nSalary\nSmith\nJones\n50000\nChang\nSmith\n60000\n50000\nIvy\nSmith\nTypically allows numerical range and exact match (for text) queries, \ne.g., \nSalary < 60000 AND Manager = Smith."
+        },
+        {
+          "page": 16,
+          "content": "Unstructured data\n• Typically refers to free text\n• Allows\n– Keyword queries including operators\n– More sophisticated “concept” queries e.g.,\n• find all web pages dealing with drug abuse\n• Classic model for searching text documents\n16"
+        },
+        {
+          "page": 17,
+          "content": "Semi-structured data\n•\nIn fact, almost no data is “unstructured”\n•\nE.g., this slide has distinctly identified zones such as the Title and Bullets\n• … to say nothing of linguistic structure\n•\nIR is also used to facilitates “semi-structured” search such as\n– Finding a document where the\nTitle contains data AND Bullets contain search\nTitle contains Java AND Body contain threading\n•\nOr even\n- Title is about Object Oriented Programming AND Author something like \nstro*rup\n– where * is the wild-card operator\n17"
+        },
+        {
+          "page": 18,
+          "content": "Unstructured (text) vs. structured \n(database) data in 1996\n18"
+        },
+        {
+          "page": 19,
+          "content": "Unstructured (text) vs. structured \n(database) data in 2009\n19"
+        },
+        {
+          "page": 20,
+          "content": "Unstructured (text) vs. structured (database) \ndata today\n20"
+        },
+        {
+          "page": 21,
+          "content": "Introduction to\nInformation Retrieval\nTerm-document incidence matrices"
+        },
+        {
+          "page": 22,
+          "content": "An example information retrieval problem\n•\nWhich plays of Shakespeare contain the words Brutus AND Caesar but NOT\nCalpurnia?\n•\nOne could grep all of Shakespeare’s plays for Brutus and Caesar, then strip \nout lines containing Calpurnia?\n•\nWhy is that not the answer?\n– Slow (for large corpora)\n– NOT Calpurnia is non-trivial\n– Other operations (e.g., find the word Romans near countrymen) not feasible\n– Ranked retrieval (best documents to return)\n22\nSec. 1.1"
+        },
+        {
+          "page": 23,
+          "content": "An example information retrieval solution\n•\nThe way to avoid linearly scanning the texts for each query is to \nINDEX the documents in advance.\n• Index is used to introduce the basics of the Boolean retrieval model\n23\nSec. 1.1"
+        },
+        {
+          "page": 24,
+          "content": "Boolean retrieval model\n•\nSuppose we record each document (a play of Shakespeare’s) whether it \ncontains each word out of all the words Shakespeare used (Shakespeare \nused about 32,000 different words)\n•\nBoolean Retrieval Model: is a model for information retrieval in which we \ncan pose any query which is in the form of a Boolean expression of terms, \nin which terms are combined with operators AND,OR, and NOT.\n– The model views each document as a set of words\n•\nThe result is a binary term-document “incidence matrix”\n•\nTerms are the indexed units.\n- Terms are usually words\n- some of terms phrase\n24\nSec. 1.1"
+        },
+        {
+          "page": 25,
+          "content": "Term-document incidence \nmatrices\n1 if play contains \nword, 0 otherwise\nBrutus AND Caesar BUT NOT\nCalpurnia ???\nSec. 1.1"
+        },
+        {
+          "page": 26,
+          "content": "Incidence vectors\n• So we have a 0/1 vector for each term.\n• To answer query: take the vectors for Brutus, Caesar and \nCalpurnia (complemented the last) 🡺bitwise AND.\n– 110100 AND 110111 AND 101111 = 100100\n26\nSec. 1.1"
+        },
+        {
+          "page": 27,
+          "content": "Answers to query\n• Antony and Cleopatra, Act III, Scene ii\nAgrippa [Aside to DOMITIUS ENOBARBUS]: Why, Enobarbus,\nWhen Antony found Julius Caesar dead,\nHe cried almost to roaring; and he wept\nWhen at Philippi he found Brutus slain.\n• Hamlet, Act III, Scene ii\nLord Polonius: I did enact Julius Caesar I was killed i’ the\nCapitol; Brutus killed me.\n27\nSec. 1.1"
+        },
+        {
+          "page": 28,
+          "content": "Bigger collections\n•\nConsider corpus has N = 1 million documents, \n•\nEach document with about 1000 words.\n•\nEach word Average 6 bytes/word including spaces/punctuation \n•\nSize of corpus= 1million X 1000 X 6 = 6GB\n•\nNumber of distinct terms M = 500,000 distinct terms among these \ndocuments.\n•\nNumber of cells in the term-document matrix=1 million X 500,000= \n.5 trillion (too much for memory), \n•\nCan we cut down on the space?\n28\nSec. 1.1"
+        },
+        {
+          "page": 29,
+          "content": "Can’t build the term-document matrix\n• A 500K x 1M matrix has half-a-trillion 0’s and 1’s (at most .2% \nof the cells can have a 1).\n• Too many to fit computer’s memory.\n• But it has no more than one billion 1’s.\n– matrix is extremely sparse.\n– Minimum of 99.8% of the cells are zero.\n• What’s a better representation?\n– Is to record only the things that do occur\n– We only record the 1 positions.\n29\nWhy?\nSec. 1.1"
+        },
+        {
+          "page": 30,
+          "content": "Introduction to\nInformation Retrieval\nThe Inverted Index\nThe key data structure underlying \nmodern IR"
+        },
+        {
+          "page": 31,
+          "content": "Inverted index\n•\nIt sometimes called inverted file\n•\nIt keeps a dictionary of terms (sometimes referred to as vocabulary or \nlexicon).\n•\nWe use dictionary for the data structure and vocabulary for the set of terms\n•\nPosting list (inverted list): a list that records which documents the terms \noccurs in \n•\nAll the postings lists taken together are referred to as the postings\n•\nPosting (position in the document): each item in the list which records that a \nterm appeared in a document.\n•\nThe dictionary is sorted alphabetically and each postings list is sorted by \ndocument ID\n31\nSec. 1.2"
+        },
+        {
+          "page": 32,
+          "content": "Inverted index\n•\nFor each term t, we must store a list of all documents that \ncontain t.\n– Identify each doc by a docID, a document serial number\n– DocID a unique number for each document, known as the \ndocument identifier\n•\nCan we used fixed-size arrays for this?\n32\nWhat happens if the word Caesar is added to document 14? \nSec. 1.2\nBrutus\nCalpurnia\nCaesar\n1\n2\n4\n5\n6\n16 57 132\n1\n2\n4\n11\n31 45173\n2\n31\n174\n54101"
+        },
+        {
+          "page": 33,
+          "content": "Inverted index\n• We need variable-size postings lists\n– On disk, a continuous run of postings is normal and best\n– In memory, can use linked lists or variable length arrays\n• Some tradeoffs in size/ease of insertion\n33\nDictionary\nPostings\nSorted by docID (more later on why).\nPosting\nSec. 1.2\nBrutus\nCalpurnia\nCaesar\n1\n2\n4\n5\n6\n16 57 132\n1\n2\n4\n11\n31 45 173\n2\n31\n174\n54101"
+        },
+        {
+          "page": 34,
+          "content": "Inverted index construction\n1. Collect the documents to be indexed\n2. Tokenize the text, turning each document into a list \nof tokens\n3. Do linguistic preprocessing, producing a list of \nnormalized tokens, which are the indexing terms\n4. Index the documents that each term occurs in by \ncreating an inverted index, consisting of a \ndictionary and postings\n34\nSec. 1.2"
+        },
+        {
+          "page": 35,
+          "content": "Tokenizer\nToken stream\nFriends\nRomans\nCountrymen\nInverted index construction\nLinguistic modules\nModified tokens\nfriend\nroman\ncountryman\nIndexer\nInverted index\nfriend\nroman\ncountryman\n2\n4\n2\n13\n16\n1\nDocuments to\nbe indexed\nFriends, Romans, countrymen.\nSec. 1.2"
+        },
+        {
+          "page": 36,
+          "content": "Initial stages of text processing\n• Tokenization\n– Cut character sequence into word tokens\n• Deal with “John’s”, a state-of-the-art solution\n• Normalization\n– Map text and query term to same form\n• You want U.S.A. and USA to match\n• Stemming\n– We may wish different forms of a root to match\n• authorize, authorization\n• Stop words\n– We may omit very common words (or not)\n• the, a, to, of"
+        },
+        {
+          "page": 37,
+          "content": "Indexer steps: Token sequence\n•\nSequence of (Modified token, Document ID) pairs.\nI did enact Julius\nCaesar I was killed \ni’ the Capitol; \nBrutus killed me.\nDoc \n1\nSo let it be with\nCaesar. The noble\nBrutus hath told you\nCaesar was ambitious\nDoc \n2\nSec. 1.2"
+        },
+        {
+          "page": 38,
+          "content": "Indexer steps: Sort\n• Sort by terms\n– And then docID \nCore indexing step\nSec. 1.2"
+        },
+        {
+          "page": 39,
+          "content": "Indexer steps: Dictionary & Postings\n•\nMultiple term entries in a single \ndocument are merged.\n•\nSplit into Dictionary and Postings\n•\nDoc. frequency information is \nadded.\n•\nDoc. Frequency: the number of \ndocuments which contain each \nterm (which is the length of each \npostings list)\nWhy frequency?\nWill discuss later.\nSec. 1.2"
+        },
+        {
+          "page": 40,
+          "content": "Where do we pay in storage?\n40\nPointers\nTerms \nand \ncounts\nIR system \nimplementation\n• How do we \nindex efficiently?\n• How much \nstorage do we \nneed?\nSec. 1.2\nLists of \ndocIDs"
+        },
+        {
+          "page": 41,
+          "content": "What data structure should be used \nfor posting list?\n•\nA fixed  length array would be wasteful, some words occur in many \ndocuments .\n•\nTwo good alternatives are linked lists or variable length arrays.\n•\nWe can use a hybrid scheme , with linked list of fixed length arrays for \neach term.\nSec. 1.2"
+        }
+      ]
+    },
+    {
+      "filename": "IR-lect2 2027.pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "Introduction to\nInformation Retrieval\nIntroducing Information Retrieval \nand Web Search"
+        },
+        {
+          "page": 2,
+          "content": "Introduction to\nInformation Retrieval\nQuery processing with an inverted index\nProcessing Boolean queries"
+        },
+        {
+          "page": 3,
+          "content": "The index we just built\n• How do we process a query using an inverted \nindex and the basic Boolean retrieval model?\n– Later - what kinds of queries can we process?\n3\nSec. 1.3"
+        },
+        {
+          "page": 4,
+          "content": "Query processing: AND\n• Consider processing the query:\nBrutus AND Caesar\n– Locate Brutus in the Dictionary;\n• Retrieve its postings.\n– Locate Caesar in the Dictionary;\n• Retrieve its postings.\n– “Merge” the two postings (intersect the document \nsets):\n4\n128\n34\n2\n4\n8\n16\n32\n64\n1\n2\n3\n5\n8\n13\n21\nBrutu\nsCaesa\nr\nSec. 1.3"
+        },
+        {
+          "page": 5,
+          "content": "The merge\n•\nWe maintain pointers into both lists and walk through the two \npostings simultaneously, in time linear in the total number of \npostings entries.\n•\nAt each step, we compare the docID pointed to by both \npointers. If they are the same, we put that docID in the results \nlist, and advance both pointers\n•\nOtherwise we advance the pointer pointing to the smaller \ndocID. \n•\nif the lengths of the postings lists are x and y, the intersection \ntakes O(x+y) operations.\n5\nSec. 1.3"
+        },
+        {
+          "page": 6,
+          "content": "The merge\n6\nSec. 1.3\n34\n128\n2\n4\n8\n16\n32\n64\n1\n2\n3\n5\n8\n13\n21\nBrutu\nsCaesa\nr\nIntersectio\nn \n2\n8"
+        },
+        {
+          "page": 7,
+          "content": "Intersecting two postings lists\n(a “merge” algorithm)\n7"
+        },
+        {
+          "page": 8,
+          "content": "Introduction to\nInformation Retrieval\nThe Boolean Retrieval Model\n& Extended Boolean Models"
+        },
+        {
+          "page": 9,
+          "content": "Boolean queries: Exact match\n• The Boolean retrieval model is being able to ask a \nquery that is a Boolean expression:\n– Boolean Queries are queries using AND, OR and NOT\nto join query terms\n• Views each document as a set of words\n• Is precise: document matches condition or not.\n– Perhaps the simplest model to build an IR system on\n• Primary commercial retrieval tool for 3 decades. \n• Many search systems you still use are Boolean:\n– Email, library catalog, Mac OS X Spotlight\n9\nSec. 1.3"
+        },
+        {
+          "page": 10,
+          "content": "Example: WestLaw   http://www.westlaw.com/\n• Largest commercial (paying subscribers) \nlegal search service (started 1975; ranking \nadded 1992; new federated search added \n2010)\n• Tens of terabytes of data; ~700,000 users\n• Majority of users still use boolean queries\n• Example query:\n– What is the statute of limitations in cases \ninvolving the federal tort claims act?\n– LIMIT! /3 STATUTE ACTION /S FEDERAL /2 \nTORT /3 CLAIM\n• /3 = within 3 words, /S = in same sentence\n10\nSec. 1.4"
+        },
+        {
+          "page": 11,
+          "content": "Example: WestLaw   http://www.westlaw.com/\n• Another example query:\n– Requirements for disabled people to be able to \naccess a workplace\n– disabl! /p access! /s work-site work-place \n(employment /3 place\n• Note that SPACE is disjunction, not conjunction!\n• Long, precise queries; proximity operators; \nincrementally developed; not like web search\n• Many professional searchers still like Boolean \nsearch\n– You know exactly what you are getting\n• But that doesn’t mean it actually works better….\nSec. 1.4"
+        },
+        {
+          "page": 12,
+          "content": "Query optimization\n• Is the process of selecting how to organize the work of \nanswering a query so that the least amount of work \nneeds to be done by the system.\n12\nSec. 1.3"
+        },
+        {
+          "page": 13,
+          "content": "Query optimization\n•\nWhat is the best order for query processing?\n•\nConsider a query that is an AND of t terms.\n•\nFor each of the t terms, get its postings, then AND them \ntogether.\nBrutus\nCaesar\nCalpurnia\n1\n2\n3\n5\n8\n16\n21 34\n2\n4\n8\n16\n32 64 128\n13 16\nQuery: Brutus AND Calpurnia AND Caesar\n13\nSec. 1.3"
+        },
+        {
+          "page": 14,
+          "content": "Query optimization example\n• Process in order of increasing freq:\n– start with smallest set, then keep cutting further.\n14\nThis is why we kept\ndocument freq. in dictionary\nExecute the query as (Calpurnia AND Brutus) AND Caesar.\nSec. 1.3\nBrutus\nCaesar\nCalpurnia\n1\n2\n3\n5\n8\n16\n21 34\n2\n4\n8\n16\n32 64 128\n13 16"
+        },
+        {
+          "page": 15,
+          "content": "More general optimization\n• e.g., (madding OR crowd) AND (ignoble OR \nstrife)\n• Get doc. freq.’s for all terms.\n• Estimate the size of each OR by the sum of its \ndoc. freq.’s (conservative).\n• Process the query in increasing order of OR sizes.\n15\nSec. 1.3"
+        },
+        {
+          "page": 16,
+          "content": "Exercise\n•\nRecommend a query \nprocessing order for\n•\nWhich two terms should we \nprocess first?\n16\n(tangerine OR trees) AND\n(marmalade OR skies) AND\n(kaleidoscope OR eyes)"
+        },
+        {
+          "page": 17,
+          "content": "Algorithm for merging (or intersection) of a \nset of postings lists.\nINTERSECT((t1,……….tn))\n1 terms ← SORTBYINCRESINGFREQuency((t1,……tn))\n2 result ← postings (first(terms))\n3 terms ← rest(terms)\n4 while terms ≠ NIL and result ≠ NIL\n5 do result← INTERSECT( result, postings \n(first(terms)))\n6 terms ← rest(terms)\n7 return result\nAlgorithm for returns the set of documents containing each term in \n17"
+        },
+        {
+          "page": 18,
+          "content": "Introduction to\nInformation Retrieval\nPhrase queries and positional \nindexes"
+        },
+        {
+          "page": 19,
+          "content": "Phrase queries\n• We want to be able to answer queries such as \n“stanford university” – as a phrase\n• Thus the sentence “I went to university at \nStanford” is not a match. \n– The concept of phrase queries has proven easily \nunderstood by users; one of the few “advanced \nsearch” ideas that works\n– Many more queries are implicit phrase queries\n• For this, it no longer suffices to store only\n<term : docs> entries\nSec. 2.4"
+        },
+        {
+          "page": 20,
+          "content": "A first attempt: Biword indexes\n• Index every consecutive pair of terms in the text \nas a phrase\n• For example the text “Friends, Romans, \nCountrymen” would generate the biwords\n– friends romans\n– romans countrymen\n• Each of these biwords is now a dictionary term\n• Two-word phrase query-processing is now \nimmediate.\nSec. 2.4.1"
+        },
+        {
+          "page": 21,
+          "content": "Longer phrase queries\n• Longer phrases can be processed by breaking \nthem down\n• stanford university palo alto can be broken into \nthe Boolean query on biwords:\nstanford university AND university palo AND palo \nalto\nWithout the docs, we cannot verify that the docs \nmatching the above Boolean query do contain \nthe phrase.\nCan have false positives!\nSec. 2.4.1"
+        },
+        {
+          "page": 22,
+          "content": "Issues for biword indexes\n• False positives, as noted before\n• Index blowup due to bigger dictionary\n– Infeasible for more than biwords, big even for \nthem\n• Biword indexes are not the standard solution \n(for all biwords) but can be part of a \ncompound strategy\nSec. 2.4.1"
+        },
+        {
+          "page": 23,
+          "content": "Solution 2: Positional indexes\n• In the postings, store, for each term the \nposition(s) in which tokens of it appear:\n<term, number of docs containing term;\ndoc1: position1, position2 … ;\ndoc2: position1, position2 … ;\netc.>\nSec. 2.4.2"
+        },
+        {
+          "page": 24,
+          "content": "Positional index example\n• For phrase queries, we use a merge \nalgorithm recursively at the document level\n• But we now need to deal with more than \njust equality\n<be: 993427;\n1: 7, 18, 33, 72, 86, 231;\n2: 3, 149;\n4: 17, 191, 291, 430, 434;\n5: 363, 367, …>\nWhich of docs 1,2,4,5\ncould contain “to be\nor not to be”?\nSec. 2.4.2"
+        },
+        {
+          "page": 25,
+          "content": "Processing a phrase query\n• Extract inverted index entries for each distinct \nterm: to, be, or, not.\n• Merge their doc:position lists to enumerate all \npositions with “to be or not to be”.\n– to: \n• 2:1,17,74,222,551; 4:8,16,190,429,433; 7:13,23,191; ...\n– be:  \n• 1:17,19; 4:17,191,291,430,434; 5:14,19,101; ...\n• Same general method for proximity searches\nSec. 2.4.2"
+        },
+        {
+          "page": 26,
+          "content": "Proximity queries\n• LIMIT! /3 STATUTE /3 FEDERAL /2 TORT \n– Again, here, /k means “within k words of”.\n• Clearly, positional indexes can be used for \nsuch queries; biword indexes cannot.\n• Exercise: Adapt the linear merge of postings \nto handle proximity queries.  Can you make it \nwork for any value of k?\n– This is a little tricky to do correctly and efficiently\n– See Figure 2.12 of IIR\nSec. 2.4.2"
+        }
+      ]
+    },
+    {
+      "filename": "IR-lect3 2027.pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "Introduction to Information Retrieval\nIntroduction to\nInformation Retrieval\nModified from Stanford CS276 slides\nChap. 2: The term vocabulary and postings lists"
+        },
+        {
+          "page": 2,
+          "content": "Introduction to Information Retrieval\nFASTER POSTINGS MERGES:\nSKIP POINTERS/SKIP LISTS"
+        },
+        {
+          "page": 3,
+          "content": "Introduction to Information Retrieval\nRecall basic merge\n▪Walk through the two postings simultaneously, in \ntime linear in the total number of postings entries\n12\n8\n31\n2\n4\n8\n41\n48\n6\n4\n1\n2\n3\n8\n11\n17\n2\n1\nBrutu\nsCaesa\nr\n2\n8\nIf the list lengths are m and n, the merge takes O(m+n)\noperations.\nCan we do better?\nYes (if index isn’t changing too fast).\nSec. 2.3"
+        },
+        {
+          "page": 4,
+          "content": "Introduction to Information Retrieval\nAugment postings with skip pointers\n(at indexing time)\n▪Why?\n▪To skip postings that will not figure in the search \nresults.\n▪How?\n▪Where do we place skip pointers?\n128\n2\n4\n8\n41\n48\n64\n31\n1\n2\n3\n8\n11\n17\n21\n31\n11\n41\n128\nSec. 2.3"
+        },
+        {
+          "page": 5,
+          "content": "Introduction to Information Retrieval\nQuery processing with skip pointers\n128\n2\n4\n8\n41\n48\n64\n31\n1\n2\n3\n8\n11\n17\n21\n31\n11\n41\n128\nSuppose we’ve stepped through the lists until we \nprocess 8 on each list. We match it and advance.\nWe then have 41 and 11 on the lower.  11 is smaller.\nBut the skip successor of 11 on the lower list is 31, so\nwe can skip ahead past the intervening postings.\nSec. 2.3"
+        },
+        {
+          "page": 6,
+          "content": "Introduction to Information Retrieval\nPostings lists intersection with skip \npointers"
+        },
+        {
+          "page": 7,
+          "content": "Introduction to Information Retrieval\nWhere do we place skips?\n▪Tradeoff:\n▪More skips → shorter skip spans ⇒more likely to skip.  But \nlots of comparisons to skip pointers.\n▪Fewer skips → few pointer comparison, but then long skip \nspans ⇒few successful skips.\nSec. 2.3"
+        },
+        {
+          "page": 8,
+          "content": "Introduction to Information Retrieval\nPlacing skips\n▪Simple heuristic: for postings of length L, use √L\nevenly-spaced skip pointers.\n▪This ignores the distribution of query terms.\n▪Easy if the index is relatively static; harder if L keeps \nchanging because of updates.\n▪This definitely used to help; with modern hardware it \nmay not (Bahle et al. 2002) unless you’re memory-\nbased\n▪The I/O cost of loading a bigger postings list can outweigh \nthe gains from quicker in memory merging!\nSec. 2.3"
+        },
+        {
+          "page": 9,
+          "content": "Introduction to Information Retrieval\nExercise1\n9"
+        },
+        {
+          "page": 10,
+          "content": "Introduction to Information Retrieval\nExercise1(solution)\nA. How often is a skip pointer followed (i.e., p1 is advanced to skip(p1))?\n▪\n1 time, 24→75\nB. How many postings comparisons will be made by this algorithm while \nintersecting the two lists?\n▪\n18.\n▪\n3=3 ,5=5 ,9<89 ,15<89, 24<89, 75<89, 92>89, 81<89, 84<89, 89=89, 95>92, \n95<115,95<96, 97 > 96, 97=97, 99<100, 100=100, 101<115\nC. How many postings comparisons would be made if the postings lists are intersected \nwithout the use of skip pointers?\n▪\n19.\n▪\n3=3, 5=5, 89>9 ,89>15, 89>24 ,89>39, 89>60, 89>68, 89>75, 89>81, 89>84, \n89=89,95>92,95<96,96<97,97=97,99<100,100=100,101<115\n10"
+        },
+        {
+          "page": 11,
+          "content": "Introduction to Information Retrieval\nExercise2\n11"
+        },
+        {
+          "page": 12,
+          "content": "Introduction to Information Retrieval\nPHRASE QUERIES AND POSITIONAL \nINDEXES"
+        },
+        {
+          "page": 13,
+          "content": "Introduction to Information Retrieval\nPhrase queries\n▪Want to be able to answer queries such as “stanford \nuniversity” – as a phrase\n▪Thus the sentence “I went to university at Stanford”\nis not a match. \n▪The concept of phrase queries has proven easily \nunderstood by users; one of the few “advanced search” \nideas that works\n▪Many more queries are implicit phrase queries\n▪For this, it no longer suffices to store only\n<term : docs> entries\nSec. 2.4"
+        },
+        {
+          "page": 14,
+          "content": "Introduction to Information Retrieval\nA first attempt: Biword indexes\n▪Index every consecutive pair of terms in the text as a \nphrase\n▪For example the text “Friends, Romans, \nCountrymen” would generate the biwords\n▪friends romans\n▪romans countrymen\n▪Each of these biwords is now a dictionary term\n▪Two-word phrase query-processing is now \nimmediate.\nSec. 2.4.1"
+        },
+        {
+          "page": 15,
+          "content": "Introduction to Information Retrieval\nLonger phrase queries\n▪Longer phrases are processed as we did with wild-\ncards:\n▪stanford university palo alto can be broken into the \nBoolean query on biwords:\nstanford university AND university palo AND palo alto\nWithout the docs, we cannot verify that the docs \nmatching the above Boolean query do contain the \nphrase.\nCan have false positives!\nSec. 2.4.1"
+        },
+        {
+          "page": 16,
+          "content": "Introduction to Information Retrieval\nExtended biwords\n▪Parse the indexed text and perform part-of-speech-tagging \n(POST).\n▪Bucket the terms into (say) Nouns (N) and \narticles/prepositions (X).\n▪Call any string of terms of the form NX*N an extended \nbiword.\n▪Each such extended biword is now made a term in the \ndictionary.\n▪Example:  catcher in the rye\nN           X   X\nN\n▪Query processing: parse it into N’s and X’s\n▪Segment query into enhanced biwords\n▪Look up in index: catcher rye\nSec. 2.4.1"
+        },
+        {
+          "page": 17,
+          "content": "Introduction to Information Retrieval\nIssues for biword indexes\n▪False positives, as noted before\n▪Index blowup due to bigger dictionary\n▪Infeasible for more than biwords, big even for them\n▪Biword indexes are not the standard solution (for all \nbiwords) but can be part of a compound strategy\nSec. 2.4.1"
+        },
+        {
+          "page": 18,
+          "content": "Introduction to Information Retrieval\nSolution 2: Positional indexes\n▪In the postings, store, for each term the position(s) \nin which tokens of it appear:\n<term, number of docs containing term;\ndoc1: position1, position2 … ;\ndoc2: position1, position2 … ;\netc.>\nSec. 2.4.2"
+        },
+        {
+          "page": 19,
+          "content": "Introduction to Information Retrieval\nPositional index example\n▪For phrase queries, we use a merge algorithm \nrecursively at the document level\n▪But we now need to deal with more than just \nequality\n<be: 993427;\n1: 7, 18, 33, 72, 86, 231;\n2: 3, 149;\n4: 17, 191, 291, 430, 434;\n5: 363, 367, …>\nWhich of docs \n1,2,4,5\ncould contain “to be\nor not to be”?\nSec. 2.4.2"
+        },
+        {
+          "page": 20,
+          "content": "Introduction to Information Retrieval\nProcessing a phrase query\n▪Extract inverted index entries for each distinct term: \nto, be, or, not.\n▪Merge their doc:position lists to enumerate all \npositions with “to be or not to be”.\n▪to: \n▪2:1,17,74,222,551; 4:8,16,190,429,433; 7:13,23,191; ...\n▪be:  \n▪1:17,19; 4:17,191,291,430,434; 5:14,19,101; ...\n▪Same general method for proximity searches\nSec. 2.4.2"
+        },
+        {
+          "page": 21,
+          "content": "Introduction to Information Retrieval\nProximity queries\n▪LIMIT! /3 STATUTE /3 FEDERAL /2 TORT \n▪Again, here, /k means “within k words of”.\n▪Clearly, positional indexes can be used for such \nqueries; biword indexes cannot.\n▪Exercise: Adapt the linear merge of postings to \nhandle proximity queries.  Can you make it work for \nany value of k?\n▪This is a little tricky to do correctly and efficiently\n▪See Figure 2.12 of IIR\n▪There’s likely to be a problem on it!\nSec. 2.4.2"
+        },
+        {
+          "page": 22,
+          "content": "Introduction to Information Retrieval\nProximity intersection"
+        },
+        {
+          "page": 23,
+          "content": "Introduction to Information Retrieval\nPositional index size\n▪You can compress position values/offsets (in Chap. 5)\n▪Nevertheless, a positional index expands postings \nstorage substantially\n▪Nevertheless, a positional index is now standardly \nused because of the power and usefulness of phrase \nand proximity queries … whether used explicitly or \nimplicitly in a ranking retrieval system.\nSec. 2.4.2"
+        },
+        {
+          "page": 24,
+          "content": "Introduction to Information Retrieval\nPositional index size\n▪Need an entry for each occurrence, not just once per \ndocument\n▪Index size depends on average document size\n▪Average web page has <1000 terms\n▪SEC filings, books, even some epic poems … easily 100,000 \nterms\n▪Consider a term with frequency 0.1%\nWhy\n?\n100\n1\n100,000\n1\n1\n1000\nPositional postings\nPostings\nDocument size\nSec. 2.4.2"
+        },
+        {
+          "page": 25,
+          "content": "Introduction to Information Retrieval\nRules of thumb\n▪A positional index is 2–4 times as large as a non-\npositional index\n▪Compressed positional index size 35–50% of volume \nof original text\n▪Caveat: all of this holds for “English-like” languages\nSec. 2.4.2"
+        },
+        {
+          "page": 26,
+          "content": "Introduction to Information Retrieval\nCombination schemes\n▪These two approaches can be profitably \ncombined\n▪For particular phrases (“Michael Jackson”, “Britney \nSpears”) it is inefficient to keep on merging positional \npostings lists\n▪Even more so for phrases like “The Who”\n▪Williams et al. (2004) evaluate a more \nsophisticated mixed indexing scheme\n▪A typical web query mixture was executed in ¼ of the \ntime of using just a positional index\n▪It required 26% more space than having a positional \nindex alone\nSec. 2.4.3"
+        },
+        {
+          "page": 27,
+          "content": "Introduction to Information Retrieval\nResources for today’s lecture\n▪\nIIR 2\n▪\nMG 3.6, 4.3; MIR 7.2\n▪\nPorter’s stemmer: \nhttp://www.tartarus.org/~martin/PorterStemmer/\n▪\nSkip Lists theory: Pugh (1990)\n▪\nMultilevel skip lists give same O(log n) efficiency as trees\n▪\nH.E. Williams, J. Zobel, and D. Bahle. 2004. “Fast Phrase \nQuerying with Combined Indexes”, ACM Transactions on \nInformation Systems.\nhttp://www.seg.rmit.edu.au/research/research.php?author=4\n▪\nD. Bahle, H. Williams, and J. Zobel. Efficient phrase querying with an \nauxiliary index. SIGIR 2002, pp. 215-221."
+        }
+      ]
+    },
+    {
+      "filename": "IR-lect5 2027.pdf",
+      "pages": [
+        {
+          "page": 1,
+          "content": "Introduction to Information Retrieval\nIntroduction to\nInformation Retrieval\nModified from Stanford CS276 slides\nChap. 2: The term vocabulary and postings lists"
+        },
+        {
+          "page": 2,
+          "content": "Introduction to Information Retrieval\nExercise \n1.\nWhy are skip pointers not useful for queries of the form x OR Y?\n2.\nWe have a two-word query. For one term the postings list consists of the \nfollowing 16 entries:\n[4,6,10,12,14,16,18,20,22,32,47,81,120,122,157,180]\nand for the other it is the one entry postings list:  \n[47]\nWork out how many comparisons would be done to intersect the two postings lists \nwith the following two strategies. Briefly justify your answers:\nA.\nUsing the standard posting lists\nB.\nUsing postings lists stored with skip pointers, with the suggested skip \nlength of   \n2\nSec. 1.3"
+        },
+        {
+          "page": 3,
+          "content": "Introduction to Information Retrieval\nExercise \n3.\nConsider a postings intersection between this postings list, with skip pointers\nAnd the following intermediate result postings list(which hence has no skip \npointers):\nTrace through the postings intersection algorithm\nA.\nHow often is a skip pointer followed (i.e., p1 is advanced to skip (p1)) \nB.\nHow many postings comparisons will be made by this algorithm while \nintersecting the two lists?\nC.\nHow many postings comparisons would be made if the postings lists are \nintersected without the use of skip pointers?\n3\nSec. 1.3\n115\n100\n97\n96\n92\n89\n84\n81\n75\n68\n60\n39\n24\n15\n9\n5\n3\n101\n100\n99\n97\n95\n89\n5\n3"
+        },
+        {
+          "page": 4,
+          "content": "Introduction to Information Retrieval\nExercise \n4.   Shown below is a portion of the positional index in the format \nterm: \ndoc1: position1,position2 …; \ndoc2: position1, position2 …; etc.\nangels: \n2:36,174,252,651; \n4:12,22,102,432; \n7:17;\nfools: \n2:1,17,74,222;\n4:8,78,108,458; \n7:3,13,23,193; \nfear: \n2:87,704,722,901; \n4:13,43,113,433; \n7:18,328,528; \nin: \n2:3,37,76,444,851;              4:10,20,110,470,500;      7:5,15,25,195; \nrush: \n2:2,66,194,321,702;            4:9,69,149,429,569;        7:4,14,404; \nto: \n2:47,86,234,999; \n4:14,24,774,944; \n7:199,319,599,709; \ntread: \n2:57,94,333; \n4:15,35,155; \n7:20,320; \nwhere: \n2:67,124,393,1001;             4:11,41,101,421,431;      7:16,36,736;\nWhich document(s) if any meet each of the following queries, where each expression within \nquotes is a phrase query?\nA.\n“fools rush in”\nB.\n“fools rush in” AND “angels fear to tread”\n4\nSec. 1.3"
+        },
+        {
+          "page": 5,
+          "content": "Introduction to Information Retrieval\nRecap of the previous lecture\n▪The major steps in inverted index construction:\n▪Collect the documents to be indexed\n▪Tokenize the text\n▪Do linguistic preprocessing of tokens\n▪Index the documents that each term occur in\nCh. 1"
+        },
+        {
+          "page": 6,
+          "content": "Introduction to Information Retrieval\nRecap of the previous lecture\n▪Basic inverted indexes:\n▪Structure: Dictionary and Postings\n▪Key step in construction: Sorting\n▪Boolean query processing\n▪Intersection by linear time “merging”\n▪Simple optimizations\nCh. 1"
+        },
+        {
+          "page": 7,
+          "content": "Introduction to Information Retrieval\nPlan for this lecture\nElaborate basic indexing\n▪Preprocessing to form the term vocabulary\n▪Documents\n▪Tokenization\n▪What terms do we put in the index?"
+        },
+        {
+          "page": 8,
+          "content": "Introduction to Information Retrieval\nRecall the basic indexing pipeline\nTokenizer\nToken \nstream.\nFriends\nRomans\nCountrymen\nLinguistic \nmodules\nModified tokens.\nfriend\nroman\ncountryman\nIndexe\nr\nInverted index.\nfriend\nroman\ncountryman\n2\n4\n2\n13\n16\n1\nDocuments to\nbe indexed.\nFriends, Romans, countrymen."
+        },
+        {
+          "page": 9,
+          "content": "Introduction to Information Retrieval\n1. OBTAINING THE CHARACTER \nSEQUENCE IN A DOCUMENT"
+        },
+        {
+          "page": 10,
+          "content": "Introduction to Information Retrieval\nParsing a document\n▪What format is it in?\n▪pdf/word/excel/html?\n▪What language is it in?\n▪What character set is in use?\nEach of these is a classification problem, \nwhich we will study later in the course.\nBut these tasks are often done heuristically …\nSec. 2.1"
+        },
+        {
+          "page": 11,
+          "content": "Introduction to Information Retrieval\nComplications: Format/language\n▪Documents being indexed can be written in many \ndifferent languages\n▪A single index may have to contain terms of several \nlanguages.\n▪Sometimes a document or its components can \ncontain multiple languages/formats\n▪French email with a German pdf attachment.\n▪What is a unit document?\n▪A file?\n▪An email?  (Perhaps one of many in an mbox.)\n▪An email with 5 attachments?\n▪A group of files (PPT or LaTeX as HTML pages)\nSec. 2.1"
+        },
+        {
+          "page": 12,
+          "content": "Introduction to Information Retrieval\nTOKENS AND TERMS"
+        },
+        {
+          "page": 13,
+          "content": "Introduction to Information Retrieval\nTokenization\n▪Is the task of chopping a character sequence and  document \nup into pieces called tokens\n▪Throwing away a certain characters such as punctuation\n▪Tokens are referred to as terms or words\n▪A token is an instance of a sequence of characters in a \nparticular document\n▪Each such token is now a candidate for an index entry, after \nfurther processing\nSec. 2.2.1"
+        },
+        {
+          "page": 14,
+          "content": "Introduction to Information Retrieval\nTokenization\n▪Example:\n▪Input: “Friends, Romans and Countrymen”\n▪Output: Tokens\n▪Friends\n▪Romans\n▪Countrymen\n▪But what are valid tokens to emit?\nSec. 2.2.1"
+        },
+        {
+          "page": 15,
+          "content": "Introduction to Information Retrieval\nTokenization\n▪\nThe major question of the tokenization phase is what are the \ncorrect tokens to use\n▪\nYou chop on whitespace and throw away punctuation \ncharacters.\n▪\nFor example in English :\n▪What do you do about the various uses of the apostrophe \nfor possession and contradictions?\nMr. O’Neill thinks that the boy’s stories about Chile’s capital \naren’t amusing\n▪For O’Neill, which of the following is the desired tokenization?\nSec. 2.2.1\nNeill \nOneill \nO’neill \nO \nneill \nAren’t\nAren\nt \nAre \nn’t\nAren t"
+        },
+        {
+          "page": 16,
+          "content": "Introduction to Information Retrieval\nTokenization\n▪Issues in tokenization:\n▪Finland’s capital → \nFinland? Finlands? Finland’s?\n▪Hewlett-Packard → Hewlett and Packard as two \ntokens?\n▪state-of-the-art: break up hyphenated sequence.  \n▪co-education: delete\n▪lowercase, lower-case, lower case ?\n▪It can be effective to get the user to put in possible hyphens\n▪San Francisco: one token or two?  \n▪How do you decide it is one token?\nSec. 2.2.1"
+        },
+        {
+          "page": 17,
+          "content": "Introduction to Information Retrieval\nNumbers\n▪3/20/91\nMar. 20, 1991\n20/3/91\n▪55 B.C.\n▪B-52\n▪My PGP key is 324a3df234cb23e\n▪(800) 234-2333\n▪Often have embedded spaces\n▪Older IR systems may not index numbers\n▪But often very useful: think about things like looking up error \ncodes/stacktraces on the web\n▪(One answer is using n-grams: Chap. 3)\n▪Will often index “meta-data” separately\n▪Creation date, format, etc.\nSec. 2.2.1"
+        },
+        {
+          "page": 18,
+          "content": "Introduction to Information Retrieval\nTokenization: language issues\n▪French\n▪L'ensemble → one token or two?\n▪L ? L’ ? Le ?\n▪Want l’ensemble to match with un ensemble\n▪Until at least 2003, it didn’t on Google\n▪Internationalization!\n▪German noun compounds are not segmented\n▪Lebensversicherungsgesellschaftsangestellter\n▪‘life insurance company employee’\n▪German retrieval systems benefit greatly from a compound splitter \nmodule\n▪Can give a 15% performance boost for German \nSec. 2.2.1"
+        },
+        {
+          "page": 19,
+          "content": "Introduction to Information Retrieval\nTokenization: language issues\n▪Chinese and Japanese have no spaces between \nwords:\n▪莎拉波娃现在居住在美国东南部的佛罗里达。\n▪Not always guaranteed a unique tokenization \n▪Further complicated in Japanese, with multiple \nalphabets intermingled\n▪Dates/amounts in multiple formats\nフォーチュン500社は情報不足のため時間あた$500K(約6,000万円\n)\nKatakana\nHiragana\nKanji\nRomaji\nEnd-user can express query entirely in hiragana!\nSec. 2.2.1"
+        },
+        {
+          "page": 20,
+          "content": "Introduction to Information Retrieval\nTokenization: language issues\n▪Arabic (or Hebrew) is basically written right to left, \nbut with certain items like numbers written left to \nright\n▪Words are separated, but letter forms within a word \nform complex ligatures\n▪\n←  →   ← →                         ← \nstart\n▪‘Algeria achieved its independence in 1962 after 132 \nyears of French occupation.’\n▪With Unicode, the surface presentation is complex, but the \nstored form is straightforward\nSec. 2.2.1"
+        },
+        {
+          "page": 21,
+          "content": "Introduction to Information Retrieval\nStop words\n▪With a stop list, you exclude from the dictionary \nentirely the commonest words. Intuition:\n▪They have little semantic content: the, a, and, to, be\n▪There are a lot of them: ~30% of postings for top 30 words\n▪But the trend is away from doing this:\n▪Good compression techniques (Ch. 5) means the space for including \nstopwords in a system is very small\n▪Good query optimization techniques (Ch. 7) mean you pay little at \nquery time for including stop words.\n▪You need them for:\n▪Phrase queries: “King of Denmark”\n▪Various song titles, etc.: “Let it be”, “To be or not to be”\n▪“Relational” queries: “flights to London”\nSec. 2.2.2"
+        },
+        {
+          "page": 22,
+          "content": "Introduction to Information Retrieval\nNormalization to terms\n▪We need to “normalize” words in indexed text as \nwell as query words into the same form\n▪We want to match U.S.A. and USA\n▪Result is terms: a term is a (normalized) word type, \nwhich is an entry in our IR system dictionary\n▪We most commonly implicitly define equivalence \nclasses of terms by, e.g., \n▪deleting periods to form a term\n▪U.S.A., USA  🡪USA\n▪deleting hyphens to form a term\n▪anti-discriminatory, antidiscriminatory 🡪antidiscriminatory\nSec. 2.2.3"
+        },
+        {
+          "page": 23,
+          "content": "Introduction to Information Retrieval\nNormalization: other languages\n▪Accents: e.g., French résumé vs. resume.\n▪Umlauts: e.g., German: Tuebingen vs. Tübingen\n▪Should be equivalent\n▪Most important criterion:\n▪How are your users like to write their queries for these \nwords?\n▪Even in languages that standardly have accents, \nusers often may not type them\n▪Often best to normalize to a de-accented term\n▪Tuebingen, Tübingen, Tubingen 🡪Tubingen\nSec. 2.2.3"
+        },
+        {
+          "page": 24,
+          "content": "Introduction to Information Retrieval\nNormalization: other languages\n▪Normalization of things like date forms\n▪7月30日vs. 7/30\n▪Japanese use of kana vs. Chinese characters\n▪Tokenization and normalization may depend on the \nlanguage and so is intertwined with language \ndetection\n▪Crucial: Need to “normalize” indexed text as well as \nquery terms into the same form\nMorgen will ich in MIT … \nIs this\nGerman “mit”?\nSec. 2.2.3"
+        },
+        {
+          "page": 25,
+          "content": "Introduction to Information Retrieval\nCase folding\n▪Reduce all letters to lower case\n▪exception: upper case in mid-sentence?\n▪e.g., General Motors\n▪Fed vs. fed\n▪SAIL vs. sail\n▪Often best to lower case everything, since \nusers will use lowercase regardless of \n‘correct’ capitalization…\n▪Google example:\n▪Query C.A.T.  \n▪#1 result is for “cat” (well, Lolcats) not \nCaterpillar Inc.\nSec. 2.2.3"
+        },
+        {
+          "page": 26,
+          "content": "Introduction to Information Retrieval\nNormalization to terms\n▪An alternative to equivalence classing is to do \nasymmetric expansion\n▪An example of where this may be useful\n▪Enter: window\nSearch: window, windows\n▪Enter: windows\nSearch: Windows, windows, window\n▪Enter: Windows\nSearch: Windows\n▪Potentially more powerful, but less efficient\nSec. 2.2.3"
+        },
+        {
+          "page": 27,
+          "content": "Introduction to Information Retrieval\nThesauri and soundex\n▪Do we handle synonyms and homonyms?\n▪E.g., by hand-constructed equivalence classes\n▪car = automobile\ncolor = colour\n▪We can rewrite to form equivalence-class terms\n▪When the document contains automobile, index it under car-\nautomobile (and vice-versa)\n▪Or we can expand a query\n▪When the query contains automobile, look under car as well\n▪What about spelling mistakes?\n▪One approach is soundex, which forms equivalence classes \nof words based on phonetic heuristics\n▪More in lectures 3 and 9"
+        },
+        {
+          "page": 28,
+          "content": "Introduction to Information Retrieval\nLemmatization\n▪Reduce inflectional/variant forms to base form\n▪E.g.,\n▪am, are, is → be\n▪car, cars, car's, cars' → car\n▪the boy's cars are different colors → the boy car be \ndifferent color\n▪Lemmatization implies doing “proper” reduction to \ndictionary headword form\nSec. 2.2.4"
+        },
+        {
+          "page": 29,
+          "content": "Introduction to Information Retrieval\nStemming\n▪Reduce terms to their “roots” before indexing\n▪“Stemming” suggest crude affix chopping\n▪language dependent\n▪e.g., automate(s), automatic, automation all reduced to \nautomat.\nfor example compressed \nand compression are both \naccepted as equivalent to \ncompress.\nfor exampl compress and\ncompress ar both accept\nas equival to compress\nSec. 2.2.4"
+        },
+        {
+          "page": 30,
+          "content": "Introduction to Information Retrieval\nPorter’s algorithm\n▪Commonest algorithm for stemming English\n▪Results suggest it’s at least as good as other stemming \noptions\n▪Conventions + 5 phases of reductions\n▪phases applied sequentially\n▪each phase consists of a set of commands\n▪sample convention: Of the rules in a compound command, \nselect the one that applies to the longest suffix.\nSec. 2.2.4"
+        },
+        {
+          "page": 31,
+          "content": "Introduction to Information Retrieval\nTypical rules in Porter\n▪sses → ss\n▪ies → i\n▪ational → ate\n▪tional → tion\n▪\nWeight of word sensitive rules\n▪\n(m>1) EMENT →\n▪replacement → replac\n▪cement → cement\nSec. 2.2.4"
+        },
+        {
+          "page": 32,
+          "content": "Introduction to Information Retrieval\nOther stemmers\n▪Other stemmers exist, e.g., Lovins stemmer \n▪\nhttp://www.comp.lancs.ac.uk/computing/research/stemming/general/lovins.htm\n▪Single-pass, longest suffix removal (about 250 rules)\n▪\nFull morphological analysis – at most modest benefits for retrieval\n▪\nDo stemming and other normalizations help?\n▪English: very mixed results. Helps recall for some queries but harms \nprecision on others\n▪E.g., operative (dentistry) ⇒oper\n▪E.g., operational (research) ⇒oper\n▪E.g., operating (systems) ⇒oper\n▪Definitely useful for Spanish, German, Finnish, …\n▪30% performance gains for Finnish!\nSec. 2.2.4"
+        },
+        {
+          "page": 33,
+          "content": "Introduction to Information Retrieval\nLanguage-specificity\n▪Many of the above features embody transformations \nthat are\n▪Language-specific and\n▪Often, application-specific\n▪These are “plug-in” addenda to the indexing process\n▪Both open source and commercial plug-ins are \navailable for handling these\nSec. 2.2.4"
+        },
+        {
+          "page": 34,
+          "content": "Introduction to Information Retrieval\nDictionary entries – first cut\nensemble.french\n時間.japanese\nMIT.english\nmit.german\nguaranteed.english\nentries.english\nsometimes.english\ntokenization.english\nThese may be \ngrouped by \nlanguage (or \nnot…).  \nMore on this in \nranking/query \nprocessing.\nSec. 2.2"
+        }
+      ]
+    }
+  ]
+}

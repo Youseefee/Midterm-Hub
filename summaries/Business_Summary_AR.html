@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>تحليلات الأعمال (Business Analytics) - ملخص الميدتيرم التنفيذي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@page {
+    size: A4;
+    margin: 14mm 16mm 16mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 10px;
+        color: #94a3b8;
+        font-family: sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    direction: rtl;
+    text-align: right;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #92400e 0%, #d97706 100%);
+    color: #ffffff;
+    padding: 35px 35px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.hero-banner .subtitle {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.section-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #b45309;
+    border-bottom: 2.5px solid #b4530922;
+    padding-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sec-pill {
+    background: #b45309;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+ul, ol {
+    margin: 0 0 12px 0;
+    padding-right: 22px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.callout {
+    background: #f8fafc;
+    border-right: 4px solid #b45309;
+    border-left: none;
+    padding: 12px 18px;
+    border-radius: 10px 0 0 10px;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.callout.tip {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.callout.trap {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.callout-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.callout.tip .callout-title { color: #065f46; }
+.callout.warning .callout-title { color: #92400e; }
+.callout.trap .callout-title { color: #991b1b; }
+.callout:not(.tip):not(.warning):not(.trap) .callout-title { color: #b45309; }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 9px 12px;
+    text-align: right;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+.code-box {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    margin: 12px 0;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+
+.page-break {
+    page-break-after: always;
+}
+</style>
+</head>
+<body class="ar">
+
+<div class="hero-banner">
+    <h1>تحليلات الأعمال ودورة حياة البيانات (Business Analytics)</h1>
+    <div class="subtitle">الملخص الدراسي الشامل والموسوعة المرجعية التنفيذية لامتحان الميدتيرم</div>
+    <div class="hero-badges">
+        <span class="hero-badge">المادة: تحليلات الأعمال (بيزنس)</span>
+        <span class="hero-badge">أستاذ المادة: د. رحاب محمود</span>
+        <span class="hero-badge">كلية الحاسبات والذكاء الاصطناعي</span>
+        <span class="hero-badge">جامعة الفيوم</span>
+        <span class="hero-badge">نطاق المنهج: Module 1, Chapter 2, Chapter 3</span>
+    </div>
+</div>
+
+<div class="section-block">
+    <h2><span class="sec-pill">01</span> مقدمة في تحليلات البيانات (Module 1)</h2>
+    <p>أصبحت تحليلات البيانات (Data Analytics) هي المحرك الأساسي للميزة التنافسية في كبرى الشركات المعاصرة؛ فالشركات لم تعد تتنافس فقط بحجم رؤوس الأموال، بل بقدرتها على تحويل كميات البيانات التشغيلية الأولية إلى قرارات استراتيجية مدروسة.</p>
+
+    <div class="callout tip">
+        <div class="callout-title">📌 التعريف الجوهري: البيانات مقابل تحليلات البيانات</div>
+        <strong>البيانات (Data):</strong> حقائق خام، مشاهدات، قياسات، أو سجلات منفردة مجردة من السياق (مثل: فواتير المبيعات، نقرات الموقع، قراءات الحساسات). لا قيمة لها بمفردها حتى يتم تنظيمها.<br>
+        <strong>تحليلات البيانات (Data Analytics):</strong> عملية منهجية منظمة لفحص وتحليل مجموعات البيانات لاكتشاف الأنماط والاتجاهات والعلاقات واستخراج رؤى قابلة للتطبيق العملي تدعم اتخاذ قرارات أفضل.
+    </div>
+
+    <h3>1.1 مسار التحول التصاعدي: من البيانات إلى القرار الاستراتيجي</h3>
+    <table>
+        <tr>
+            <th>المرحلة</th>
+            <th>الحالة والطبيعة</th>
+            <th>مثال واقعي تطبيقي</th>
+        </tr>
+        <tr>
+            <td><strong>1. البيانات (DATA)</strong></td>
+            <td>حقائق وسجلات خام غير منظمة.</td>
+            <td>10,000 عملية بيع مسجلة في المتجر.</td>
+        </tr>
+        <tr>
+            <td><strong>2. المعلومات (INFORMATION)</strong></td>
+            <td>بيانات تم تنظيمها وترتيبها في جداول.</td>
+            <td>إجمالي مبيعات الشهر مقسمة حسب الفئات العمرية والمناطق.</td>
+        </tr>
+        <tr>
+            <td><strong>3. الرؤية والرؤى (INSIGHT)</strong></td>
+            <td>معنى ونمط علاقة مستكشف في البيانات.</td>
+            <td>اكتشاف أن العملاء بين 25 و 34 سنة في المنطقة (أ) يحققون 45% من أرباح المتجر.</td>
+        </tr>
+        <tr>
+            <td><strong>4. القرار (DECISION)</strong></td>
+            <td>إجراء عملي استراتيجي يُنفذ على أرض الواقع.</td>
+            <td>تخصيص 60% من ميزانية الإعلانات لحملات موجهة لشباب المنطقة (أ).</td>
+        </tr>
+    </table>
+
+    <h3>1.2 الفرق بين تحليل البيانات وتحليلات البيانات (Analysis vs. Analytics)</h3>
+    <table>
+        <tr>
+            <th>وجه المقارنة</th>
+            <th>تحليل البيانات (Data Analysis)</th>
+            <th>تحليلات البيانات (Data Analytics)</th>
+        </tr>
+        <tr>
+            <td><strong>التركيز الأساسي</strong></td>
+            <td>فحص البيانات السابقة للإجابة عن أسئلة محددة حدثت بالفعل.</td>
+            <td>تخصص ومظلة أوسع تشمل جمع البيانات، الإحصاء، التنبؤ، ودعم اتخاذ القرار.</td>
+        </tr>
+        <tr>
+            <td><strong>الأسئلة النموذجية</strong></td>
+            <td>"ماذا حدث؟" و "لماذا حدث ذلك؟"</td>
+            <td>"ماذا حدث؟ لماذا حدث؟ ماذا قد يحدث مستقبلاً؟ وما هو الإجراء الأفضل؟"</td>
+        </tr>
+        <tr>
+            <td><strong>النطاق المؤسسي</strong></td>
+            <td>مهمة أو نشاط تحليلي محدد.</td>
+            <td>مجال وقدرة مؤسسية شاملة ومنظومة عمل متكاملة.</td>
+        </tr>
+    </table>
+
+    <h3>1.3 الأنواع الأربعة للتحليلات (تركيز امتحاني عالي الأهمية)</h3>
+    <table>
+        <tr>
+            <th>النوع</th>
+            <th>السؤال الجوهري</th>
+            <th>الخصائص والأساليب المتبعة</th>
+            <th>مثال من واقع الأعمال</th>
+        </tr>
+        <tr>
+            <td><strong>1. الوصفية (Descriptive)</strong></td>
+            <td><em>"ماذا حدث؟"</em></td>
+            <td>تلخيص البيانات التاريخية والحالية عبر التقارير ولوحات مؤشرات الأداء (KPIs) والمتوسطات.</td>
+            <td>انخفاض إيرادات المبيعات الشهر الماضي بنسبة 12%.</td>
+        </tr>
+        <tr>
+            <td><strong>2. التشخيصية (Diagnostic)</strong></td>
+            <td><em>"لماذا حدث ذلك؟"</em></td>
+            <td>التحري عن الأسباب الجذرية والعلاقات؛ باستخدام التعمق (Drill-down)، التقسيم لشرائح، والارتباط.</td>
+            <td>الانخفاض تركز في المنطقة (أ) نتيجة تأخر وصول شحنات المورد الرئيسي للمتجر.</td>
+        </tr>
+        <tr>
+            <td><strong>3. التنبؤية (Predictive)</strong></td>
+            <td><em>"ماذا قد يحدث مستقبلاً؟"</em></td>
+            <td>استخدام البيانات التاريخية ونماذج الإحصاء والتعلم الآلي لتقدير الاحتمالات القادمة (<em>احتمالية وليست مضمونة</em>).</td>
+            <td>توقع استمرار انخفاض المبيعات بنسبة 8% في الشهر القادم إذا لم يتغير المورد.</td>
+        </tr>
+        <tr>
+            <td><strong>4. التوجيهية (Prescriptive)</strong></td>
+            <td><em>"ماذا يجب أن نفعل؟"</em></td>
+            <td>تقييم الخيارات المتاحة عبر خوارزميات الاستمثال (Optimization) والمحاكاة لتقديم أفضل قرار عملي.</td>
+            <td>تقديم عروض ترويجية فورية في المنطقة (أ) مع التعاقد المؤقت مع مورد بديل.</td>
+        </tr>
+    </table>
+
+    <div class="callout trap">
+        <div class="callout-title">⚠️ فخ امتحاني: سؤال الأعمال مقابل السؤال التحليلي</div>
+        تطرح الإدارة المشاكل بصيغة تجارية عامة (مثل: <em>"لماذا تنخفض مبيعاتنا؟"</em>). لا يبدأ المحلل بالبحث عن إجابات حتى يفكك هذا السؤال إلى <strong>أسئلة تحليلية قابلة للقياس الرياضي</strong>: <em>أي المنتجات انخفضت مبيعاتها؟ في أي المناطق والشهور؟ وما الفئات العمرية المتأثرة؟</em> التحليل الناجح يبدأ بسؤال واضح، وليس بأداة برمجية!
+    </div>
+
+    <h3>1.4 المسارات المهنية والأدوار الوظيفية</h3>
+    <ul>
+        <li><strong>محلل البيانات (Data Analyst):</strong> استعلام قواعد البيانات بـ SQL، معالجة الجداول في Excel، وبناء التقارير ومؤشرات الأداء.</li>
+        <li><strong>محلل ذكاء الأعمال (BI Analyst):</strong> بناء اللوحات التفاعلية (Power BI)، نمذجة البيانات المؤسسية، ومتابعة مؤشرات النمو.</li>
+        <li><strong>محلل المنتجات (Product Analyst):</strong> تتبع سلوك المستخدمين داخل التطبيقات والمواقع، ومتابعة قمع الشراء (Funnel) وتجارب A/B.</li>
+        <li><strong>عالم البيانات (Data Scientist):</strong> تطبيق الإحصاء المتقدم وخوارزميات تعلم الآلة المعقدة، والبرمجة الاحترافية بـ Python و R.</li>
+        <li><strong>المهارات الأساسية:</strong> التقنية (SQL, Excel, Python)، التحليلية (التفكير النقدي واكتشاف الأنماط)، الفهم التجاري (Business Acumen)، الثقافة البيانية (Data Literacy)، والتواصل الفعال.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section-block">
+    <h2><span class="sec-pill">02</span> نماذج اتخاذ القرار وحل المشكلات (Chapter 2)</h2>
+
+    <h3>2.1 ما هو النموذج؟ الأشكال الثلاثة للنماذج</h3>
+    <p><strong>النموذج (Model):</strong> هو تمثيل أو تجريد لنظام حقيقي أو فكرة أو شيء واقعي، يهدف إلى إبراز العلاقات الجوهرية واستبعاد التفاصيل غير المهمة لتسهيل دراستها.</p>
+    <table>
+        <tr>
+            <th>شكل النموذج</th>
+            <th>الوسط وطريقة التعبير</th>
+            <th>مثال توضيحي</th>
+        </tr>
+        <tr>
+            <td><strong>1. وصفي / لفظي (Written/Verbal)</strong></td>
+            <td>كلمات وجمل باللغة الطبيعية تعبر عن العلاقة.</td>
+            <td>"تزداد مبيعات المنتج بزيادة الإنفاق الإعلاني، ولكن بمعدل متناقص تدريجياً."</td>
+        </tr>
+        <tr>
+            <td><strong>2. مرئي / بياني (Visual/Graphical)</strong></td>
+            <td>رسومات بيانية، منحنيات، ومخططات تدفق.</td>
+            <td>رسم منحنى يمثل الإنفاق الإعلاني على المحور السيني وحجم المبيعات على الصادي.</td>
+        </tr>
+        <tr>
+            <td><strong>3. رياضي (Mathematical)</strong></td>
+            <td>معادلات وعلاقات رياضية محددة برموز وحسابات.</td>
+            <td>$S = a - b &times; P + c &times; A$</td>
+        </tr>
+    </table>
+
+    <h3>2.2 معمارية نماذج القرار: من المدخلات إلى المخرجات</h3>
+    <p>يتعامل نموذج القرار مع ثلاثة أنواع من المدخلات لحساب مخرجات الأداء:</p>
+    <ul>
+        <li><strong>البيانات (Data):</strong> حقائق وثوابت عددية معلومة (مثل: تكلفة استئجار المصنع الثابتة، معدل ضريبة المبيعات).</li>
+        <li><strong>المتغيرات غير القابلة للتحكم (Uncontrollable Variables):</strong> عوامل بيئية واقتصادية تفرضها قوى السوق أو الطبيعة ولا تملك الإدارة سلطة التحكم فيها (مثل: التضخم، أسعار المنافسين، درجات الحرارة).</li>
+        <li><strong>متغيرات القرار (Decision Variables):</strong> متغيرات تخضع مباشرة لسيطرة الإدارة وتختار قيمتها بإرادتها (مثل: سعر بيع المنتج، الكمية المنتجة، ميزانية الإعلانات).</li>
+        <li><strong>المخرجات (Outputs):</strong> مقاييس الأداء المحسوبة الناتجة عن النموذج (مثل: إجمالي الأرباح، العائد على الاستثمار، الإيرادات).</li>
+    </ul>
+
+    <h3>2.3 النماذج الوصفية: التكلفة الإجمالية ونقطة التعادل</h3>
+    <div class="card">
+        <div class="callout-title">📐 نموذج نقطة التعادل (Break-Even Model)</div>
+        <p>تتألف التكلفة الإجمالية في محاسبة التكاليف من التكاليف الثابتة ($F$) والتكاليف المتغيرة للوحدة ($V$):</p>
+        <p style="font-family: Consolas; font-size: 13px; font-weight: 700; color: #b45309;">التكلفة الإجمالية: TC = F + V &times; Q</p>
+        <p>بينما يُحسب الإيراد الإجمالي ($TR$) بضرب سعر بيع الوحدة ($P$) في الكمية المباعة ($Q$):</p>
+        <p style="font-family: Consolas; font-size: 13px; font-weight: 700; color: #b45309;">الإيراد الإجمالي: TR = P &times; Q</p>
+        <p><strong>نقطة التعادل ($Q_{BE}$):</strong> هي حجم المبيعات الذي يتساوى عنده الإيراد الكلي مع التكلفة الكلية ($TR = TC$)، وتكون الأرباح عنده صفراً (لا ربح ولا خسارة):</p>
+        <div class="code-box">
+P * Q = F + V * Q
+Q * (P - V) = F
+Q_BE = F / (P - V)
+
+حيث:
+  (P - V) = هامش المساهمة للوحدة (Unit Contribution Margin)
+        </div>
+        <p><strong>مثال رقمي:</strong> إذا كانت التكاليف الثابتة $F = 100,000\$، وتكلفة الوحدة المتغيرة $V = 20\$، وسعر البيع $P = 60\$:<br>
+        هامش المساهمة للوحدة = $60 - 20 = 40\$$.<br>
+        كمية التعادل $Q_{BE} = rac{100,000}{40} = 2,500	ext{ وحدة}$.</p>
+    </div>
+
+    <h3>2.4 نماذج التنبؤ بالطلب: الخطية وغير الخطية</h3>
+    <ul>
+        <li><strong>نموذج الطلب الخطي:</strong> $D = a - b &times; P$<br>
+        يفترض انخفاضاً ثابتاً ومطلقا في كمية الطلب مقابل كل دولار زيادة في السعر ($b$ يمثل ميل المنحنى).</li>
+        <li><strong>نموذج الطلب غير الخطي:</strong> $D = a &times; P^{-b}$<br>
+        في هذه الدالة الأسية، يمثل الأس $-b$ مباشرة <strong>مرونة الطلب السعرية الثابتة (Price Elasticity)</strong>.</li>
+    </ul>
+
+    <h3>2.5 نماذج القرار التوجيهية: الحتمية مقابل الاحتمالية</h3>
+    <table>
+        <tr>
+            <th>نوع النموذج</th>
+            <th>طبيعة المدخلات</th>
+            <th>أبرز الأساليب والأمثلة</th>
+        </tr>
+        <tr>
+            <td><strong>النموذج الحتمي (Deterministic)</strong></td>
+            <td>كافة المدخلات والمعاملات والقيود معروفة بـ <strong>يقين تام وبدون شك</strong>.</td>
+            <td>البرمجة الخطية (Linear Programming)، نماذج التعادل الحسابية.</td>
+        </tr>
+        <tr>
+            <td><strong>النموذج العشوائي / الاحتمالي (Stochastic)</strong></td>
+            <td>واحد أو أكثر من المدخلات يخضع لـ <strong>المخاطرة أو الاحتمالات وتوزيعات عدم اليقين</strong>.</td>
+            <td>محاكاة مونت كارلو (Monte Carlo Simulation)، أشجار القرار، ونماذج التنبؤ بالمخاطر.</td>
+        </tr>
+    </table>
+
+    <h3>2.6 المراحل الست لحل المشكلات واتخاذ القرار</h3>
+    <ol>
+        <li><strong>1. إدراك المشكلة (Recognizing):</strong> شعور الإدارة بوجود فجوة ملحوظة بين الأداء الفعلي الحالي والهدف المنشود (مثل ملاحظة انخفاض المبيعات أو زيادة شكاوى العملاء).</li>
+        <li><strong>2. تعريف المشكلة (Defining):</strong> أصعب المراحل وأكثرها حساسية! الفصل بين الأعراض السطحية والأسباب الجذرية، وتوضيح أهداف العمل والقيود الحاكمة.</li>
+        <li><strong>3. هيكلة المشكلة (Structuring):</strong> تحويل المشكلة لنموذج رسمي؛ تحديد متغيرات القرار، المتغيرات الخارجية، القيود، والافتراضات.</li>
+        <li><strong>4. تحليل المشكلة (Analyzing):</strong> حل النموذج وتطبيق الخوارزميات والمعادلات الرياضية للوصول للحلول الممكنة.</li>
+        <li><strong>5. تفسير النتائج وتحليل الحساسية (Interpreting):</strong> ترجمة المخرجات الحسابية إلى قرارات تجارية واقعية؛ وإجراء تحليل "ماذا لو" (Sensitivity Analysis) لفحص متانة الحل عند تغير المدخلات.</li>
+        <li><strong>6. تطبيق وتنفيذ الحل (Implementing):</strong> وضع القرار موضع التطبيق الميداني في العمليات؛ وتدريب الموظفين وإدارة التغيير ومتابعة التغذية الراجعة.</li>
+    </ol>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section-block">
+    <h2><span class="sec-pill">03</span> دورة حياة تحليلات البيانات وحوكمة المشاريع (Chapter 3)</h2>
+    <p>تفشل الكثير من مشاريع علوم وتحليلات البيانات ليس بسبب خطأ في الخوارزمية، بل لغياب منهجية العمل وضعف التنسيق مع أصحاب المصلحة. توفر <strong>دورة حياة تحليلات البيانات (Data Analytics Lifecycle)</strong> إطاراً علمياً من 6 مراحل لضمان النجاح.</p>
+
+    <h3>3.1 الأدوار السبعة الرئيسية في فريق مشروع التحليلات</h3>
+    <table>
+        <tr>
+            <th>الدور الوظيفي</th>
+            <th>المسؤولية الجوهرية</th>
+            <th>المهام والمخرجات الرئيسية</th>
+        </tr>
+        <tr>
+            <td><strong>1. راعي المشروع (Project Sponsor)</strong></td>
+            <td>المالك التنفيذي وموفر التمويل.</td>
+            <td>يحدد الرؤية التجارية، يوفر الميزانية والدعم السياسي، ويقيم العائد الاستثماري (ROI).</td>
+        </tr>
+        <tr>
+            <td><strong>2. مستخدم الأعمال (Business User)</strong></td>
+            <td>خبير المجال والمستفيد النهائي.</td>
+            <td>يقدم الخبرة الميدانية، يوضح مسارات العمل، ويستخدم المخرجات في اتخاذ القرارات اليومية.</td>
+        </tr>
+        <tr>
+            <td><strong>3. مدير المشروع (Project Manager)</strong></td>
+            <td>التتبع وحوكمة الجداول الزمنية.</td>
+            <td>يضمن تسليم مراحل المشروع في مواعيدها وضمن الميزانية ويدير العقبات.</td>
+        </tr>
+        <tr>
+            <td><strong>4. محلل ذكاء الأعمال (BI Analyst)</strong></td>
+            <td>فهم سياق التقارير المؤسسية.</td>
+            <td>يمتلك دراية عميقة بمستودعات البيانات القديمة، قواعد احتساب مؤشرات الأداء، والتقارير التاريخية.</td>
+        </tr>
+        <tr>
+            <td><strong>5. مسؤول قواعد البيانات (DBA)</strong></td>
+            <td>تهيئة البيئة وحماية الصلاحيات.</td>
+            <td>يهيئ خوادم قواعد البيانات، يمنح الصلاحيات بأمان، ويحمي قواعد بيانات الإنتاج من التوقف.</td>
+        </tr>
+        <tr>
+            <td><strong>6. مهندس البيانات (Data Engineer)</strong></td>
+            <td>بناء خطوط الأنابيب ومعالجة البيانات.</td>
+            <td>يبني خطوط استخلاص ونقل البيانات (ETL/ELT)، ينظف البيانات، ويجهز بيئة صندوق الرمل التحليلي.</td>
+        </tr>
+        <tr>
+            <td><strong>7. عالم البيانات (Data Scientist)</strong></td>
+            <td>النمذجة الرياضية وبناء الخوارزميات.</td>
+            <td>يصمم النماذج الإحصائية والتعلم الآلي، يهندس الخصائص، ويختبر دقة النتائج الرياضية.</td>
+        </tr>
+    </table>
+
+    <h3>3.2 المراحل الست لدورة حياة التحليلات بالتفصيل</h3>
+    
+    <div class="card">
+        <h3 style="color: #b45309; margin-top: 0;">المرحلة 1: الاستكشاف (Discovery)</h3>
+        <ul>
+            <li><strong>الهدف:</strong> استيعاب بيئة الأعمال، فحص البيانات المتاحة، وتقييم الموارد والعتاد البشري والتقني.</li>
+            <li><strong>الأنشطة:</strong> إجراء المقابلات، صياغة <em>الفرضيات المبدئية (Initial Hypotheses)</em>، وتأطير المشكلة التجارية في تحدٍ تحليلي وصياغة خطة التحليل (Analytic Plan).</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3 style="color: #b45309; margin-top: 0;">المرحلة 2: تجهيز البيانات (Data Preparation)</h3>
+        <ul>
+            <li><strong>الهدف:</strong> جمع وتنظيف وفحص وتكييف البيانات لتصبح جاهزة للنمذجة.</li>
+            <li><strong>صندوق الرمل التحليلي (Analytic Sandbox):</strong> بيئة عمل منعزلة وعالية الكفاءة تتيح لفريق التحليلات استكشاف وتعديل كميات البيانات الضخمة دون المساس بأنظمة الإنتاج التشغيلية للشركة.</li>
+            <li><strong>الأنشطة:</strong> عمليات ETL/ELT، معالجة القيم المفقودة والمتطرفة، والتحليل الاستكشافي للبيانات (EDA).</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3 style="color: #b45309; margin-top: 0;">المرحلة 3: تخطيط النموذج (Model Planning)</h3>
+        <ul>
+            <li><strong>الهدف:</strong> تحديد المنهجيات والتقنيات ومسار التدريب للنماذج.</li>
+            <li><strong>الأنشطة:</strong> اختيار الخصائص (Feature Selection)، فحص التوزيعات الإحصائية، واختيار عائلة الخوارزميات المناسبة (انحدار، تصنيف، تجميع).</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3 style="color: #b45309; margin-top: 0;">المرحلة 4: بناء وتدريب النموذج (Model Building)</h3>
+        <ul>
+            <li><strong>الهدف:</strong> تطوير وتنفيذ خوارزميات التعلم الآلي الرياضية.</li>
+            <li><strong>الأنشطة:</strong> تقسيم البيانات إلى مجموعات <strong>تدريب واختبار (Train / Test split)</strong> لمنع فرط التخصيص (Overfitting)؛ وضبط معايير النموذج بدقة.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3 style="color: #b45309; margin-top: 0;">المرحلة 5: إيصال النتائج (Communicate Results)</h3>
+        <ul>
+            <li><strong>الهدف:</strong> تحديد هل نجح المشروع أم فشل مقارنة بالفرضيات المبدئية المحددة في البداية.</li>
+            <li><strong>الأنشطة:</strong> احتساب القيمة التجارية والعائد المالي (ROI)، وتلخيص النتائج بأسلوب يلائم كل طرف من أصحاب المصلحة.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3 style="color: #b45309; margin-top: 0;">المرحلة 6: التشغيل الميداني (Operationalize)</h3>
+        <ul>
+            <li><strong>الهدف:</strong> نشر النموذج المعتمد داخل بيئة العمل الحية بالشركة.</li>
+            <li><strong>الأنشطة:</strong> تشغيل <strong>مشروع تجريبي استرشادي (Pilot Project)</strong> في قطاع محدود لاختبار الاستقرار، تسليم الأكواد وخطوط النقل، ومراقبة تغير سلوك البيانات مع الوقت (Drift).</li>
+        </ul>
+    </div>
+
+    <h3>3.3 المخرجات الأربعة لتلبية احتياجات أصحاب المصلحة</h3>
+    <table>
+        <tr>
+            <th>المخرج النهائي</th>
+            <th>الجمهور المستهدف</th>
+            <th>طبيعة المحتوى والأسلوب</th>
+        </tr>
+        <tr>
+            <td><strong>1. العرض التنفيذي</strong></td>
+            <td>راعي المشروع وكبار القادة</td>
+            <td>تركيز كامل على الأثر المالي والاستراتيجي وتوصيات العمل، وخالٍ تماماً من تفاصيل الأكواد المعقدة.</td>
+        </tr>
+        <tr>
+            <td><strong>2. العرض التشغيلي</strong></td>
+            <td>مستخدمو الأعمال والمحللون</td>
+            <td>كيفية دمج مخرجات النموذج في المهام اليومية ومؤشرات الأداء التشغيلية.</td>
+        </tr>
+        <tr>
+            <td><strong>3. التقرير الفني الشامل</strong></td>
+            <td>علماء البيانات والباحثون النظراء</td>
+            <td>توثيق رياضي كامل: المعادلات، منحنيات التدريب، معايير الدقة، وكافة الافتراضات.</td>
+        </tr>
+        <tr>
+            <td><strong>4. الأكواد والوثائق التقنية</strong></td>
+            <td>مهندسو البيانات ومسؤولو DevOps</td>
+            <td>أكواد برمجية معلقة وموثقة، خطوط نقل البيانات، واجهات API، ونظام تنبيهات مراقبة الأداء.</td>
+        </tr>
+    </table>
+
+    <div class="callout tip">
+        <div class="callout-title">💡 وصية امتحانية ذهبية: التكرار في دورة الحياة (Iteration)</div>
+        دورة حياة تحليلات البيانات <strong>تكرارية وليست خطية جامدة</strong>. إذا أثبتت المرحلة 5 أن النموذج لم يحقق الدقة المطلوبة أو فشل في إثبات الفرضية، يعود الفريق فوراً للمرحلة 2 (لإعادة تنظيف البيانات وهندسة خصائص جديدة) أو المرحلة 3 (لاختيار خوارزميات بديلة).
+    </div>
+</div>
+
+</body>
+</html>

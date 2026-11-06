@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>استرجاع وتخزين المعلومات (IR) - ملخص الميدتيرم الشامل</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@page {
+    size: A4;
+    margin: 14mm 16mm 16mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 10px;
+        color: #94a3b8;
+        font-family: sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    direction: rtl;
+    text-align: right;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #312e81 0%, #6366f1 100%);
+    color: #ffffff;
+    padding: 35px 35px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.hero-banner .subtitle {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.section-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #3730a3;
+    border-bottom: 2.5px solid #3730a322;
+    padding-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sec-pill {
+    background: #3730a3;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+ul, ol {
+    margin: 0 0 12px 0;
+    padding-right: 22px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.callout {
+    background: #f8fafc;
+    border-right: 4px solid #3730a3;
+    border-left: none;
+    padding: 12px 18px;
+    border-radius: 10px 0 0 10px;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.callout.tip {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.callout.trap {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.callout-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.callout.tip .callout-title { color: #065f46; }
+.callout.warning .callout-title { color: #92400e; }
+.callout.trap .callout-title { color: #991b1b; }
+.callout:not(.tip):not(.warning):not(.trap) .callout-title { color: #3730a3; }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 9px 12px;
+    text-align: right;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+.code-box {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    margin: 12px 0;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+
+.page-break {
+    page-break-after: always;
+}
+</style>
+</head>
+<body class="ar">
+
+<div class="hero-banner">
+    <h1>استرجاع وتخزين المعلومات (Information Storage and Retrieval - IR)</h1>
+    <div class="subtitle">الملخص الدراسي الشامل والموسوعة المرجعية التنفيذية لامتحان الميدتيرم</div>
+    <div class="hero-badges">
+        <span class="hero-badge">المادة: استرجاع المعلومات</span><span class="hero-badge">النطاق: الفصول 1، 2، 3، 5</span><span class="hero-badge">الفهرس المعكوس</span><span class="hero-badge">مؤشرات القفز</span><span class="hero-badge">التجذير والتوحيد</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="sec-pill">01</span> مقدمة في استرجاع المعلومات والفهرس المعكوس (الفصل 1)</h2>
+    <div class="callout tip">
+        <div class="callout-title">التعريف الأكاديمي المعتمد لاسترجاع المعلومات (IR)</div>
+        هو عملية العثور على مواد (غالباً وثائق) ذات طبيعة غير مهيكلة (غالباً نصوص مكتوبة) تلبي حاجة معلوماتية لدى المستخدم من بين مجموعات تخزينية ضخمة مخزنة على الحواسيب.
+    </div>
+
+    <h3>1.1 الفرق بين الحاجة المعلوماتية والاستعلام (Need vs. Query)</h3>
+    <ul>
+        <li><strong>الحاجة المعلوماتية (Information Need):</strong> الموضوع أو الرغبة المعرفية الكامنة في عقل المستخدم (مثال: "أريد معرفة هل شرب القهوة يرفع ضغط الدم").</li>
+        <li><strong>الاستعلام (Query):</strong> الكلمات الفعلية التي يكتبها المستخدم في مربع البحث للتعبير عن تلك الحاجة (مثال: `coffee blood pressure`). وغالباً ما تكون غير دقيقة أو مبهمة.</li>
+    </ul>
+
+    <h3>1.2 استرجاع المعلومات مقابل قواعد البيانات التقليدية</h3>
+    <table>
+        <tr>
+            <th>وجه المقارنة</th>
+            <th>قواعد البيانات العلائقية (RDBMS)</th>
+            <th>أنظمة استرجاع المعلومات (IR)</th>
+        </tr>
+        <tr>
+            <td><strong>طبيعة البيانات</strong></td>
+            <td>بيانات مهيكلة في جداول وحقول محددة وصارمة.</td>
+            <td>نصوص حرة غير مهيكلة أو شبه مهيكلة.</td>
+        </tr>
+        <tr>
+            <td><strong>المطابقة والدلالة</strong></td>
+            <td>دلالات واضحة ومطابقة منطقية صارمة (Exact Match).</td>
+            <td>لغة طبيعية غامضة ومطابقة تقريبية تعتمد على الترتيب والصلة (Relevance Ranking).</td>
+        </tr>
+        <tr>
+            <td><strong>لغة الاستعلام</strong></td>
+            <td>لغة تصريحية دقيقة (SQL).</td>
+            <td>كلمات مفتاحية، معاملات بوليانية، أو نصوص حرة.</td>
+        </tr>
+        <tr>
+            <td><strong>النتائج المسترجعة</strong></td>
+            <td>مجموعة غير مرتبة تطابق شرط WHERE تماماً.</td>
+            <td>قائمة وثائق مرتبة تنازلياً حسب درجة الأهمية والملاءمة للبحث.</td>
+        </tr>
+    </table>
+
+    <h3>1.3 مصفوفة وقوع الكلمات (Term-Document Matrix) ومأزق التناثر</h3>
+    <ul>
+        <li><strong>المصفوفة الثنائية:</strong> جدول يمثل صفوفه الكلمات ($V$) وأعمدته الوثائق ($N$)؛ وتوضع القيمة 1 إذا وردت الكلمة في الوثيقة و 0 إذا لم ترد.</li>
+        <li><strong>مأزق التناثر (Sparsity Problem):</strong> إذا كان لدينا 1,000,000 وثيقة و 500,000 كلمة، فإن حجم المصفوفة هو 500 مليار خانة! أكثر من 99.9% منها أصفار. تخزين هذه المصفوفة كثيفة البيانات في الذاكرة مستحيل تماماً وهدر هائل للموارد.</li>
+    </ul>
+
+    <h3>1.4 الفهرس المعكوس (Inverted Index): الهيكل المعياري</h3>
+    <p>يقوم الفهرس المعكوس بحفظ الخانات غير الصفرية فقط، بحيث يربط كل كلمة بقائمة أرقام الوثائق التي ظهرت فيها.</p>
+    <ul>
+        <li><strong>القاموس (Dictionary / Vocabulary):</strong> قائمة تحوي كافة الكلمات الفريدة مرتبة أبجدياً مع تردد الوثائق ($df$). يوضع غالباً في الذاكرة العشوائية (RAM) باستخدام B-Tree أو Hash Table.</li>
+        <li><strong>قوائم النشر (Postings Lists):</strong> لكل كلمة في القاموس، قائمة متغيرة الطول بأرقام الوثائق (DocIDs) التي وردت فيها تلك الكلمة، وتكون مرتبة <strong>تصاعدياً دائماً</strong>.</li>
+    </ul>
+
+    <h3>1.5 مراحل بناء الفهرس المعكوس</h3>
+    <ol>
+        <li><strong>تحليل الوثائق (Parsing):</strong> استخراج سلاسل الحروف وتحديد الترميز (UTF-8) من الملفات المختلفة (PDF, HTML, Word).</li>
+        <li><strong>التقطيع اللغوي (Tokenization):</strong> تقسيم تدفق الحروف إلى وحدات نصية وكلمات منفصلة (Tokens).</li>
+        <li><strong>المعالجة اللغوية (Linguistic Processing):</strong> توحيد حالة الحروف، معالجة كلمات التوقف، والتجذير لتحويل الكلمات إلى مفردات معيارية (Terms).</li>
+        <li><strong>الفهرسة والترتيب:</strong> استخراج أزواج (الكلمة، رقم الوثيقة)، ترتيبها أبجدياً حسب الكلمة ثم تصاعدياً حسب رقم الوثيقة، وتجميعها في قوائم النشر.</li>
+    </ol>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">02</span> معالجة الاستعلامات البوليانية، التحسين واستعلامات العبارات (المحاضرة 2)</h2>
+
+    <h3>2.1 خوارزمية دمج وتقاطع قوائم النشر (Postings Merge)</h3>
+    <p>لتقييم استعلام بولياني يحتوي على AND (مثل `Brutus AND Caesar`)، يتم المرور المتزامن على قائمتي النشر المرتبتين باستخدام مؤشرين ($p_1, p_2$).</p>
+
+    <div class="code-box">
+Algorithm INTERSECT(p1, p2):
+    answer = []
+    while p1 != NIL and p2 != NIL:
+        if DocID(p1) == DocID(p2):
+            answer.append(DocID(p1))
+            p1 = p1.next
+            p2 = p2.next
+        else if DocID(p1) < DocID(p2):
+            p1 = p1.next
+        else:
+            p2 = p2.next
+    return answer
+    </div>
+
+    <div class="callout tip">
+        <div class="callout-title">التعقيد الزمني (Time Complexity)</div>
+        نظراً لأن القائمتين مرتبتان تصاعدياً مسبقاً، فإن كل مؤشر يمر على القائمة مرة واحدة خطياً. التعقيد الزمني هو <strong>O(x + y)</strong> خطي تماماً، حيث x و y هما طولا القائمتين.
+    </div>
+
+    <h3>2.2 تحسين ترتيب تنفيذ الاستعلامات البوليانية</h3>
+    <ul>
+        <li><strong>قاعدة الترتيب الأمثل:</strong> في استعلامات AND المتعددة، يتم ترتيب الكلمات دائماً وفقاً لـ <strong>التردد التصاعدي للوثائق (Increasing df)</strong>؛ أي البدء بأقصر قوائم النشر طولاً.</li>
+        <li><strong>مثال امتحاني شهير:</strong>
+            <ul>
+                <li>`Calpurnia` ($df = 4$)</li>
+                <li>`Brutus` ($df = 20,000$)</li>
+                <li>`Caesar` ($df = 40,000$)</li>
+                <li>الترتيب الأمثل للتنفيذ هو: `(Calpurnia AND Brutus) AND Caesar`. لأن التقاطع الأول ينتج قائمة لا تزيد عن <strong>4 وثائق فقط</strong>! وتقاطع 4 وثائق مع قائمة Caesar يستغرق زمناً يقارب الصفر.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>2.3 استعلامات العبارات المركبة: فهرس الزوجين مقابل الفهرس الموضعي</h3>
+    <table>
+        <tr>
+            <th>نوع الفهرس</th>
+            <th>طريقة العمل</th>
+            <th>المزايا والعيوب</th>
+        </tr>
+        <tr>
+            <td><strong>فهرس الكلمتين (Biword Index)</strong></td>
+            <td>فهرسة كل كلمتين متجاورتين كمفردة مستقلة في القاموس (مثل "friends romans", "romans countrymen").</td>
+            <td><strong>المزايا:</strong> سرعة فائقة للعبارات المكونة من كلمتين.<br><strong>العيوب:</strong> انفجار هائل في حجم القاموس ($V^2$)، احتمالية ظهور نتائج خاطئة للعبارات الطويلة، وعجزه عن استعلامات التقارب.</td>
+        </tr>
+        <tr>
+            <td><strong>الفهرس الموضعي (Positional Index)</strong></td>
+            <td>حفظ أرقام مواقع الكلمات بدقة داخل كل وثيقة: `term -> docID: <pos1, pos2, ...>`.</td>
+            <td><strong>المزايا:</strong> يحل استعلامات العبارات مهما كان طولها واستعلامات التقارب (`/k`). وهو الحل المعياري المتبع عالمياً.<br><strong>العيوب:</strong> تضخم قوائم النشر من 2 إلى 4 أضعاف (35-50% من حجم النص الأصلي).</td>
+        </tr>
+        <tr>
+            <td><strong>المخطط الهجين (Combination Scheme)</strong></td>
+            <td>فهرسة العبارات شديدة التكرار كزوجين (مثل "New York")، واستخدام الفهرس الموضعي للعبارات النادرة.</td>
+            <td>أفضل توازن ممكن بين سرعة التنفيذ وسعة التخزين.</td>
+        </tr>
+    </table>
+
+    <h3>2.4 استعلامات التقارب (Proximity Queries: `/k`)</h3>
+    <p>استعلام مثل `employment /3 federal` يبحث عن الوثائق التي تظهر فيها الكلمتان بفاصل لا يتجاوز 3 كلمات بأي ترتيب ($|pos_1 - pos_2| \le 3$). يقوم الفهرس الموضعي بفحص تطابق رقم الوثيقة ثم مقارنة الفارق بين المواقع.</p>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">03</span> تسريع دمج القوائم ومؤشرات القفز (المحاضرة 3)</h2>
+
+    <h3>3.1 آلية مؤشرات القفز (Skip Pointers) وأهميتها</h3>
+    <p>عند تقاطع قائمتين طويلتين، يؤدي الفحص المتسلسل خطوة بخطوة إلى هدر فحص آلاف الوثائق التي لن تتطابق. تقوم <strong>مؤشرات القفز</strong> بإنشاء مسارات اختصار للأمام لتخطي أجزاء كبيرة من القائمة دفعة واحدة.</p>
+
+    <div class="callout tip">
+        <div class="callout-title">قاعدة اتخاذ قرار القفز</div>
+        أثناء مقارنة المؤشرين $p_1$ و $p_2$: إذا كان لدى $p_1$ مؤشر قفز وكان <strong>skip(p1) &le; DocID(p2)</strong>، يتم القفز مباشرة إلى `skip(p1)`! أما إذا كان `skip(p1) > DocID(p2)`، فلا نقفز (لتجنب تجاوز وثيقة مطابقة محتملة) ونتقدم خطوة واحدة عادية.
+    </div>
+
+    <h3>3.2 موضع وضع مؤشرات القفز: القاعدة الذهبية</h3>
+    <ul>
+        <li><strong>المعادلة والمفاضلة:</strong> زيادة مؤشرات القفز تعطي فرصاً أكبر للقفز ولكنها تزيد مساحة التخزين وتكلفة الفحص؛ وقلة المؤشرات توفر التخزين ولكنها تفوت فرص التخطي السريع.</li>
+        <li><strong>القاعدة القياسية (Heuristic):</strong> في قائمة نشر طولها $P$، يتم وضع مؤشرات قفز متباعدة بمسافات متساوية كل <strong>&radic;P</strong> عنصر!</li>
+        <li><strong>مثال عملي:</strong> إذا كان طول القائمة $P = 10,000$ وثيقة، نضع مؤشر قفز كل $\sqrt(10, 0) = 100$ عنصر، مما ينتج حوالي 100 مؤشر قفز.</li>
+        <li><strong>محدودية الفهارس الديناميكية:</strong> تعمل مؤشرات القفز بكفاءة مثالية على الفهارس الثابتة (Static)؛ أما في الفهارس المتغيرة بكثرة، فإن عمليات الإضافة والحذف تفسد المسافات وتتطلب إعادة حساب مكلفة.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">04</span> مفردات القاموس والتوحيد المعياري للنصوص (المحاضرة 5)</h2>
+
+    <h3>4.1 تحديات التقطيع النصي (Tokenization)</h3>
+    <ul>
+        <li><strong>ترميز المحارف (Character Encodings):</strong> التعرف الصحيح على ترميز الملفات (UTF-8, ASCII) لتجنب ظهور رموز غير مفهومة (Mojibake).</li>
+        <li><strong>الشرطات الواصلة (Hyphens):</strong> الكلمات المركبة (مثل `Hewlett-Packard`, `state-of-the-art`) تفرض تحدياً: هل تُفهرس ككلمة واحدة أم تُفصل إلى كلمات مستقلة؟</li>
+        <li><strong>الفاصلة العليا (Apostrophes):</strong> الاختصارات (`aren't`) وحالات الملكية (`children's`) والأسماء الأيرلندية (`O'Neill`).</li>
+        <li><strong>الأرقام والصيغ:</strong> أرقام الطرازات (`Boeing 747`)، التواريخ، والصيغ الكيميائية تمتلك قدرة تمييزية فائقة ويجب الحفاظ عليها في الفهرس.</li>
+        <li><strong>خصوصية اللغات:</strong> الصينية واليابانية لا تحتويان على مسافات بين الكلمات وتتطلبان تقطيعاً صرفياً أو N-grams؛ بينما تلتحق بلغة الضاد (العربية) سوابق لواصق مثل الواو وأداة التعريف "ال" في بداية الأسماء.</li>
+    </ul>
+
+    <h3>4.2 كلمات التوقف (Stop Words): التقليد القديم مقابل التوجه الحديث</h3>
+    <ul>
+        <li><strong>كلمات التوقف:</strong> كلمات وظيفية شديدة التكرار وقليلة الفائدة الدلالية في التمييز بين الوثائق (مثل: `the`, `a`, `in`, `of`, `to`, `من`, `في`, `على`).</li>
+        <li><strong>المنهج التقليدي:</strong> حذف قائمة من 30 إلى 150 كلمة توقف لتوفير مساحة التخزين على القرص.</li>
+        <li><strong>التوجه الحديث في محركات البحث الكبرى:</strong> الإبقاء على كافة كلمات التوقف في الفهرس، وذلك لسببين: (1) تقنيات الضغط الحديثة حلت مشكلة المساحة؛ (2) يحتاج المستخدمون للبحث عن عبارات دقيقة تتكون معظمها من كلمات توقف (مثل `"To be or not to be"`, `"Let it be"`).</li>
+    </ul>
+
+    <h3>4.3 توحيد النصوص: حالة الأحرف ومجموعات التكافؤ</h3>
+    <ul>
+        <li><strong>مجموعات التكافؤ (Equivalence Classes):</strong> دمج الأشكال المتعددة للكلمة الواحدة في رمز موحد (مثل تحويل `U.S.A.` و `USA` إلى مصطلح واحد).</li>
+        <li><strong>توحيد حالة الأحرف (Case Folding):</strong> تحويل الحروف الإنجليزية جميعها إلى أحرف صغيرة (Lowercase). محاذيره: قد يخلط بين أسماء الأعلام والكلمات العادية (مثل `US` كدولة و `us` كضمير؛ و `Bush` كرئيس و `bush` كشجيرة).</li>
+        <li><strong>خوارزمية ساوندكس (Soundex):</strong> خوارزمية صوتية تحول الكلمات إلى رموز وفقاً لنطقها الصوتي باللغة الإنجليزية لمطابقة الأسماء المتشابهة صوتياً رغم اختلاف كتابتها (مثل `Smith` و `Smyth`).</li>
+    </ul>
+
+    <h3>4.4 التجذير الصرفي مقابل التحليل المعجمي (Stemming vs. Lemmatization)</h3>
+    <table>
+        <tr>
+            <th>وجه المقارنة</th>
+            <th>التجذير الصرفي الخشن (Stemming)</th>
+            <th>التحليل المعجمي الدقيق (Lemmatization)</th>
+        </tr>
+        <tr>
+            <td><strong>المنهجية</strong></td>
+            <td>قص تجريبي وسريع لنهايات الكلمات وزوائدها دون قواعد نحوية أو قواميس.</td>
+            <td>تحليل صرفي ونحوي كامل بالاعتماد على معجم وقواعد وسياق موقع الكلمة (POS).</td>
+        </tr>
+        <tr>
+            <td><strong>المخرج الناتج</strong></td>
+            <td>غالباً ما ينتج جذراً غير حقيقي ولا يمثل كلمة في القاموس (مثل: `automate, automatic, automation` &rarr; `automat`).</td>
+            <td>ينتج دائماً الكلمة المعجمية الأصلية الصحيحة نحوياً وتسمى <strong>Lemma</strong>.</td>
+        </tr>
+        <tr>
+            <td><strong>حساسية السياق</strong></td>
+            <td>أعمى للسياق النحوي ويعامل كل كلمة بنفس القاعدة الجامدة.</td>
+            <td>يدرك السياق؛ فيحول `saw` إلى `see` إذا وردت كفعل، ويتركها `saw` (منشار) إذا كانت اسماً. ويحول `better` إلى `good`.</td>
+        </tr>
+        <tr>
+            <td><strong>السرعة والتعقيد</strong></td>
+            <td>فائق السرعة وخفيف جداً على الذاكرة ومناسب للأنظمة الضخمة.</td>
+            <td>معقد حوسبياً ويستهلك معالجة وذاكرة أكبر لقراءة القواميس النحوية.</td>
+        </tr>
+    </table>
+
+    <h3>4.5 خوارزمية بورتر (Porter Stemmer) وأخطاء التجذير</h3>
+    <ul>
+        <li><strong>خوارزمية بورتر (1980):</strong> الخوارزمية القياسية الأكثر انتشاراً لتجذير الإنجليزية، وتتألف من 5 مراحل متتالية من قواعد قص اللواحق استناداً لمقياس المقاطع الصوتية $m$.</li>
+        <li><strong>خطأ الإفراط في التجذير (Over-stemming):</strong> قص أجزاء زائدة مما يؤدي لدمج كلمات مختلفة المعنى في جذر واحد خطأً (مثل دمج `universe` و `university` إلى `univers`؛ أو `policy` و `police` إلى `polic`)، مما يقلل من دقة البحث (Precision).</li>
+        <li><strong>خطأ التقصير في التجذير (Under-stemming):</strong> الفشل في إرجاع الكلمات المرتبطة لنفس الجذر المشترك (مثل عدم دمج `adhere` و `adhesion`)، مما يضر بمعدل الاستدعاء (Recall).</li>
+        <li><strong>قانون هيبس (Heaps' Law):</strong> حجم المفردات $V$ ينمو باستمرار مع نمو حجم الوثائق $N$ وفق قانون القوة $V = k N^eta$ (حيث $eta pprox 0.4 - 0.6$)، مما يؤكد أن مفردات القاموس لا تتوقف أبداً عن التوسع.</li>
+    </ul>
+</div>
+
+</body>
+</html>

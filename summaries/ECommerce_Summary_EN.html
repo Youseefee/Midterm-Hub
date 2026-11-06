@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>E-Commerce - Comprehensive Midterm Summary</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@page {
+    size: A4;
+    margin: 14mm 16mm 16mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 10px;
+        color: #94a3b8;
+        font-family: sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+    direction: ltr;
+    text-align: left;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #047857 0%, #10b981 100%);
+    color: #ffffff;
+    padding: 35px 35px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.hero-banner .subtitle {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.section-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #065f46;
+    border-bottom: 2.5px solid #065f4622;
+    padding-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sec-pill {
+    background: #065f46;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+ul, ol {
+    margin: 0 0 12px 0;
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.callout {
+    background: #f8fafc;
+    border-left: 4px solid #065f46;
+    border-right: none;
+    padding: 12px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.callout.tip {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.callout.trap {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.callout-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.callout.tip .callout-title { color: #065f46; }
+.callout.warning .callout-title { color: #92400e; }
+.callout.trap .callout-title { color: #991b1b; }
+.callout:not(.tip):not(.warning):not(.trap) .callout-title { color: #065f46; }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    border-left: 1px solid #e2e8f0;
+}
+
+th:last-child, td:last-child {
+    border-left: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+.code-box {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    margin: 12px 0;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+
+.page-break {
+    page-break-after: always;
+}
+</style>
+</head>
+<body>
+
+<div class="hero-banner">
+    <h1>E-Commerce: Business, Technology, Society</h1>
+    <div class="subtitle">Executive Midterm Study Guide & Core Knowledge Architecture</div>
+    <div class="hero-badges">
+        <span class="hero-badge">Course: E-Commerce</span><span class="hero-badge">Scope: Lec 1, Ch 2, Ch 4, Ch 5</span><span class="hero-badge">Business Models</span><span class="hero-badge">Security & PKI</span><span class="hero-badge">Online Payments</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="sec-pill">01</span> Introduction to Electronic Commerce & Fundamentals (Lecture 1)</h2>
+    <p>Electronic Commerce (EC) represents digitally enabled commercial transactions between and among organizations and individuals. It transforms traditional business through telecommunications and the Internet.</p>
+
+    <h3>1.1 Diverse Perspectives of E-Commerce</h3>
+    <table>
+        <tr>
+            <th>Perspective</th>
+            <th>Core Definition & Scope</th>
+        </tr>
+        <tr>
+            <td><strong>Commercial (Trading)</strong></td>
+            <td>Provides the capability of buying, selling, and exchanging products, services, and information over computer networks.</td>
+        </tr>
+        <tr>
+            <td><strong>Business Process</strong></td>
+            <td>Doing business electronically by completing workflows over networks, substituting digital information for physical processes.</td>
+        </tr>
+        <tr>
+            <td><strong>Service</strong></td>
+            <td>A tool that addresses the desire of firms, consumers, and management to cut service costs while improving the quality of goods and increasing delivery speed.</td>
+        </tr>
+        <tr>
+            <td><strong>Collaborative & Learning</strong></td>
+            <td>Enables online collaborative work, inter-organizational learning, information sharing, and global team coordination.</td>
+        </tr>
+    </table>
+
+    <h3>1.2 Major Classifications by Market Relationship</h3>
+    <ul>
+        <li><strong>B2C (Business-to-Consumer):</strong> Online businesses selling merchandise or services directly to individual consumers (e.g. Amazon, Walmart.com). Highly visible to the public.</li>
+        <li><strong>B2B (Business-to-Business):</strong> Businesses selling to other businesses (e.g. Grainger, Boeing parts procurement). <strong>Accounts for the vast majority of overall e-commerce dollar volume</strong>.</li>
+        <li><strong>C2C (Consumer-to-Consumer):</strong> Consumers selling directly to other consumers, facilitated by a platform (e.g. eBay auctions, Craigslist, Etsy).</li>
+        <li><strong>C2B (Consumer-to-Business):</strong> Consumers setting prices or requirements and businesses competing to satisfy them (e.g. Priceline's "Name Your Own Price", reverse auctions).</li>
+        <li><strong>Intra-business EC (B2E - Business-to-Employee):</strong> Internal corporate portal activities, training, benefits selection, and employee self-service on private intranets.</li>
+        <li><strong>Non-business EC:</strong> Religious, academic, non-profit institutions, and social agencies using the Internet to reduce costs and accept contributions.</li>
+        <li><strong>B2G & G2C:</strong> Business-to-Government (public e-procurement) and Government-to-Citizen (online tax filing, renewing driver's licenses).</li>
+    </ul>
+
+    <h3>1.3 Pure vs. Partial E-Commerce (The 3 Dimensions)</h3>
+    <p>EC is classified along 3 dimensions: <strong>(1) The Product/Service</strong>, <strong>(2) The Business Process</strong>, and <strong>(3) The Delivery Agent/Intermediary</strong>.</p>
+    <ul>
+        <li><strong>Traditional Brick-and-Mortar:</strong> All 3 dimensions are physical (physical store, cash payment, physical product).</li>
+        <li><strong>Partial E-Commerce:</strong> At least one dimension is digital while others are physical. Example: buying a physical paperback book online on Amazon and having FedEx deliver it.</li>
+        <li><strong>Pure E-Commerce:</strong> All 3 dimensions are entirely digital. Example: buying and downloading an ebook, software license, or streaming music directly online.</li>
+    </ul>
+
+    <h3>1.4 Benefits and Limitations of E-Commerce</h3>
+    <table>
+        <tr>
+            <th>Dimension</th>
+            <th>Key Benefits</th>
+            <th>Limitations & Barriers</th>
+        </tr>
+        <tr>
+            <td><strong>For Organizations</strong></td>
+            <td>Global market reach, significant cost reductions, 24/7 continuous operations, rapid time to market, mass customization, and supply chain disintermediation.</td>
+            <td><strong>Technical:</strong> Bandwidth constraints, software integration with legacy ERP systems, evolving security standards.</td>
+        </tr>
+        <tr>
+            <td><strong>For Consumers</strong></td>
+            <td>Unmatched convenience, massive product selection, instantaneous price comparison, customer reviews, and immediate delivery of digital goods.</td>
+            <td><strong>Non-Technical:</strong> Lack of trust, privacy and security fears, inability to physically inspect items before purchase, resistance to change.</td>
+        </tr>
+        <tr>
+            <td><strong>For Society</strong></td>
+            <td>Enables telecommuting (reducing traffic congestion and pollution), delivers education/healthcare to remote rural communities.</td>
+            <td>Digital divide, potential loss of local community retail jobs.</td>
+        </tr>
+    </table>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">02</span> E-Commerce Business Models & Concepts (Chapter 2)</h2>
+    <div class="callout tip">
+        <div class="callout-title">Definition of a Business Model</div>
+        A <strong>Business Model</strong> is a set of planned activities designed to result in a profit in a marketplace. A business plan documents this model, and an e-commerce business model leverages Internet unique qualities.
+    </div>
+
+    <h3>2.1 The 8 Key Elements of a Business Model</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Element</th>
+            <th>Key Question Addressed</th>
+            <th>Core Concept & Examples</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><strong>Value Proposition</strong></td>
+            <td>Why should the customer buy from you?</td>
+            <td>Defines how a product satisfies customer needs (convenience, lower price, personalization).</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>Revenue Model</strong></td>
+            <td>How will you earn money and generate profits?</td>
+            <td>Advertising, Subscription, Transaction Fee, Sales, Affiliate models.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>Market Opportunity</strong></td>
+            <td>What marketspace do you intend to serve, and what is its size?</td>
+            <td>Realistic financial potential in the designated target niche.</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>Competitive Environment</strong></td>
+            <td>Who else occupies your intended marketspace?</td>
+            <td>Direct competitors (similar products) and indirect competitors (substitute products).</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>Competitive Advantage</strong></td>
+            <td>What special advantages does your firm possess?</td>
+            <td>First-mover advantages, brand prestige, lower cost structures, patents, network effects.</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><strong>Market Strategy</strong></td>
+            <td>How do you plan to promote your products to attract customers?</td>
+            <td>Pricing, promotion channels, social media campaigns, SEO, distribution.</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><strong>Organizational Development</strong></td>
+            <td>What types of organizational structures are necessary?</td>
+            <td>Department divisions, reporting hierarchies, and functional workflow allocation.</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><strong>Management Team</strong></td>
+            <td>What experience and background are important for leaders?</td>
+            <td>Crucial for venture capital; demonstrates operational competence and execution ability.</td>
+        </tr>
+    </table>
+
+    <h3>2.2 Major B2C Business Models</h3>
+    <ul>
+        <li><strong>Portal:</strong> Offers search tools and integrated content packages. <em>Horizontal Portals</em> (Yahoo, MSN) cover diverse topics. <em>Vertical Portals / Vortals</em> (Sailnet, WebMD) focus on niche industries.</li>
+        <li><strong>E-tailer:</strong> Online retail store. Includes <em>Virtual Merchants</em> (pure-play like Amazon/Wayfair), <em>Clicks-and-Mortar</em> (multi-channel like Walmart, Best Buy), <em>Catalog Merchants</em> (L.L. Bean), and <em>Manufacturer-Direct</em> (Dell, Apple).</li>
+        <li><strong>Content Provider:</strong> Distributes digital content (news, music, video). Monetizes via subscriptions (Netflix), micropayments, syndication, and advertising (WSJ, CNN).</li>
+        <li><strong>Transaction Broker:</strong> Processes online transactions (Expedia, E*Trade). Value proposition is saving consumers time and money through instant execution.</li>
+        <li><strong>Market Creator:</strong> Uses Internet technology to create digital platforms where buyers and sellers meet, negotiate, and transact (eBay, Uber, Airbnb).</li>
+        <li><strong>Service Provider:</strong> Sells online services (Google Maps, Carbonite cloud backups, Dropbox).</li>
+        <li><strong>Community Provider:</strong> Creates digital environments where people with similar interests congregate, share content, and communicate (Facebook, LinkedIn, iVillage).</li>
+    </ul>
+
+    <h3>2.3 Major B2B Business Models</h3>
+    <ul>
+        <li><strong>E-distributor:</strong> Supplies indirect MRO goods (maintenance, repair, and operations) directly to thousands of business buyers (e.g. W.W. Grainger).</li>
+        <li><strong>E-procurement:</strong> Digital markets creating and selling access to digital procurement software (e.g. Ariba).</li>
+        <li><strong>Exchanges (Net Marketplaces):</strong> Independently owned digital marketplaces connecting thousands of commercial suppliers and buyers for spot purchasing.</li>
+        <li><strong>Industry Consortia:</strong> Industry-owned vertical markets owned by a small group of dominant purchasing enterprises.</li>
+        <li><strong>Private Industrial Networks (PTX):</strong> Digital networks coordinating supply chain communications and collaborative design between a dominant firm (e.g. Walmart) and its key tier-1 suppliers.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">03</span> Building an E-Commerce Presence: Websites, Mobile Sites, and Apps (Chapter 4)</h2>
+    <p>Developing an e-commerce presence requires synthesizing business objectives, technical infrastructure, software engineering, and mobile responsiveness.</p>
+
+    <h3>3.1 The Systems Development Life Cycle (SDLC) - 5 Steps</h3>
+    <table>
+        <tr>
+            <th>Step</th>
+            <th>Phase Name</th>
+            <th>Primary Activities & Deliverables</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><strong>Systems Analysis / Planning</strong></td>
+            <td>Identify <strong>Business Objectives</strong> (what the site should do), <strong>System Functionalities</strong> (features needed), and <strong>Information Requirements</strong> (data elements required).</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>Systems Design</strong></td>
+            <td><strong>Logical Design:</strong> Data flow diagrams (DFD), entity-relationship models, processing logic.<br><strong>Physical Design:</strong> Hardware servers, software platforms, database engines, and telecommunications specs.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>Building the System</strong></td>
+            <td>Decide between <em>In-house</em> build vs. <em>Outsourcing</em> development; choose hosting architecture (Self-hosting, Co-location, or Cloud/Managed Hosting).</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>Testing</strong></td>
+            <td><strong>Unit Testing:</strong> Testing individual program modules.<br><strong>System Testing:</strong> Testing the entire integrated multi-tier system under load.<br><strong>Acceptance Testing:</strong> Verifying system satisfies client business requirements.</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>Implementation & Maintenance</strong></td>
+            <td>24/7/365 site monitoring, continuous security patching, benchmarking, database reorganization, and ongoing feature updates. <em>Dominates long-term lifetime costs</em>.</td>
+        </tr>
+    </table>
+
+    <h3>3.2 Multi-Tier Architecture & Performance Optimization</h3>
+    <ul>
+        <li><strong>Multi-Tier Hierarchy:</strong>
+            <ul>
+                <li><strong>Tier 1 (Client):</strong> Browser or mobile app rendering HTML/CSS/JS.</li>
+                <li><strong>Tier 2 (Web Server):</strong> Serves static assets, handles SSL/TLS termination, routes dynamic queries (e.g. Apache, NGINX).</li>
+                <li><strong>Tier 3 (Application Server):</strong> Processes core business logic, shopping carts, taxes, and inventory workflows.</li>
+                <li><strong>Tier 4 (Database Server):</strong> Manages relational/ACID data persistence, indexes, and transactions.</li>
+            </ul>
+        </li>
+        <li><strong>Optimization Strategies:</strong> Caching in memory (Redis, Memcached), Content Delivery Networks (CDNs like Cloudflare), database connection pooling, image compression, and minimizing HTTP round-trip requests.</li>
+    </ul>
+
+    <h3>3.3 Mobile Presence: Responsive Web Design vs. Native Apps</h3>
+    <table>
+        <tr>
+            <th>Approach</th>
+            <th>Technology & Architecture</th>
+            <th>Pros & Cons</th>
+        </tr>
+        <tr>
+            <td><strong>Responsive Web Design (RWD)</strong></td>
+            <td>Fluid grid layouts, flexible CSS media queries. Single codebase for all devices.</td>
+            <td><strong>Pros:</strong> Cost-effective, universal reach, single maintenance URL.<br><strong>Cons:</strong> Limited access to native phone hardware, requires persistent connection.</td>
+        </tr>
+        <tr>
+            <td><strong>Native Mobile App</strong></td>
+            <td>Compiled platform code (Swift for iOS, Kotlin for Android).</td>
+            <td><strong>Pros:</strong> Peak performance, full hardware integration (GPS, camera, push notifications, biometrics), offline capabilities.<br><strong>Cons:</strong> High development cost, requires app store approval and dual codebases.</td>
+        </tr>
+    </table>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">04</span> E-Commerce Security and Payment Systems (Chapter 5)</h2>
+
+    <h3>4.1 The 6 Dimensions of E-Commerce Security</h3>
+    <table>
+        <tr>
+            <th>Security Dimension</th>
+            <th>Customer's Perspective</th>
+            <th>Merchant's Perspective</th>
+        </tr>
+        <tr>
+            <td><strong>Integrity</strong></td>
+            <td>Has the information I transmitted or received been altered?</td>
+            <td>Has data on the site or in the database been modified by unauthorized parties?</td>
+        </tr>
+        <tr>
+            <td><strong>Non-repudiation</strong></td>
+            <td>Can a merchant deny having received my payment?</td>
+            <td>Can a customer order goods and falsely deny having placed the order?</td>
+        </tr>
+        <tr>
+            <td><strong>Authenticity</strong></td>
+            <td>Am I dealing with the real merchant and authentic website?</td>
+            <td>What is the real identity of the customer making this purchase?</td>
+        </tr>
+        <tr>
+            <td><strong>Confidentiality</strong></td>
+            <td>Can unauthorized third parties view my messages or credit card details?</td>
+            <td>Are corporate proprietary trade secrets and consumer data protected from snooping?</td>
+        </tr>
+        <tr>
+            <td><strong>Privacy</strong></td>
+            <td>Can I control the use and distribution of my personal profile data?</td>
+            <td>Is personal information collected responsibly and compliant with privacy laws?</td>
+        </tr>
+        <tr>
+            <td><strong>Availability</strong></td>
+            <td>Can I access the e-commerce website whenever I need to shop?</td>
+            <td>Is the server infrastructure resilient against crashes, outages, and DoS attacks?</td>
+        </tr>
+    </table>
+
+    <h3>4.2 Major Security Threats</h3>
+    <ul>
+        <li><strong>Malware:</strong> Viruses (require host file execution), Worms (self-replicating autonomous programs), Trojan Horses (disguised malicious programs), Ransomware (extortion via data encryption).</li>
+        <li><strong>Botnets:</strong> Networks of compromised zombie computers used to launch massive Distributed Denial of Service (DDoS) attacks.</li>
+        <li><strong>Phishing & Spoofing:</strong> Deceptive emails and counterfeit clone websites designed to steal credentials. Pharming redirects domain traffic directly.</li>
+        <li><strong>Hacking:</strong> White hats (ethical security researchers), Black hats (malicious criminals), Grey hats (unauthorized researchers without criminal intent).</li>
+        <li><strong>Sniffing & Man-in-the-Middle (MitM):</strong> Eavesdropping on unencrypted network traffic or intercepting communication streams.</li>
+    </ul>
+
+    <h3>4.3 Technology Solutions: Cryptography & PKI</h3>
+    <table>
+        <tr>
+            <th>Technology</th>
+            <th>Mechanism</th>
+            <th>Primary Application</th>
+        </tr>
+        <tr>
+            <td><strong>Symmetric Encryption</strong></td>
+            <td>Single shared secret key used for both encryption and decryption (AES, DES). Fast.</td>
+            <td>Bulk payload data encryption. <em>Key distribution is the major challenge.</em></td>
+        </tr>
+        <tr>
+            <td><strong>Asymmetric Encryption (Public Key)</strong></td>
+            <td>Two mathematically linked keys: Public Key (shared freely for encryption) and Private Key (secret, for decryption).</td>
+            <td>Secure key exchange, digital signatures (RSA, ECC). Solves key distribution.</td>
+        </tr>
+        <tr>
+            <td><strong>Digital Signature</strong></td>
+            <td>Message digest hashed and encrypted with the sender's Private Key.</td>
+            <td>Guarantees <strong>Integrity</strong> and <strong>Non-repudiation</strong>. Verified using sender's public key.</td>
+        </tr>
+        <tr>
+            <td><strong>Digital Certificate & CA</strong></td>
+            <td>Digital document issued by a trusted Certificate Authority (CA) binding a public key to an entity's verified identity.</td>
+            <td>Guarantees <strong>Authenticity</strong>, enabling HTTPS/SSL/TLS communication.</td>
+        </tr>
+        <tr>
+            <td><strong>SSL/TLS & HTTPS</strong></td>
+            <td>Combines asymmetric handshake for session key exchange and symmetric encryption for data stream.</td>
+            <td>Secures client-server communication channels over the open Web.</td>
+        </tr>
+    </table>
+
+    <h3>4.4 Online Payment Systems & Protocols</h3>
+    <ul>
+        <li><strong>Credit Card Transaction Flow:</strong> Consumer -> Merchant Gateway -> Acquiring Bank -> Card Brand Network (Visa/MC) -> Issuing Bank (authorizes fund transfer).</li>
+        <li><strong>Digital Wallets (Apple Pay, PayPal, Google Pay):</strong> Store payment details securely. Modern wallets use <strong>Tokenization</strong>: replacing actual 16-digit card numbers with dynamic, one-time encrypted tokens.</li>
+        <li><strong>3D Secure (Verified by Visa, Mastercard Identity Check):</strong> Adds multi-factor authentication (OTP/biometrics) during checkout, shifting chargeback fraud liability to the card issuer.</li>
+        <li><strong>PCI-DSS Compliance:</strong> Mandatory security standard governing all organizations handling cardholder data to protect against breaches.</li>
+    </ul>
+</div>
+
+</body>
+</html>

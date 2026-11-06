@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>إدارة قواعد البيانات (DBA) - ملخص الميدتيرم الشامل</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@page {
+    size: A4;
+    margin: 14mm 16mm 16mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 10px;
+        color: #94a3b8;
+        font-family: sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    direction: rtl;
+    text-align: right;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #ffffff;
+    padding: 35px 35px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.hero-banner .subtitle {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.section-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1e40af;
+    border-bottom: 2.5px solid #1e40af22;
+    padding-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sec-pill {
+    background: #1e40af;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+ul, ol {
+    margin: 0 0 12px 0;
+    padding-right: 22px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.callout {
+    background: #f8fafc;
+    border-right: 4px solid #1e40af;
+    border-left: none;
+    padding: 12px 18px;
+    border-radius: 10px 0 0 10px;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.callout.tip {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.callout.trap {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.callout-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.callout.tip .callout-title { color: #065f46; }
+.callout.warning .callout-title { color: #92400e; }
+.callout.trap .callout-title { color: #991b1b; }
+.callout:not(.tip):not(.warning):not(.trap) .callout-title { color: #1e40af; }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 9px 12px;
+    text-align: right;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+.code-box {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    margin: 12px 0;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+
+.page-break {
+    page-break-after: always;
+}
+</style>
+</head>
+<body class="ar">
+
+<div class="hero-banner">
+    <h1>إدارة قواعد البيانات (Database Administration - DBA)</h1>
+    <div class="subtitle">الملخص الدراسي الشامل والموسوعة المرجعية التنفيذية لامتحان الميدتيرم</div>
+    <div class="hero-badges">
+        <span class="hero-badge">المادة: إدارة قواعد البيانات</span><span class="hero-badge">المحاضرات: 1، 2، 3، 4، 5</span><span class="hero-badge">التصميم المادي والفهارس</span><span class="hero-badge">المعاملات والأقفال</span><span class="hero-badge">مراجعة امتحانية شاملة</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="sec-pill">01</span> نظرة عامة شاملة ومفاهيم الإدارة الأساسية (المحاضرة 1)</h2>
+    <p>تُعد إدارة قواعد البيانات (DBA) <strong>تخصصاً إدارياً وتقنياً متكاملاً</strong> يهدف إلى توجيه وبناء وحماية البنية التحتية لبيانات المؤسسة. فالبيانات هي الأصل الأثمن لأي شركة؛ فالأجهزة والبرمجيات تتغير وتفنى، بينما تبقى البيانات وتنمو قيمتها باستمرار.</p>
+
+    <div class="callout tip">
+        <div class="callout-title">التعريف الدقيق لمسؤول قواعد البيانات (DBA)</div>
+        هو الفني التقني المسؤول عن ضمان البيئة التشغيلية المستقرة وتوجيه وإدارة البنية التحتية الكاملة لبيانات المؤسسة وحمايتها.
+    </div>
+
+    <h3>1.1 سمات الـ DBA الناجح ومحاذير الشخصية (Anti-Patterns)</h3>
+    <ul>
+        <li><strong>رجل المهام المتعددة (Jack of all Trades):</strong> يجب أن يمتلك الـ DBA مزيجاً متفرداً من المهارات: فهم أنظمة التشغيل، العتاد المادي، شبكات الاتصال، معمارية المحركات، ضبط استعلامات SQL، والتواصل الإنساني الفعال.</li>
+        <li><strong>شخصية العجوز المتذمر في الزاوية (The Curmudgeon in the Corner):</strong> نمط سلبي يُحذر منه المنهج بشدة؛ وهو الـ DBA المنعزل والمتعجرف الذي يرد تلقائياً بكلمة "لا" على أي طلب من المطورين، مما يحول إدارة قواعد البيانات إلى عقبة تعطل مسيرة العمل.</li>
+        <li><strong>الـ DBA المتميز:</strong> شريك استراتيجي يتعاون مع فرق التطوير منذ مراحل التصميم الأولى، يتبنى أتمتة المراقبة، ويوثق إجراءات التعافي بدلاً من انتظار الكوارث.</li>
+    </ul>
+
+    <h3>1.2 الفرق الجوهري بين قاعدة البيانات ومحركها (Database vs. DBMS)</h3>
+    <table>
+        <tr>
+            <th>المفهوم</th>
+            <th>التعريف العلمي</th>
+            <th>أمثلة وتطبيقات</th>
+        </tr>
+        <tr>
+            <td><strong>قاعدة البيانات (Database)</strong></td>
+            <td>مستودع منظم للبيانات المترابطة التي تعبر عن كيانات وعلاقات وقيود محددة في العالم الحقيقي.</td>
+            <td>قاعدة بيانات العملاء، قاعدة الحسابات المالية، السجلات الطبية.</td>
+        </tr>
+        <tr>
+            <td><strong>نظام إدارة قواعد البيانات (DBMS)</strong></td>
+            <td>حزمة البرمجيات المعقدة المسؤولة عن إنشاء واسترجاع وتأمين والتحكم في الوصول إلى قواعد البيانات وضمان تزامنها.</td>
+            <td>Oracle Database, IBM DB2, Microsoft SQL Server, PostgreSQL, MySQL.</td>
+        </tr>
+    </table>
+
+    <h3>1.3 مقارنة الأدوار الإدارية الثلاثة</h3>
+    <table>
+        <tr>
+            <th>الدور الإداري</th>
+            <th>المسؤولية الجوهرية</th>
+            <th>نطاق التركيز الأساسي</th>
+        </tr>
+        <tr>
+            <td><strong>مسؤول البيانات (Data Administrator - DA / CDO)</strong></td>
+            <td>حوكمة البيانات المؤسسية، وضع سياسات الميتاداتا، وتصميم النماذج المنطقية للأعمال.</td>
+            <td>معنى البيانات (Semantics)، تصنيف البيانات، الملكية القانونية، وقاموس البيانات.</td>
+        </tr>
+        <tr>
+            <td><strong>مسؤول النظام (System Administrator - SA)</strong></td>
+            <td>إدارة عتاد الخوادم، نظام التشغيل، شبكات التوصيل، وترتيب مصفوفات الأقراص التخزينية (RAID).</td>
+            <td>ترقية نظام التشغيل، استهلاك المعالج، والذاكرة العشوائية وسعة الخوادم.</td>
+        </tr>
+        <tr>
+            <td><strong>مسؤول قواعد البيانات (DBA)</strong></td>
+            <td>تثبيت نظام DBMS، بناء الهياكل المادية، ضبط الأداء والفهارس، وإدارة النسخ الاحتياطي والمعاملات.</td>
+            <td>مساحات التخزين (Tablespaces)، الفهارس، الأقفال، التعافي من الكوارث، وتحسين SQL.</td>
+        </tr>
+    </table>
+
+    <h3>1.4 التخصصات الفرعية لمسؤولي قواعد البيانات</h3>
+    <ul>
+        <li><strong>System DBA:</strong> يركز تقنياً على المحرك نفسه؛ تثبيت التحديثات الدورية (Patches)، ضبط ذاكرة التخزين المؤقت للمحرك، والترقية بين الإصدارات الرئيسية.</li>
+        <li><strong>Application DBA:</strong> يندمج مع فريق تطوير تطبيق معين؛ يركز على كتابة وضبط استعلامات التطبيق، تصميم الجداول الملائمة للأعمال، وبناء الفهارس الداعمة للبرنامج.</li>
+        <li><strong>Database Architect:</strong> يضع المخطط العام والمستقبلي لتدفق البيانات وتكامل الأنظمة وسياسات البنية التحتية للمؤسسة.</li>
+        <li><strong>Data Modeler:</strong> يتولى رسم المخططات المنطقية والمفاهيمية (ERDs) وتحويل متطلبات العمل إلى كيانات وعلاقات معيارية.</li>
+        <li><strong>Data Warehouse Administrator:</strong> يدير مستودعات البيانات الضخمة (OLAP) والمخططات النجمية (Star Schema) وتدفقات استخلاص وتحويل البيانات (ETL).</li>
+        <li><strong>Procedural DBA:</strong> مسؤول عن إدارة ومراجعة الأكواد الإجرائية التي تنفذ مباشرة داخل محرك قاعدة البيانات (الإجراءات المخزنة، المحفزات Triggers، الدوال UDFs) لضمان عدم استنزافها لموارد الخادم.</li>
+        <li><strong>Cloud DBA:</strong> يظهر في بيئات قواعد البيانات السحابية المدارة (DBaaS مثل AWS RDS و Cloud SQL)؛ حيث يتخلص من المهام المادية الروتينية ليركز على خفض تكاليف الاستهلاك السحابي، التوسع التلقائي، والأمان.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">02</span> التصميم المادي لقواعد البيانات والتخزين والفهارس (المحاضرتان 2 و 3)</h2>
+    <p>يقوم التصميم المادي بتحويل النموذج المنطقي المجرد إلى هياكل تخزينية ملموسة داخل محرك قاعدة البيانات لتحقيق أعلى كفاءة استرجاع وتخزين.</p>
+
+    <h3>2.1 التحويل من النموذج المنطقي إلى الفيزيائي (Mapping)</h3>
+    <ul>
+        <li><strong>الكيان (Entity)</strong> يتحول إلى <strong>جدول مادي (Table)</strong>.</li>
+        <li><strong>الخاصية (Attribute)</strong> تتحول إلى <strong>عمود (Column)</strong> مع تحديد نوع البيانات الدقيق وقواعد NULL / DEFAULT.</li>
+        <li><strong>المعرف الأساسي (Primary Identifier)</strong> يتحول إلى <strong>مفتاح أساسي (Primary Key)</strong> مدعوم بفهرس فريد.</li>
+        <li><strong>العلاقة (Relationship)</strong> تتحول إلى <strong>مفتاح أجنبي (Foreign Key)</strong> يحافظ على التكامل المرجعي.</li>
+    </ul>
+
+    <div class="callout warning">
+        <div class="callout-title">قواعد الترتيب المادي للأعمدة (ROTs)</div>
+        يُنصح دائماً بوضع الأعمدة ذات الطول الثابت والأكثر استخداماً في بداية ترتيب السجل (لتمكين المعالج من الوصول إليها عبر إزاحة ثابتة)، ووضع الأعمدة متغيرة الطول (VARCHAR) والبيانات الثنائية الضخمة (LOBs) في نهاية السجل.
+    </div>
+
+    <h3>2.2 إدارة المساحات التخزينية ومساحات الفراغ (Free Space)</h3>
+    <ul>
+        <li><strong>حجم السجل (Row Length):</strong> مجموع أطوال الأعمدة مضافاً إليها ترويسة السجل (Header) ومؤشرات القيم الفارغة (Null Indicators).</li>
+        <li><strong>سعة الصفحة (Page/Block):</strong> وحدة القراءة والكتابة الأساسية على القرص (غالباً 4KB أو 8KB).</li>
+        <li><strong>معامل PCTFREE:</strong> نسبة مئوية تُترك فارغة عمداً في كل صفحة بيانات أثناء التحميل الأولي، للسماح للسجلات بالتمدد عند تحديثها مستقبلاً دون التسبب في هجرة الصفوف (Row Migration) وتشتتها.</li>
+        <li><strong>معامل FREEPAGE:</strong> يحدد ترك صفحة فارغة بالكامل كل عدد محدد من الصفحات لإتاحة التجميع المادي للإدخالات الكبيرة الجديدة.</li>
+    </ul>
+
+    <h3>2.3 مقارنة متعمقة بين فهارس B-Tree وفهارس Bitmap</h3>
+    <table>
+        <tr>
+            <th>وجه المقارنة</th>
+            <th>فهارس الأشجار المتوازنة (B-Tree Index)</th>
+            <th>فهارس البت الموجهة (Bitmap Index)</th>
+        </tr>
+        <tr>
+            <td><strong>الهيكل البنائي</strong></td>
+            <td>شجرة متوازنة متعددة المستويات: جذر (Root)، صفحات وسيطة، وصفحات أوراق مرتبة تحوي المفاتيح ومؤشرات السجلات (RowIDs).</td>
+            <td>مصفوفة من البتات (0 و 1) لكل قيمة فريدة، حيث يمثل موقع كل بت رقم الصف المادي المقابل له.</td>
+        </tr>
+        <tr>
+            <td><strong>الاستخدام المثالي</strong></td>
+            <td>الأعمدة عالية التباين (High Cardinality) كالمفاتيح الأساسية والأرقام القومية وتواريخ المعاملات.</td>
+            <td>الأعمدة منخفضة التباين (Low Cardinality) كالجنس، الحالة الاجتماعية، والمؤشرات المنطقية في مستودعات البيانات (OLAP).</td>
+        </tr>
+        <tr>
+            <td><strong>نوع الاستعلامات</strong></td>
+            <td>البحث الدقيق، استعلامات النطاقات (Range Queries)، والترتيب (ORDER BY).</td>
+            <td>العمليات المنطقية السريعة بالبتات (AND, OR, NOT) التي يدمجها المعالج بكفاءة فائقة.</td>
+        </tr>
+        <tr>
+            <td><strong>التزامن وأنظمة OLTP</strong></td>
+            <td>ممتاز لأنظمة المعاملات الحية ويدعم أقفالاً دقيقة على مستوى الصفوف.</td>
+            <td><strong>سيئ جداً لأنظمة OLTP:</strong> لأن تعديل صف واحد يقفل شريحة بيتية كاملة تمنع تعديل آلاف الصفوف المجاورة!</td>
+        </tr>
+    </table>
+
+    <h3>2.4 الفهارس العنقودية وغير العنقودية (Clustered vs. Non-Clustered)</h3>
+    <ul>
+        <li><strong>الفهرس العنقودي (Clustered):</strong> يتطابق الترتيب المادي لصفوف الجدول على القرص مع الترتيب المنطقي لمفتاح الفهرس. ولأن البيانات المادية لا يمكن حفظها إلا بترتيب مادي واحد، فإن الجدول <strong>لا يمكن أن يحتوي إلا على فهرس عنقودي واحد فقط</strong>.</li>
+        <li><strong>الفهرس غير العنقودي (Non-Clustered):</strong> هيكل منفصل يحفظ المفاتيح مرتبة وبجانبها مؤشرات تدل على موقع السجل الأصلي في صفحات البيانات.</li>
+        <li><strong>الفهرس الشامل (Covering Index):</strong> عندما يحتوي الفهرس على كافة الأعمدة المطلوبة في جملتي SELECT و WHERE، يقرأ المحرك البيانات من الفهرس مباشرة دون لمس جدول البيانات الأصلي.</li>
+    </ul>
+
+    <h3>2.5 التفكيك المعياري (Denormalization) والبيانات الزمنية</h3>
+    <ul>
+        <li><strong>الـ Denormalization:</strong> إدخال التكرار والازدواجية عن عمد لدمج الجداول وتخفيف عمليات الربط المعقدة (JOINs) في الأنظمة كثيرة القراءة، مع تحمل تكلفة استهلاك التخزين ومخاطر اضطراب تناسق البيانات عند التعديل.</li>
+        <li><strong>البيانات الزمنية (Temporal Data):</strong>
+            <ul>
+                <li><strong>زمن الأعمال (Business/Valid Time):</strong> الفترة الزمنية التي كان فيها البيان صحيحاً في الواقع الحقيقي (مثال: سريان وثيقة التأمين).</li>
+                <li><strong>زمن النظام (System/Transaction Time):</strong> اللحظة الزمنية التي تم فيها تسجيل أو إبطال السجل داخل محرك قاعدة البيانات فعلياً.</li>
+                <li><strong>الجداول ثنائية الزمن (Bi-temporal Tables):</strong> تدعم كلا البعدين معاً لتوثيق تاريخي قانوني كامل.</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">03</span> تطوير التطبيقات، المعاملات، والأقفال والتزامن (المحاضرتان 4 و 5)</h2>
+
+    <h3>3.1 خصائص لغة SQL ومكونات التطوير</h3>
+    <ul>
+        <li><strong>لغة تصريحية (Declarative):</strong> يحدد المبرمج <em>ماذا يريد</em> (WHAT)، بينما يحدد المحسن الرياضي للمحرك (Cost-Based Optimizer) <em>كيف ينفذ الاستعلام</em> (HOW).</li>
+        <li><strong>المعالجة كمجموعات (Set-at-a-Time):</strong> تعالج جملة SQL الواحدة مئات أو آلاف الصفوف دفعة واحدة كمجموعة رياضية.</li>
+        <li><strong>المؤشرات (Cursors):</strong> أداة برمجية تتيح للغات الإجرائية (كالسي والجافا) المرور على نتائج الاستعلامات متسلسلة سطراً بسطر لاستيعاب المعالجة الفردية.</li>
+        <li><strong>الفجوة البنائية (Object-Relational Impedance Mismatch):</strong> التناقض الجوهري بين العالم كائني التوجه (OOP) والعالم العلائقي القائم على الجداول الرياضية.</li>
+    </ul>
+
+    <h3>3.2 خصائص المعاملات الأربعة (ACID Properties)</h3>
+    <table>
+        <tr>
+            <th>الحرف</th>
+            <th>الخاصية بالإنجليزية</th>
+            <th>المعنى والشرح الأكاديمي</th>
+        </tr>
+        <tr>
+            <td><strong>A</strong></td>
+            <td><strong>الذرية (Atomicity)</strong></td>
+            <td>قاعدة "الكل أو لا شيء": إما أن تكتمل وتُعتمد كافة عمليات المعاملة بالكامل، أو تتراجع ويُلغى كل أثر لها في حال حدوث أي خطأ.</td>
+        </tr>
+        <tr>
+            <td><strong>C</strong></td>
+            <td><strong>التناسق (Consistency)</strong></td>
+            <td>تنقل المعاملة قاعدة البيانات من حالة صحيحة مستوفية لكافة القيود المعيارية إلى حالة أخرى صحيحة ومعتمدة.</td>
+        </tr>
+        <tr>
+            <td><strong>I</strong></td>
+            <td><strong>العزل (Isolation)</strong></td>
+            <td>عدم تداخل المعاملات المتزامنة؛ فلا ترى معاملة التعديلات المؤقتة لمعاملة أخرى حتى يتم اعتمادها نهائياً (Commit).</td>
+        </tr>
+        <tr>
+            <td><strong>D</strong></td>
+            <td><strong>الديمومة (Durability)</strong></td>
+            <td>بمجرد اعتماد المعاملة، تصبح بياناتها ثابتة ومحفوظة على وسائط التخزين الدائمة وتصمد أمام انقطاع الكهرباء أو انهيار النظام.</td>
+        </tr>
+    </table>
+
+    <h3>3.3 التحكم في التزامن: أنواع الأقفال والانسداد التام (Deadlocks)</h3>
+    <ul>
+        <li><strong>القفل المشترك (Shared / S Lock):</strong> يُستخدم للقراءة؛ يسمح لعدة مستخدمين بالقراءة المتزامنة للبيان نفسه.</li>
+        <li><strong>القفل الحصري (Exclusive / X Lock):</strong> مطلوب للتعديل والحذف؛ يمنع أي جلسة أخرى من قراءة أو كتابة هذا البيان حتى تحريره.</li>
+        <li><strong>قفل التحديث (Update / U Lock):</strong> قفل هجين يُستخدم في مرحلة القراءة الممهدة للتعديل لمنع ظاهرة تعليق الأقفال المتبادلة.</li>
+        <li><strong>أقفال النوايا (Intent Locks: IS, IX):</strong> توضع على المستويات العليا كالجداول لتنبيه المحرك بوجود أقفال تفصيلية داخل الصفوف أدناه.</li>
+        <li><strong>الانسداد التام (Deadlock):</strong> حالة انتظار حلقي مستحيل (معاملة 1 تنتظر قفل بيان لدى معاملة 2، بينما معاملة 2 تنتظر بيان لدى معاملة 1). يكتشف المحرك هذه الحلقة عبر مخطط الانتظار (Wait-For Graph) ويختار معاملة كضحية (Victim) ليتراجع عنها ويفك الاختناق.</li>
+        <li><strong>تصعيد الأقفال (Lock Escalation):</strong> عندما تجمع المعاملة آلاف أقفال الصفوف، يقوم المحرك تلقائياً بدمجها في قفل جدول واحد لتوفير الذاكرة، مما يقلل معدل التزامن بصورة حادة.</li>
+    </ul>
+
+    <h3>3.4 مستويات العزل المعيارية (ANSI SQL Isolation Levels)</h3>
+    <table>
+        <tr>
+            <th>مستوى العزل</th>
+            <th>القراءة القذرة (Dirty Read)</th>
+            <th>القراءة غير المتكررة (Non-Repeatable)</th>
+            <th>القراءة الشبحية (Phantom Read)</th>
+            <th>الحالة الافتراضية بالمحركات</th>
+        </tr>
+        <tr>
+            <td><strong>Read Uncommitted</strong></td>
+            <td>مسموحة (خطر)</td>
+            <td>مسموحة</td>
+            <td>مسموحة</td>
+            <td>غير مستحسن</td>
+        </tr>
+        <tr>
+            <td><strong>Read Committed</strong></td>
+            <td><strong>ممنوعة ومحمية</strong></td>
+            <td>مسموحة</td>
+            <td>مسموحة</td>
+            <td><strong>الافتراضي في أغلب المحركات</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Repeatable Read</strong></td>
+            <td><strong>ممنوعة ومحمية</strong></td>
+            <td><strong>ممنوعة ومحمية</strong></td>
+            <td>مسموحة</td>
+            <td>خاص ببعض السيناريوهات</td>
+        </tr>
+        <tr>
+            <td><strong>Serializable</strong></td>
+            <td><strong>ممنوعة ومحمية</strong></td>
+            <td><strong>ممنوعة ومحمية</strong></td>
+            <td><strong>ممنوعة ومحمية</strong></td>
+            <td>الأعلى عزلاً والأبطأ أداءً</td>
+        </tr>
+    </table>
+
+    <div class="callout tip">
+        <div class="callout-title">وصايا ذهبية لمهندسي قواعد البيانات والبرمجة</div>
+        <ul>
+            <li>اجعل المعاملات قصيرة وسريعة قدر الإمكان؛ ولا تترك معاملة مفتوحة تنتظر تفاعل المستخدم نهائياً.</li>
+            <li>الوصول إلى الجداول والصفوف <strong>بنفس الترتيب المتسلسل دائماً</strong> في كافة البرامج لمنع الانسداد التام نهائياً.</li>
+            <li>استخدم الاستعلامات ذات المتغيرات المعلمة (Parameterized Queries) لمنع ثغرات حقن SQL وإعادة استخدام خطط التنفيذ.</li>
+            <li>في العمليات المجمعة الكبرى (Batch Processing)، اعتمد التغييرات على أجزاء مجزأة لتجنب امتلاء سجل المعاملات وتصعيد الأقفال.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

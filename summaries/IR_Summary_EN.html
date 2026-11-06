@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Information Storage and Retrieval (IR) - Comprehensive Midterm Summary</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@page {
+    size: A4;
+    margin: 14mm 16mm 16mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 10px;
+        color: #94a3b8;
+        font-family: sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+    direction: ltr;
+    text-align: left;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #312e81 0%, #6366f1 100%);
+    color: #ffffff;
+    padding: 35px 35px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.hero-banner .subtitle {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.section-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #3730a3;
+    border-bottom: 2.5px solid #3730a322;
+    padding-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sec-pill {
+    background: #3730a3;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+ul, ol {
+    margin: 0 0 12px 0;
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.callout {
+    background: #f8fafc;
+    border-left: 4px solid #3730a3;
+    border-right: none;
+    padding: 12px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.callout.tip {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.callout.trap {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.callout-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.callout.tip .callout-title { color: #065f46; }
+.callout.warning .callout-title { color: #92400e; }
+.callout.trap .callout-title { color: #991b1b; }
+.callout:not(.tip):not(.warning):not(.trap) .callout-title { color: #3730a3; }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    border-left: 1px solid #e2e8f0;
+}
+
+th:last-child, td:last-child {
+    border-left: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+.code-box {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    margin: 12px 0;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+
+.page-break {
+    page-break-after: always;
+}
+</style>
+</head>
+<body>
+
+<div class="hero-banner">
+    <h1>Information Storage and Retrieval (IR)</h1>
+    <div class="subtitle">Executive Midterm Study Guide & Algorithmic Blueprint</div>
+    <div class="hero-badges">
+        <span class="hero-badge">Course: IR</span><span class="hero-badge">Scope: Ch 1, Lect 2, Lect 3, Lect 5</span><span class="hero-badge">Inverted Index</span><span class="hero-badge">Skip Pointers</span><span class="hero-badge">Stemming & Normalization</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="sec-pill">01</span> Introduction to Information Retrieval & Inverted Indexes (Chapter 1)</h2>
+    <div class="callout tip">
+        <div class="callout-title">Formal Definition of Information Retrieval (IR)</div>
+        <strong>Information Retrieval (IR)</strong> is finding material (usually documents) of an unstructured nature (usually text) that satisfies an information need from within large collections (usually stored on computers).
+    </div>
+
+    <h3>1.1 Information Need vs. Query</h3>
+    <ul>
+        <li><strong>Information Need:</strong> The semantic topic or desire for knowledge in the user's mind (e.g. "I want to know if drinking coffee raises blood pressure").</li>
+        <li><strong>Query:</strong> What the user actually types into the search engine to communicate that need (e.g. `coffee blood pressure`). Often ambiguous or incomplete.</li>
+    </ul>
+
+    <h3>1.2 Information Retrieval vs. Traditional Databases</h3>
+    <table>
+        <tr>
+            <th>Dimension</th>
+            <th>Traditional Database (RDBMS)</th>
+            <th>Information Retrieval (IR)</th>
+        </tr>
+        <tr>
+            <td><strong>Data Structure</strong></td>
+            <td>Structured relational tables with well-defined schemas.</td>
+            <td>Unstructured or semi-structured free-form text.</td>
+        </tr>
+        <tr>
+            <td><strong>Semantics & Matching</strong></td>
+            <td>Clear, deterministic semantics; exact boolean matching.</td>
+            <td>Ambiguous natural language; relevance ranking and probabilistic scoring.</td>
+        </tr>
+        <tr>
+            <td><strong>Query Language</strong></td>
+            <td>Formal declarative SQL statements.</td>
+            <td>Natural language keywords, boolean operators, or free-text queries.</td>
+        </tr>
+        <tr>
+            <td><strong>Result Set</strong></td>
+            <td>Exact set of rows matching the WHERE clause (unordered unless ORDER BY).</td>
+            <td>Ranked list of documents ordered by estimated relevance.</td>
+        </tr>
+    </table>
+
+    <h3>1.3 The Term-Document Incidence Matrix & Its Fatal Limitation</h3>
+    <ul>
+        <li><strong>Incidence Matrix:</strong> A 2D binary matrix where rows represent vocabulary terms ($V$) and columns represent documents ($N$). Cell $(t, d) = 1$ if term $t$ appears in document $d$, and $0$ otherwise.</li>
+        <li><strong>The Sparsity Problem:</strong> In a collection of $N = 1,000,000$ documents and $V = 500,000$ terms, the matrix contains $500,000 	imes 1,000,000 = 500 billion$ cells! Over 99.9% of these cells are 0. Storing this dense matrix is completely impractical.</li>
+    </ul>
+
+    <h3>1.4 The Inverted Index: The Standard Data Structure</h3>
+    <p>An <strong>Inverted Index</strong> stores only the non-zero entries (the occurrences), mapping each term to the documents where it appears.</p>
+    <ul>
+        <li><strong>Dictionary (Vocabulary):</strong> A sorted list of unique terms, typically held in RAM (using a B-Tree or Hash Table) for fast lookup. Includes the <em>Document Frequency ($df$)</em>.</li>
+        <li><strong>Postings Lists:</strong> For each term, a contiguous variable-length array or linked list of Document IDs (DocIDs) where the term occurs, sorted in ascending DocID order.</li>
+    </ul>
+
+    <h3>1.5 Inverted Index Construction Pipeline</h3>
+    <ol>
+        <li><strong>Document Parsing:</strong> Extract raw character streams from formats (HTML, PDF, DOCX) and identify character encoding (UTF-8).</li>
+        <li><strong>Tokenizer:</strong> Break character stream into a sequence of word tokens.</li>
+        <li><strong>Linguistic Modules:</strong> Apply case folding, stop word handling, and stemming/lemmatization to produce canonical <em>terms</em>.</li>
+        <li><strong>Indexer:</strong> Extract (Term, DocID) pairs, sort alphabetically by term and secondarily by DocID, and aggregate identical terms into dictionary entries with attached postings lists.</li>
+    </ol>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">02</span> Boolean Query Processing, Optimization & Phrase Queries (Lecture 2)</h2>
+
+    <h3>2.1 The Postings Merge (Intersection) Algorithm</h3>
+    <p>To evaluate a boolean AND query (e.g. `Brutus AND Caesar`), the search engine simultaneously traverses the sorted postings lists of both terms using two pointers ($p_1, p_2$).</p>
+    
+    <div class="code-box">
+Algorithm INTERSECT(p1, p2):
+    answer = []
+    while p1 != NIL and p2 != NIL:
+        if DocID(p1) == DocID(p2):
+            answer.append(DocID(p1))
+            p1 = p1.next
+            p2 = p2.next
+        else if DocID(p1) < DocID(p2):
+            p1 = p1.next
+        else:
+            p2 = p2.next
+    return answer
+    </div>
+
+    <div class="callout tip">
+        <div class="callout-title">Time Complexity</div>
+        Because both lists are strictly sorted in ascending order of DocID, each pointer traverses its list at most once. The time complexity is strictly linear: <strong>O(x + y)</strong>, where $x$ and $y$ are the lengths of the two postings lists.
+    </div>
+
+    <h3>2.2 Query Optimization for Boolean Queries</h3>
+    <ul>
+        <li><strong>Optimal AND Evaluation Order:</strong> Always process terms in order of <strong>increasing Document Frequency ($df$)</strong> (i.e. shortest postings lists first).</li>
+        <li><strong>Concrete Example:</strong>
+            <ul>
+                <li>`Calpurnia` ($df = 4$)</li>
+                <li>`Brutus` ($df = 20,000$)</li>
+                <li>`Caesar` ($df = 40,000$)</li>
+                <li>Evaluate as: `(Calpurnia AND Brutus) AND Caesar`. The intermediate result of the first intersection contains at most <strong>4 documents</strong>! Intersecting 4 DocIDs with Caesar's list requires negligible time.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>2.3 Phrase Queries: Biword vs. Positional Indexes</h3>
+    <p>A standard inverted index only records document presence, not word order. It cannot distinguish `"Stanford University"` from a document containing "Stanford" on page 1 and "University" on page 50.</p>
+    <table>
+        <tr>
+            <th>Index Approach</th>
+            <th>How It Works</th>
+            <th>Advantages & Disadvantages</th>
+        </tr>
+        <tr>
+            <td><strong>Biword Index</strong></td>
+            <td>Every adjacent pair of consecutive words is indexed as a discrete vocabulary term (e.g. "friends romans", "romans countrymen").</td>
+            <td><strong>Pros:</strong> Fast lookup for 2-word phrases.<br><strong>Cons:</strong> Vocabulary explosion ($V^2$ potential pairs), false positives for longer phrases, cannot handle proximity queries.</td>
+        </tr>
+        <tr>
+            <td><strong>Positional Index</strong></td>
+            <td>For every term and document, stores the exact sequential word token position offsets: `term -> docID: <pos1, pos2, ...>`.</td>
+            <td><strong>Pros:</strong> Solves arbitrary N-word phrase queries and proximity queries (`/k`). Standard industry solution.<br><strong>Cons:</strong> Postings lists expand 2-4x (occupying 35-50% of raw text volume).</td>
+        </tr>
+        <tr>
+            <td><strong>Combination Scheme (Hybrid)</strong></td>
+            <td>Biwords for highly frequent common phrases (e.g. "New York", "Michael Jackson"); positional index for arbitrary queries.</td>
+            <td>Optimal balance between throughput and storage efficiency.</td>
+        </tr>
+    </table>
+
+    <h3>2.4 Proximity Queries (`/k` Operator)</h3>
+    <p>A proximity query like `employment /3 federal` requires that "employment" and "federal" occur within at most 3 words of each other ($|pos_1 - pos_2| \le 3$). The positional merge checks matching DocIDs and verifies position differences.</p>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">03</span> Faster Postings Merges & Skip Pointers (Lecture 3)</h2>
+
+    <h3>3.1 Skip Pointers: Mechanics & Motivation</h3>
+    <p>When intersecting two postings lists where one is very short and the other is very long (or both are long), linear scanning inspects many DocIDs that could never match. <strong>Skip Pointers</strong> augment postings lists with forward shortcut pointers to jump ahead.</p>
+
+    <div class="callout tip">
+        <div class="callout-title">The Skip Decision Rule</div>
+        During merge of $p_1$ and $p_2$: If $p_1$ has a skip pointer and <strong>skip(p1) &le; DocID(p2)</strong>, take the jump directly to `skip(p1)`! If `skip(p1) > DocID(p2)`, do NOT take the skip (to avoid overshooting); advance $p_1$ by one step normally.
+    </div>
+
+    <h3>3.2 Placement of Skip Pointers: The Heuristic Rule of Thumb</h3>
+    <ul>
+        <li><strong>The Tradeoff:</strong> More frequent skips provide more jump opportunities but increase index storage size and pointer-checking overhead; fewer skips have low overhead but offer few chances to jump.</li>
+        <li><strong>Heuristic Rule:</strong> For a postings list of length $P$, place skip pointers evenly spaced every <strong>&radic;P</strong> elements!</li>
+        <li><strong>Example:</strong> If a postings list contains $P = 10,000$ elements, place skips every $\sqrt(10, 0) = 100$ elements, resulting in roughly 100 evenly spaced skip pointers.</li>
+        <li><strong>Dynamic Index Limitation:</strong> Skip pointers work best on static indexes. In dynamic collections with frequent inserts and deletes, skip intervals degrade, requiring costly pointer maintenance.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">04</span> The Term Vocabulary & Text Normalization (Lecture 5)</h2>
+
+    <h3>4.1 Document Parsing & Tokenization Challenges</h3>
+    <ul>
+        <li><strong>Character Encodings:</strong> Detecting whether raw bytes are UTF-8, UTF-16, or ASCII is vital to avoid mojibake (corrupted characters).</li>
+        <li><strong>Tokenization:</strong> The process of segmenting a stream of characters into discrete tokens (words).
+            <ul>
+                <li><em>Hyphens:</em> Compound words (`Hewlett-Packard`, `state-of-the-art`, `co-education`) challenge whether to index as one token or split.</li>
+                <li><em>Apostrophes:</em> Contractions (`aren't`) vs. possessives (`children's`) vs. proper names (`O'Neill`).</li>
+                <li><em>Numbers & Formats:</em> Dates, model numbers (`Boeing 747`, `iPhone 15`), and chemical formulas have high discriminatory value and must be preserved.</li>
+                <li><em>Language Specifics:</em> Chinese/Japanese have no whitespace delimiters, requiring morphological segmenters or character N-grams. Arabic has clitics (prefixes like 'and' و, 'the' ال) attached directly to nouns.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>4.2 Stop Words: Traditional vs. Modern Paradigm</h3>
+    <ul>
+        <li><strong>Stop Words:</strong> Extremely common functional grammatical words (e.g. `the`, `a`, `is`, `of`, `to`, `at`) that appear in virtually all documents.</li>
+        <li><strong>Traditional Approach:</strong> Filter out 30 to 150 (or up to 750) stop words from the index to save disk space.</li>
+        <li><strong>Modern Search Engine Approach:</strong> Keep all or almost all stop words in the index. Reasons: (1) Storage compression has made index size manageable; (2) Users frequently search for exact phrases consisting heavily of stop words (e.g. `"To be or not to be"`, `"Let it be"`, `"The Who"`).</li>
+    </ul>
+
+    <h3>4.3 Normalization: Case Folding & Equivalence Classes</h3>
+    <ul>
+        <li><strong>Equivalence Classes:</strong> Mapping different surface tokens to a single canonical term (e.g. `U.S.A.` and `USA` &rarr; `usa`).</li>
+        <li><strong>Case Folding:</strong> Lowercasing all characters. While standard, it risks conflating proper nouns with common words (`US` country vs. `us` pronoun; `Bush` president vs. `bush` plant; `CAT` scan vs. `cat` animal).</li>
+        <li><strong>Soundex:</strong> Phonetic hashing algorithm based on consonant sounds, matching names with different spellings that sound identical (e.g. `Smith` and `Smyth`).</li>
+    </ul>
+
+    <h3>4.4 Stemming vs. Lemmatization (Crucial Exam Concept)</h3>
+    <table>
+        <tr>
+            <th>Dimension</th>
+            <th>Stemming (e.g. Porter Stemmer)</th>
+            <th>Lemmatization</th>
+        </tr>
+        <tr>
+            <td><strong>Methodology</strong></td>
+            <td>Crude, fast, heuristic suffix chopping without grammar or vocabulary lookup.</td>
+            <td>Full morphological analysis using vocabulary, grammar rules, and Part of Speech (POS) context.</td>
+        </tr>
+        <tr>
+            <td><strong>Output</strong></td>
+            <td>Often produces an artificial, non-word stem (e.g. `automate, automatic, automation` &rarr; `automat`).</td>
+            <td>Always produces a true, grammatically valid base dictionary form called a <strong>lemma</strong>.</td>
+        </tr>
+        <tr>
+            <td><strong>Context Sensitivity</strong></td>
+            <td>Blind to grammatical context; treats every word identically.</td>
+            <td>Context-aware: reduces `saw` to `see` if used as a verb, or leaves as `saw` if used as a noun. Reduces `better` to `good`.</td>
+        </tr>
+        <tr>
+            <td><strong>Speed & Complexity</strong></td>
+            <td>Very fast, low memory footprint, simple algorithmic rules.</td>
+            <td>Computationally intensive, requires extensive lexical dictionaries and grammatical parsers.</td>
+        </tr>
+    </table>
+
+    <h3>4.5 The Porter Stemmer (5 Phases) & Stemming Errors</h3>
+    <ul>
+        <li><strong>Porter's Algorithm (1980):</strong> The standard English stemmer consisting of 5 sequential phases of suffix stripping rules based on syllable measure $m$ (vowel-consonant sequences).</li>
+        <li><strong>Over-stemming Error:</strong> Chopping too much, causing semantically distinct words to merge to the same stem (e.g. `universe` and `university` &rarr; `univers`; `police` and `policy` &rarr; `polic`). Hurts retrieval <em>precision</em>.</li>
+        <li><strong>Under-stemming Error:</strong> Failing to merge forms that share the same conceptual root (e.g. `adhere` and `adhesion`). Hurts retrieval <em>recall</em>.</li>
+        <li><strong>Heaps' Law:</strong> Vocabulary size $V$ grows sublinearly with collection size $N$ following $V = k N^eta$ (where $eta pprox 0.4 - 0.6$), showing vocabulary continues to expand indefinitely as new documents are indexed.</li>
+    </ul>
+</div>
+
+</body>
+</html>

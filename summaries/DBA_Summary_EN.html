@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Database Administration (DBA) - Comprehensive Midterm Summary</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@page {
+    size: A4;
+    margin: 14mm 16mm 16mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 10px;
+        color: #94a3b8;
+        font-family: sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+    direction: ltr;
+    text-align: left;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.65;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #ffffff;
+    padding: 35px 35px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+}
+
+.hero-banner .subtitle {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.section-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1e40af;
+    border-bottom: 2.5px solid #1e40af22;
+    padding-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sec-pill {
+    background: #1e40af;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+ul, ol {
+    margin: 0 0 12px 0;
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.callout {
+    background: #f8fafc;
+    border-left: 4px solid #1e40af;
+    border-right: none;
+    padding: 12px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.callout.tip {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.callout.trap {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.callout-title {
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.callout.tip .callout-title { color: #065f46; }
+.callout.warning .callout-title { color: #92400e; }
+.callout.trap .callout-title { color: #991b1b; }
+.callout:not(.tip):not(.warning):not(.trap) .callout-title { color: #1e40af; }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    border-left: 1px solid #e2e8f0;
+}
+
+th:last-child, td:last-child {
+    border-left: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+.code-box {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    margin: 12px 0;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+
+.page-break {
+    page-break-after: always;
+}
+</style>
+</head>
+<body>
+
+<div class="hero-banner">
+    <h1>Database Administration (DBA)</h1>
+    <div class="subtitle">Executive Midterm Study Guide & Core Architecture Reference</div>
+    <div class="hero-badges">
+        <span class="hero-badge">Course: DBA</span><span class="hero-badge">Scope: Lectures 1, 2, 3, 4, 5</span><span class="hero-badge">Storage & Indexing</span><span class="hero-badge">Transactions & ACID</span><span class="hero-badge">High-Yield Exam Prep</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="sec-pill">01</span> Executive Overview & Core Concepts (Lecture 1)</h2>
+    <p>Database Administration is a critical <strong>management discipline</strong> focused on orchestrating, securing, and optimizing enterprise data infrastructure. Data is recognized as the ultimate corporate asset; systems and hardware become obsolete, but data persists indefinitely.</p>
+    
+    <div class="callout tip">
+        <div class="callout-title">Core Definition of a DBA</div>
+        A <strong>Database Administrator (DBA)</strong> is the information technician responsible for ensuring the operational environment and directing the infrastructure for an organization's data.
+    </div>
+
+    <h3>1.1 What Makes a Good DBA? (Avoiding Anti-Patterns)</h3>
+    <ul>
+        <li><strong>Jack of All Trades:</strong> The DBA must bridge software development, operating systems, hardware configuration, network security, and business domain logic.</li>
+        <li><strong>The Curmudgeon in the Corner (Prima Donna Anti-Pattern):</strong> A negative persona to avoid at all costs—an unapproachable technician who reflexively says "No" to developers and business requests, creating an enterprise bottleneck.</li>
+        <li><strong>A Good DBA:</strong> Collaborates with developers early in the SDLC, proactively designs for scalability, documents procedures, and adopts automated monitoring rather than firefighting.</li>
+    </ul>
+
+    <h3>1.2 Database 101: Database vs. DBMS</h3>
+    <table>
+        <tr>
+            <th>Concept</th>
+            <th>Definition</th>
+            <th>Examples / Scope</th>
+        </tr>
+        <tr>
+            <td><strong>Database</strong></td>
+            <td>An organized, structured store of persistent data models representing entities, relationships, and constraints.</td>
+            <td>CustomerDB, Sales_2026, MedicalRecords</td>
+        </tr>
+        <tr>
+            <td><strong>DBMS</strong></td>
+            <td>The sophisticated software engine that creates, manages, optimizes, secures, and controls access to databases.</td>
+            <td>Oracle Database, IBM DB2, Microsoft SQL Server, PostgreSQL, MySQL</td>
+        </tr>
+    </table>
+
+    <h3>1.3 Administrative Roles Comparison</h3>
+    <table>
+        <tr>
+            <th>Role</th>
+            <th>Primary Responsibility</th>
+            <th>Key Focus Area</th>
+        </tr>
+        <tr>
+            <td><strong>Data Administrator (DA / CDO)</strong></td>
+            <td>Business data governance, metadata policies, business glossaries, conceptual/logical data modeling.</td>
+            <td>Business meaning, data ownership, regulatory data classification.</td>
+        </tr>
+        <tr>
+            <td><strong>System Administrator (SA)</strong></td>
+            <td>Operating system, hardware servers, storage RAID arrays, network routing, OS-level security.</td>
+            <td>Physical server health, OS kernel patches, memory/disk allocation.</td>
+        </tr>
+        <tr>
+            <td><strong>Database Administrator (DBA)</strong></td>
+            <td>DBMS software installation, physical database realization, SQL query optimization, disaster recovery, ACID transaction management.</td>
+            <td>DBMS instance configuration, index tuning, backup/recovery, high availability.</td>
+        </tr>
+    </table>
+
+    <h3>1.4 Specialized Types of DBAs</h3>
+    <ul>
+        <li><strong>System DBA:</strong> Configures the DBMS software engine, tunes DBMS memory pools/buffer caches, applies vendor software patches, and executes version migrations.</li>
+        <li><strong>Application DBA:</strong> Embedded with software engineering teams, specializing in query optimization, table schemas, and data access logic for specific business applications.</li>
+        <li><strong>Database Architect & Analyst:</strong> Blueprints enterprise-wide data flows, integration pipelines, and long-term infrastructure roadmaps.</li>
+        <li><strong>Data Modeler:</strong> Translates business requirements into normalized Conceptual and Logical Entity-Relationship Diagrams (ERDs).</li>
+        <li><strong>Data Warehouse Administrator (DWA):</strong> Manages OLAP systems, star/snowflake schemas, ETL loading pipelines, and massive analytical data stores.</li>
+        <li><strong>Task-Oriented DBA:</strong> Focuses exclusively on specialized enterprise domains such as Disaster Recovery, Security/Compliance Auditing, or Performance Diagnostics.</li>
+        <li><strong>Procedural DBA:</strong> Manages procedural logic inside the database engine (Stored Procedures, Triggers, User-Defined Functions - UDFs) to ensure they do not cause deadlocks or drain server CPU.</li>
+        <li><strong>Cloud DBA:</strong> Operates in Managed Cloud Database environments (DBaaS like AWS RDS, Azure SQL, Google Cloud SQL). Low-level hardware maintenance is offloaded, shifting the DBA's focus to cloud cost optimization, autoscaling, and data security.</li>
+    </ul>
+
+    <h3>1.5 DBA Reporting Structures & Staffing Rules of Thumb</h3>
+    <ul>
+        <li><strong>Centralized (Infrastructure/Operations):</strong> Fosters standardized corporate policies, uniform backup/DR protocols, and independent architectural oversight.</li>
+        <li><strong>Decentralized (Application Teams):</strong> Enhances agility and application responsiveness, but risks creating isolated data silos and non-standard schemas.</li>
+        <li><strong>Staffing Determinants:</strong> DBA headcount is determined by instance count, total data volume, transaction throughput (OLTP vs DSS), 24/7 SLA uptime demands, and the maturity of automated monitoring tools.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">02</span> Physical Database Design, Storage & Indexing (Lectures 2 & 3)</h2>
+    <p>Physical database design translates the logical data model into physical storage structures within the target DBMS, optimizing for performance, storage efficiency, and data integrity.</p>
+
+    <h3>2.1 Translation from Logical to Physical</h3>
+    <table>
+        <tr>
+            <th>Logical Concept</th>
+            <th>Physical Implementation</th>
+            <th>Design Decisions & Rules of Thumb (ROTs)</th>
+        </tr>
+        <tr>
+            <td>Entity</td>
+            <td>Table</td>
+            <td>Choose table space, partition key, and row format.</td>
+        </tr>
+        <tr>
+            <td>Attribute</td>
+            <td>Column</td>
+            <td>Assign exact data type (INT, VARCHAR, TIMESTAMP), NULL / NOT NULL rules, DEFAULT values.</td>
+        </tr>
+        <tr>
+            <td>Primary Identifier</td>
+            <td>Primary Key Constraint</td>
+            <td>Backed by a unique index (frequently clustered).</td>
+        </tr>
+        <tr>
+            <td>Relationship</td>
+            <td>Foreign Key Constraint</td>
+            <td>Enforces referential integrity (ON DELETE CASCADE, SET NULL, RESTRICT).</td>
+        </tr>
+    </table>
+
+    <div class="callout warning">
+        <div class="callout-title">Physical ROTs: Column Ordering & Sizing</div>
+        Place fixed-length, frequently searched columns at the beginning of the row layout (allowing direct offset calculation by the CPU), and variable-length columns (VARCHAR, LOBs) at the end. Always avoid arbitrary over-allocation of column lengths.
+    </div>
+
+    <h3>2.2 Storage Calculation & Free Space Management</h3>
+    <ul>
+        <li><strong>Row Length:</strong> Sum of column lengths + row overhead header bytes + null indicator bytes.</li>
+        <li><strong>Page/Block Capacity:</strong> Data pages (typically 4KB, 8KB, or 16KB) contain a page header, directory slots, and stored rows.</li>
+        <li><strong>PCTFREE:</strong> The percentage of each page reserved during initial load to allow existing rows to expand (e.g. updating a short VARCHAR to a longer string) without causing <em>Row Migration</em> or <em>Row Chaining</em>.</li>
+        <li><strong>FREEPAGE:</strong> Specifies that an entire empty page is left every <em>N</em> pages to provide space for localized bulk inserts to maintain physical clustering.</li>
+    </ul>
+
+    <h3>2.3 B-Tree vs. Bitmap Indexes (Comprehensive Comparison)</h3>
+    <table>
+        <tr>
+            <th>Attribute</th>
+            <th>B-Tree Index (B+ Tree)</th>
+            <th>Bitmap Index</th>
+        </tr>
+        <tr>
+            <td><strong>Structure</strong></td>
+            <td>Multi-level balanced tree: Root page, Intermediate branch pages, and sorted Leaf pages containing keys and RowIDs.</td>
+            <td>Array of bit vectors (0s and 1s) for each distinct column value; each bit position corresponds to a physical row number.</td>
+        </tr>
+        <tr>
+            <td><strong>Best For</strong></td>
+            <td>High cardinality columns (Primary keys, Social Security Numbers, timestamps). Point queries and range searches.</td>
+            <td>Low cardinality columns (Gender, Marital Status, Country, Boolean flags) in read-heavy Data Warehouses (OLAP).</td>
+        </tr>
+        <tr>
+            <td><strong>Query Operations</strong></td>
+            <td>Exact match (`=`), Range scans (`BETWEEN`, `>`, `<`), Sorting (`ORDER BY`).</td>
+            <td>Boolean bitwise operations (AND, OR, NOT) executed at lightning speed by the CPU across multiple indexed columns.</td>
+        </tr>
+        <tr>
+            <td><strong>Concurrency / OLTP</strong></td>
+            <td>High concurrency; row-level locking supported on leaf pages.</td>
+            <td><strong>Poor for OLTP:</strong> Updating a single row locks an entire bitmap segment, blocking concurrent transactions.</td>
+        </tr>
+    </table>
+
+    <h3>2.4 Clustered vs. Non-Clustered Indexes</h3>
+    <ul>
+        <li><strong>Clustered Index:</strong> The physical storage order of rows in the table matches the logical order of the index key. Because physical table rows can only be arranged on disk in one physical sequence, a table can have <strong>only ONE clustered index</strong>.</li>
+        <li><strong>Non-Clustered Index:</strong> A separate index structure containing sorted keys and pointers (RowIDs or clustered index keys) back to the actual data rows. A table can have many non-clustered indexes.</li>
+        <li><strong>Covering Index (Index-Only Scan):</strong> When an index contains all columns requested by a SELECT and WHERE clause, the query engine satisfies the request entirely from the index without reading base table pages.</li>
+    </ul>
+
+    <h3>2.5 Partitioning & Denormalization</h3>
+    <ul>
+        <li><strong>Partitioning:</strong> Divides large tables into smaller physical segments based on a key (Range, Hash, or List). Enables <em>partition pruning</em> (skipping unneeded partitions during queries) and fast maintenance (dropping an old year partition instantly).</li>
+        <li><strong>Denormalization:</strong> The deliberate introduction of controlled redundancy or grouping of tables into a normalized schema to eliminate costly multi-table JOINs in read-heavy workloads.
+            <ul>
+                <li><em>Types:</em> Pre-joined tables, derived/calculated summary columns, duplicate redundant attributes.</li>
+                <li><em>Costs & Risks:</em> Increased storage, update anomalies, and data integrity degradation if updates fail to sync.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>2.6 Temporal Data Management</h3>
+    <ul>
+        <li><strong>Business Time (Valid Time / Application Time):</strong> The real-world time period during which a fact was true (e.g., insurance coverage valid from Jan 1 to Dec 31). Managed by application logic.</li>
+        <li><strong>System Time (Transaction Time):</strong> The time period during which the record was stored and active in the database system. Managed automatically by the DBMS engine.</li>
+        <li><strong>Bi-Temporal Tables:</strong> Support both Business Time and System Time simultaneously, providing an indisputable audit trail of real-world history and system modifications.</li>
+    </ul>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2><span class="sec-pill">03</span> Application Development, SQL, Transactions & Locking (Lectures 4 & 5)</h2>
+
+    <h3>3.1 SQL Architecture & Embedded SQL</h3>
+    <ul>
+        <li><strong>Declarative Language:</strong> In SQL, the developer declares <em>WHAT</em> data is required, not <em>HOW</em> to retrieve it. The DBMS Cost-Based Optimizer (CBO) determines the optimal access path.</li>
+        <li><strong>Set-at-a-Time:</strong> Relational operations execute against entire sets of rows simultaneously, unlike 3GL procedural languages that loop record-by-record.</li>
+        <li><strong>Embedded SQL & Host Variables:</strong> Embedded SQL places SQL queries inside host languages (C, COBOL). Host variables (prefixed with `:`) exchange parameters between the program and the DBMS.</li>
+        <li><strong>Cursors:</strong> A procedural pointer mechanism allowing a 3GL program to iterate through a multi-row SQL result set row-by-row (`DECLARE -> OPEN -> FETCH -> CLOSE`).</li>
+    </ul>
+
+    <h3>3.2 Middleware, Object-Relational Mapping & Impedance Mismatch</h3>
+    <ul>
+        <li><strong>Middleware APIs:</strong> ODBC, JDBC, and ADO.NET provide database-neutral APIs. The <em>Driver Manager</em> routes application calls to the appropriate vendor-specific driver.</li>
+        <li><strong>Object-Relational Impedance Mismatch:</strong> The fundamental architectural tension between the Object-Oriented paradigm (classes, polymorphism, object references) and the Relational model (tables, foreign keys, relational algebra).</li>
+        <li><strong>ORM Frameworks (Hibernate, Entity Framework):</strong> Automate mapping between objects and tables. DBAs must monitor ORMs to prevent severe performance anti-patterns, such as the <strong>N+1 SELECT problem</strong>.</li>
+    </ul>
+
+    <h3>3.3 ACID Properties of Transactions</h3>
+    <table>
+        <tr>
+            <th>Property</th>
+            <th>Name</th>
+            <th>Guarantee & Description</th>
+        </tr>
+        <tr>
+            <td><strong>A</strong></td>
+            <td><strong>Atomicity</strong></td>
+            <td>The "All-or-Nothing" principle: either every operation within the transaction succeeds and commits, or all changes are rolled back completely.</td>
+        </tr>
+        <tr>
+            <td><strong>C</strong></td>
+            <td><strong>Consistency</strong></td>
+            <td>Transactions move the database from one valid state satisfying all schema constraints, checks, and foreign keys to another valid state.</td>
+        </tr>
+        <tr>
+            <td><strong>I</strong></td>
+            <td><strong>Isolation</strong></td>
+            <td>Concurrently executing transactions do not interfere with each other; uncommitted changes are shielded from other concurrent sessions.</td>
+        </tr>
+        <tr>
+            <td><strong>D</strong></td>
+            <td><strong>Durability</strong></td>
+            <td>Once committed, updates are permanently written to non-volatile storage (via write-ahead transaction logs) and survive system crashes.</td>
+        </tr>
+    </table>
+
+    <h3>3.4 Concurrency Control: Lock Types & Deadlocks</h3>
+    <ul>
+        <li><strong>Shared Lock (S Lock):</strong> Acquired for reading data. Multiple transactions can hold S locks on the same resource concurrently.</li>
+        <li><strong>Exclusive Lock (X Lock):</strong> Required for writing or updating data. Grants exclusive access; no other transaction can hold S or X locks on that resource.</li>
+        <li><strong>Update Lock (U Lock):</strong> A hybrid lock acquired during read phases before an update to prevent conversion deadlocks.</li>
+        <li><strong>Intent Locks (IS, IX, SIX):</strong> Placed at higher levels of the locking hierarchy (table/page) to signal that fine-grained locks exist below.</li>
+        <li><strong>Deadlocks:</strong> Circular wait conditions (Transaction A holds Resource 1 and waits for Resource 2; Transaction B holds Resource 2 and waits for Resource 1). The DBMS maintains a <em>Wait-For Graph (WFG)</em>, detects cycles, and aborts a "victim" transaction.</li>
+        <li><strong>Lock Escalation:</strong> When a session acquires too many individual row locks, the engine automatically converts them into a single table lock to save memory, severely reducing concurrency.</li>
+    </ul>
+
+    <h3>3.5 ANSI SQL Isolation Levels & Concurrency Anomalies</h3>
+    <table>
+        <tr>
+            <th>Isolation Level</th>
+            <th>Dirty Read</th>
+            <th>Non-Repeatable Read</th>
+            <th>Phantom Read</th>
+            <th>Default in Most DBMS</th>
+        </tr>
+        <tr>
+            <td><strong>Read Uncommitted</strong></td>
+            <td>Permitted</td>
+            <td>Permitted</td>
+            <td>Permitted</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td><strong>Read Committed</strong></td>
+            <td><strong>Prevented</strong></td>
+            <td>Permitted</td>
+            <td>Permitted</td>
+            <td><strong>Yes (Standard Default)</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Repeatable Read</strong></td>
+            <td><strong>Prevented</strong></td>
+            <td><strong>Prevented</strong></td>
+            <td>Permitted</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td><strong>Serializable</strong></td>
+            <td><strong>Prevented</strong></td>
+            <td><strong>Prevented</strong></td>
+            <td><strong>Prevented</strong></td>
+            <td>No (Strict / Slowest)</td>
+        </tr>
+    </table>
+
+    <div class="callout tip">
+        <div class="callout-title">Core Programming Guidelines for DBAs & Developers</div>
+        <ul>
+            <li>Keep transactions as short as possible; never wait for user input inside an active transaction.</li>
+            <li>Access database tables and rows in the <strong>exact same sequential order</strong> across all applications to eliminate deadlocks.</li>
+            <li>Use parameterized queries to enable execution plan caching and prevent SQL injection.</li>
+            <li>In large batch jobs, commit in intermediate chunks (e.g. every 5,000 rows) to avoid transaction log exhaustion and lock escalation.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

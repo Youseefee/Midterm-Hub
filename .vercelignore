@@ -1,0 +1,15 @@
+Businss/
+DB/
+E com/
+IS App/
+Information Storage and Retrieval/
+extracted_content/
+scripts/
+questions/
+summaries/
+__pycache__/
+*.pptx
+*.ppt
+*.py
+*.bat
+*.ps1

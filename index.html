@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Midterm Hub | منصة التفوق للميدتيرم</title>
+  
+  <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="/manifest.json" type="application/manifest+json">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Midterm">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="style.css?v=6">
+  <script>
+    // Force purge legacy ServiceWorker caches (v1-v5) so fresh lecture data always loads
+    (function() {
+      try {
+        if ('caches' in window) {
+          caches.keys().then(function(keys) {
+            keys.forEach(function(k) {
+              if (k !== 'midterm-hub-v6') caches.delete(k);
+            });
+          });
+        }
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            regs.forEach(function(r) { r.update(); });
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script src="data/questions.js?v=6"></script>
+  <script src="data/summaries.js?v=6"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">🎓</div>
+        <div class="brand-text">
+          <h1>Midterm Hub</h1>
+          <p>منصة المراجعة الشاملة للميدتيرم • 1,000 سؤال مقسمة بالمحاضرات والترتيب</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- PWA Install Button -->
+        <button id="btn-install" class="btn-install" title="تثبيت التطبيق على التليفون">
+          <span class="install-icon">📲</span>
+          <span class="install-text">تثبيت التطبيق</span>
+        </button>
+        <button id="theme-toggle" class="btn-icon" title="Toggle Dark/Light Mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- View Mode Navigation Tabs -->
+  <div class="nav-bar">
+    <div class="nav-container">
+      <button id="tab-quiz" class="tab-btn active">
+        <span>📝 Interactive Quiz (الأسئلة مقسمة بالمحاضرات)</span>
+        <span class="badge-count" id="total-badge-count">1,000 Questions</span>
+      </button>
+      <button id="tab-summaries" class="tab-btn">
+        <span>📖 Executive Summaries (الملخصات والـ PDF)</span>
+        <span class="badge-count">10 Official PDFs</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main>
+    
+    <!-- Sub-navigation: Subjects & Modes -->
+    <div class="subnav-container">
+      <div class="subject-pills">
+        <button id="pill-dba" class="subj-pill active">
+          <span>🗄️ Database Administration</span>
+          <span class="badge">200 Qs</span>
+        </button>
+        <button id="pill-ecom" class="subj-pill">
+          <span>🛒 E-Commerce</span>
+          <span class="badge">200 Qs</span>
+        </button>
+        <button id="pill-ir" class="subj-pill">
+          <span>🔍 Info Retrieval (IR)</span>
+          <span class="badge">200 Qs</span>
+        </button>
+        <button id="pill-ba" class="subj-pill">
+          <span>📊 Business Analytics (بيزنس)</span>
+          <span class="badge">200 Qs</span>
+        </button>
+        <button id="pill-isapp" class="subj-pill">
+          <span>🖧 IS Applications</span>
+          <span class="badge">200 Qs</span>
+        </button>
+      </div>
+
+      <div class="mode-pills" id="mode-pills-container">
+        <button id="mode-practice" class="mode-btn active" title="Instant right/wrong feedback and explanation">
+          ⚡ Practice Mode (تدريب فوري)
+        </button>
+        <button id="mode-exam" class="mode-btn" title="Simulate exam environment">
+          ⏱️ Exam Mode (وضع الامتحان)
+        </button>
+      </div>
+    </div>
+
+    <!-- Lecture Navigation Bar (تقسيم المحاضرات بالترتيب) -->
+    <div id="lecture-bar-wrapper" class="lecture-bar-wrapper">
+      <div class="lecture-bar-label">
+        <span>📚 تقسيم المحاضرات بالترتيب (Lectures):</span>
+      </div>
+      <div id="lecture-pills" class="lecture-pills">
+        <!-- Dynamically populated lecture buttons -->
+      </div>
+    </div>
+
+    <!-- Mobile Quick Navigation Strip (visible on mobile screens) -->
+    <div class="mobile-action-bar">
+      <button id="btn-open-sidebar" class="btn-mobile-drawer" type="button">
+        <span>🗺️ خريطة المحاضرات والأسئلة</span>
+        <span class="badge" id="mobile-q-count">200</span>
+      </button>
+      <div class="mobile-quick-stats">
+        <span class="m-stat m-correct" id="mobile-stat-correct">0 صح</span>
+        <span class="m-stat m-wrong" id="mobile-stat-wrong">0 خطأ</span>
+      </div>
+    </div>
+
+    <!-- Backdrop for mobile drawer -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+    <!-- VIEW 1: QUIZ INTERACTIVE VIEW -->
+    <div id="view-quiz" class="quiz-layout">
+      
+      <!-- Left Sidebar: Stats, Filters & Question Grid -->
+      <aside class="quiz-sidebar" id="quiz-sidebar">
+        
+        <!-- Mobile Drawer Close Header -->
+        <div class="sidebar-mobile-header">
+          <div class="sidebar-mobile-title">🗺️ خريطة المحاضرات والأسئلة</div>
+          <button id="sidebar-close-btn" class="btn-close-drawer" aria-label="Close sidebar">&times;</button>
+        </div>
+
+        <!-- Score & Stats Card -->
+        <div class="stats-card">
+          <div class="stat-box primary">
+            <div class="val" id="stat-answered">0/200</div>
+            <div class="lbl">Answered</div>
+          </div>
+          <div class="stat-box success">
+            <div class="val" id="stat-correct">0</div>
+            <div class="lbl">Correct</div>
+          </div>
+          <div class="stat-box danger">
+            <div class="val" id="stat-wrong">0</div>
+            <div class="lbl">Wrong</div>
+          </div>
+        </div>
+
+        <!-- Filter By Lecture -->
+        <div class="filter-group">
+          <label>Filter by Lecture (تصفية بالمحاضرة)</label>
+          <select id="lecture-select" class="select-custom">
+            <option value="all">All Lectures in Order (كل المحاضرات بالترتيب)</option>
+          </select>
+        </div>
+
+        <!-- Filter By Topic -->
+        <div class="filter-group">
+          <label>Filter by Sub-Topic (تصفية بالجزئية)</label>
+          <select id="topic-select" class="select-custom">
+            <option value="all">All Sub-Topics (جميع الجزئيات)</option>
+          </select>
+        </div>
+
+        <!-- Filter By Status -->
+        <div class="filter-group">
+          <label>Status Filter (حالة الأسئلة)</label>
+          <select id="status-select" class="select-custom">
+            <option value="all">All Questions (جميع الأسئلة)</option>
+            <option value="unanswered">Unanswered (الأسئلة المتبقية)</option>
+            <option value="incorrect">Incorrect (الإجابات الخاطئة)</option>
+            <option value="flagged">Flagged for Review (المحددة للمراجعة)</option>
+          </select>
+        </div>
+
+        <!-- Keyword Search -->
+        <div class="filter-group">
+          <label>Search Questions (بحث)</label>
+          <input type="text" id="search-input" class="input-search" placeholder="Type keyword or phrase...">
+        </div>
+
+        <!-- Question Grid 1 to 200 (Grouped by Lecture) -->
+        <div class="filter-group">
+          <div class="grid-header">
+            <span>Questions Map by Lecture (مقسمة بالمحاضرات)</span>
+            <span id="grid-count" style="color: var(--text-muted); font-size: 11px;">(200 / 200)</span>
+          </div>
+          <div class="questions-grid" id="questions-grid">
+            <!-- Dynamic Lecture Sections & Buttons Generated in JS -->
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Right Main: Current Question Card -->
+      <section class="question-card" id="question-card">
+        
+        <!-- Progress bar on question card -->
+        <div class="q-progress-bar">
+          <div class="q-progress-fill" id="q-progress-fill"></div>
+        </div>
+
+        <!-- Prominent Lecture Context Banner -->
+        <div class="q-lecture-banner" id="q-lecture-banner">
+          <div class="q-lecture-banner-main">
+            <span class="q-lecture-pill" id="q-lecture-pill">📚 ...</span>
+            <span class="q-lecture-title" id="q-lecture-title">Loading lecture...</span>
+          </div>
+          <div class="q-lecture-order" id="q-lecture-order">
+            ...
+          </div>
+        </div>
+
+        <div class="q-header">
+          <div class="q-meta">
+            <span class="q-num" id="q-num">Q 1 of 200</span>
+            <span class="q-lecture-badge" id="q-lecture-badge">...</span>
+            <span class="q-topic" id="q-topic">Topic Name</span>
+          </div>
+
+          <button id="btn-flag" class="btn-flag" title="Bookmark for later review">
+            🏳️ Flag
+          </button>
+        </div>
+
+        <div class="q-body" id="q-body">
+          Loading question text...
+        </div>
+
+        <!-- Options Container -->
+        <div class="options-list" id="options-list">
+          <!-- Dynamically populated options -->
+        </div>
+
+        <!-- Explanation Callout -->
+        <div class="explanation-box" id="explanation-box">
+          <div class="explanation-title">
+            <span>💡 Instructive Explanation (الشرح والتوضيح العلمي)</span>
+          </div>
+          <div class="explanation-text" id="explanation-text">
+            Explanation will be displayed here.
+          </div>
+        </div>
+
+        <!-- Bottom Navigation Footer -->
+        <div class="q-footer">
+          <button id="btn-prev" class="btn btn-outline">
+            ⬅️ Previous Question
+          </button>
+
+          <div class="desktop-keyboard-hint">
+            Keyboard: <kbd>1-4</kbd> select answer • <kbd>&larr; / &rarr;</kbd> navigate
+          </div>
+
+          <button id="btn-next" class="btn btn-primary">
+            Next Question ➡️
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- VIEW 2: SUMMARIES & PDF DOWNLOAD HUB -->
+    <div id="view-summaries" class="summaries-view" style="display: none;">
+      
+      <div class="summaries-toolbar">
+        <div>
+          <h2 style="font-size: 18px; font-weight: 800; margin-bottom: 4px;">Executive Study Guides & Official Summaries</h2>
+          <p style="font-size: 13px; color: var(--text-muted);">اقرأ الملخص مباشرة من الموقع بتنسيقه التنفيذي الجديد أو حمل النسخة الرسمية PDF فائقة الجودة</p>
+        </div>
+
+        <div class="summaries-actions">
+          <div class="mode-pills">
+            <button id="summary-lang-ar" class="mode-btn active">العربية (Arabic)</button>
+            <button id="summary-lang-en" class="mode-btn">English</button>
+          </div>
+
+          <div class="download-group">
+            <a id="btn-download-ar" href="downloads/DBA_Summary_AR.pdf" download class="btn-download">
+              📥 تحميل PDF بالعربي
+            </a>
+            <a id="btn-download-en" href="downloads/DBA_Summary_EN.pdf" download class="btn-download" style="background: var(--primary);">
+              📥 Download English PDF
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Embedded Iframe Document Viewer -->
+      <iframe id="summary-frame" class="summary-content-frame" title="Executive Summary Document Viewer"></iframe>
+
+    </div>
+
+  </main>
+
+  <!-- PWA Mobile Bottom Banner -->
+  <div id="mobile-install-banner" class="mobile-install-banner" style="display: none;">
+    <div class="banner-inner">
+      <div class="banner-icon">🎓</div>
+      <div class="banner-info">
+        <div class="banner-title">تطبيق Midterm Hub</div>
+        <div class="banner-desc">ثبّته على هاتفك للوصول السريع والمذاكرة بدون نت!</div>
+      </div>
+      <div class="banner-btns">
+        <button id="btn-banner-install" class="btn-banner-action">تثبيت 📲</button>
+        <button id="btn-banner-close" class="btn-banner-close" aria-label="Close banner">&times;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PWA Install Modal (iOS instructions & fallback) -->
+  <div id="install-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">📲 تثبيت تطبيق Midterm على جهازك</div>
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be inserted by JS based on device -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=6"></script>
+</body>
+</html>
